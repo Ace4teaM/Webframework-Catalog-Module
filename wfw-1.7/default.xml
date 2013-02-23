@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <title>Mailling</title>
+    <name>mail_module</name>
+    <base>webframework</base>
+    <description>Gestionnaire de courrier électronique</description>
+    
+    <index>
+        <page id="index" name="Accueil">index.php</page>
+        <!-- admin -->
+        <page id="send_message" role="administrator" name="Envoie un message">send_message.php</page>
+        <!-- visiteur -->
+        <!-- utilisateur -->
+    </index>
+
+    <tree>
+        <index/>
+        <send_message/>
+    </tree>
+    
+    <results lang="fr">
+        <codes>
+            <ERR_OK>Succès</ERR_OK>
+            <ERR_FAILED>Echec</ERR_FAILED>
+            <ERR_SYSTEM>Erreur système</ERR_SYSTEM>
+        </codes>
+
+        <errors>
+            <!-- WFW (ERR_OK) -->
+            <INFORMATION>Information</INFORMATION>
+            <!-- WFW (ERR_FAILED) -->
+            <NO_INPUT_FIELD>Aucun champ reçu</NO_INPUT_FIELD>
+            <MISSING_FIELD>Champ manquant</MISSING_FIELD>
+            <EMPTY_TEXT>Champ vide</EMPTY_TEXT>
+            <INVALID_CHAR>Champ contenant des caractères interdits</INVALID_CHAR>
+            <INVALID_FORMAT>Champ mal formé</INVALID_FORMAT>
+            <INVALID_RANGE>Rang de valeur invalide</INVALID_RANGE>
+            <OVERSIZED>Trop de caractères</OVERSIZED>
+            <UNDERSIZED>Pas assez de caractères</UNDERSIZED>
+            <DB_CONNECTION>Connexion au serveur de base de données a échouée</DB_CONNECTION>
+            <DB_SQL_QUERY>Requête SQL mal formée</DB_SQL_QUERY>
+            <SOCK_OPEN_URL>La connexion au serveur a échouée</SOCK_OPEN_URL>
+            <UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</UNKNOWN_HOSTNAME>
+            <NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</NO_DATABASE_CONFIGURED>
+            <!-- WFW (ERR_SYSTEM) -->
+            <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
+            <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
+            
+            <!-- MAIL (ERR_OK) -->
+            <MAIL_SENDED>Message envoyé</MAIL_SENDED>
+            <!-- MAIL (ERR_FAILED) -->
+            <MAIL_SENDING>Erreur d'envoie</MAIL_SENDING>
+        </errors>
+        
+        <messages>
+            <!-- WFW -->
+            <INPUT_MSG_INVALID_FIELD>
+                Merci de renseigner le champ: $FIELD_NAME.
+            </INPUT_MSG_INVALID_FIELD>
+            <SOCK_SERVER_CONNECTION>
+                Cause retourné par le socket #$ERRNO : $ERRSTR
+                [$SERVER : $PORT]
+            </SOCK_SERVER_CONNECTION>
+            <WFW_MSG_POPULATE_FORM>
+                Merci de compléter le formulaire
+            </WFW_MSG_POPULATE_FORM>
+            
+            <!-- MAIL -->
+            <MAIL_CMD_FAILED>
+                Une commande à retournée une réponse négative.
+                Commande: $CMD
+                Réponse: $RESPONSE
+            </MAIL_CMD_FAILED>
+        </messages>
+        
+        <fields>
+            <!-- MAIL -->
+            <to>Adresse du destinataire</to>
+            <from>Adresse de l'expéditeur</from>
+            <from_name>Nom de l'expéditeur</from_name>
+            <subject>Sujet</subject>
+            <msg>Message</msg>
+            <template>Fichier template</template>
+            <notify>Adresse de notification</notify>
+            <server>Adresse du serveur</server>
+            <port>Numéro de port</port>
+        </fields>
+        
+    </results>
+</site>

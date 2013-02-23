@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- Main template -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:template="http://www.webframework.fr/last/xmlns/template" xml:lang="fr" lang="fr" dir="ltr">
+<head template:action="merge" template:path=">head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="fr" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" /><!-- Internet explorer CSS compatible -->
+    <meta http-equiv="content-script-type" content="text/javascript" /><!-- Default script langage -->
+
+    <!-- Author -->
+    <meta name="Author" lang="fr" content="Thomas AUGUEY" />
+    <meta name="Publisher" lang="fr" content="Thomas AUGUEY" />
+    <meta name="Copyright" content="(C)2012-2013 Thomas AUGUEY" />
+
+    <!-- FavIcon -->
+    <link rel="icon" type="image/png" href="-{image:icon}" />
+    <link rel="shortcut icon" type="image/x-icon" href="-{icon:favicon}" />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="-{_LIB_PATH_WFW_}/css/wfw-extends.css" type="text/css" />
+    <link rel="stylesheet" href="-{_LIB_PATH_WFW_}/css/wfw-fieldbar.css" type="text/css" />
+
+    <!-- ExtJS -->
+    <script type="text/javascript" language="javascript" src="-{_LIB_PATH_EXT_}/ext-all.js"></script>
+    <link rel="stylesheet" type="text/css" href="-{_LIB_PATH_EXT_}/resources/css/ext-all.css" />
+
+    <!-- Main Includes -->
+    <script type="text/javascript" language="javascript" src="-{_LIB_PATH_WFW_}/javascript/base.js"></script>
+    <script type="text/javascript" language="javascript" src="-{_LIB_PATH_YUI_}/yui/yui-min.js"></script>
+    <script type="text/javascript" language="javascript" src="-{_LIB_PATH_WFW_}/javascript/yui/yui_config.js"></script>
+    <script type="text/javascript">var wfw_yui_base_path = "-{_LIB_PATH_WFW_}/javascript/yui/";</script>
+    <script type="text/javascript" language="javascript" src="js/init.js"></script>
+
+    <!-- Add-Includes
+    <script type="text/javascript" language="javascript" src="js/user/user.js"></script>
+    <script type="text/javascript" language="javascript" src="js/globals.js"></script>
+    <script type="text/javascript" language="javascript" src="js/template.js"></script> -->
+
+    <style type="text/css">
+        #headerContent{
+            padding:10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #statusContent{
+            padding:20px;
+        }
+        #statusContent li strong{
+            width:150px;
+            display: inline-block;
+        }
+        #footerContent{
+            padding:10px;
+            font-style: italic;
+        }
+        #contentContent h1 {
+            margin-top:0px;
+            margin-bottom:4px;
+            font-size: 1.5em;
+        }
+        #contentContent h2 {
+            margin-top:8px;
+            margin-bottom:4px;
+            font-size: 1.1em;
+        }
+        #contentContent {
+            padding:8px;
+        }
+        strong {
+            font-weight: bold;
+        }
+        .ERR_OK{
+            font-weight: bold;
+            color:#115601;
+            background: rgb(157,213,58); /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(157,213,58,1) 0%, rgba(161,213,79,1) 93%, rgba(128,194,23,1) 96%, rgba(124,188,10,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(157,213,58,1)), color-stop(93%,rgba(161,213,79,1)), color-stop(96%,rgba(128,194,23,1)), color-stop(100%,rgba(124,188,10,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 93%,rgba(128,194,23,1) 96%,rgba(124,188,10,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 93%,rgba(128,194,23,1) 96%,rgba(124,188,10,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 93%,rgba(128,194,23,1) 96%,rgba(124,188,10,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 93%,rgba(128,194,23,1) 96%,rgba(124,188,10,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 ); /* IE6-9 */
+        }
+        .ERR_OK .ICON, .ERR_FAILED .ICON, .ERR_SYSTEM .ICON{
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 60px;
+            height:60px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .ERR_OK .ICON{
+            background-image: url('-{_LIB_PATH_WFW_}/bin/icons/success.png');
+        }
+        .ERR_OK .TEXT, .ERR_FAILED .TEXT{
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .ERR_FAILED, .ERR_SYSTEM{
+            color:#492401;
+            font-weight: bold;
+            background: rgb(255,183,107); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(255,183,107,1) 0%, rgba(255,167,61,1) 93%, rgba(255,124,0,1) 96%, rgba(255,127,4,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,183,107,1)), color-stop(93%,rgba(255,167,61,1)), color-stop(96%,rgba(255,124,0,1)), color-stop(100%,rgba(255,127,4,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(255,183,107,1) 0%,rgba(255,167,61,1) 93%,rgba(255,124,0,1) 96%,rgba(255,127,4,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(255,183,107,1) 0%,rgba(255,167,61,1) 93%,rgba(255,124,0,1) 96%,rgba(255,127,4,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(255,183,107,1) 0%,rgba(255,167,61,1) 93%,rgba(255,124,0,1) 96%,rgba(255,127,4,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(255,183,107,1) 0%,rgba(255,167,61,1) 93%,rgba(255,124,0,1) 96%,rgba(255,127,4,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 */
+
+        }
+        .ERR_FAILED .ICON, .ERR_SYSTEM .ICON{
+            background-image: url('-{_LIB_PATH_WFW_}/bin/icons/failed.png');
+        }
+    </style>
+</head>
+
+<!-- Document -->
+<body>
+    <div id="header">
+        <div id="headerContent">
+            <img src="-{_LIB_PATH_WFW_}/bin/logo.png" height="40" />
+            <hr/>
+            <span><a href="-{page:index}">Module Mailling</a></span>
+        </div>
+    </div>
+    <div id="status" class="wfw_bg_frame">
+        <div id="statusContent">
+            <ul>
+                <li><strong>Base de données</strong> : -{bdd_status}</li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="result">
+        <div class="-{result}">
+            <span class="ICON"></span>
+            <span class="TEXT">-{txt_error}<br/>-{txt_message}</span>
+        </div>
+    </div>
+    <div id="menu">
+        <!-- Administrateur -->
+        <ul id="menu1" template:action="select" template:path=":default.xml:index">
+            <li template:action="all" template:selector="> page[role=administrator]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
+        </ul>
+        <!-- Visiteur -->
+        <ul id="menu2" template:action="select" template:path=":default.xml:index">
+            <li template:action="all" template:selector="> page[role=visitor]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
+        </ul>
+        <!-- Utilisateur -->
+        <ul id="menu3" template:action="select" template:path=":default.xml:index">
+            <li template:action="all" template:selector="> page[role=user]"><a href="-{{page:-{@id}}}">-{@name}</a></li>
+        </ul>
+    </div>
+    <div id="content"><div id="contentContent" template:action="merge" template:path=">body"></div></div>
+    <div id="footer" class="wfw_information"><div id="footerContent">Exemple d'implémentation du module Mailling dans un environnement Webframework</div></div>
+</body>
+
+
+</html>
