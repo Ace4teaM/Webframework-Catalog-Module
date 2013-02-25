@@ -4,7 +4,7 @@
 YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', function (Y)
 {
     var wfw = Y.namespace("wfw");
-
+return;
     //connection status change
     var onLoad = function(e)
     {

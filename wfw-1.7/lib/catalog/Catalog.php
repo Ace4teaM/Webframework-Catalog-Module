@@ -21,139 +21,97 @@
 */
 
 /**
- *  Webframework Module
- *  PHP Data-Model Implementation
-*/
+ * Gestionnaire d'utilisateur
+ * Librairie PHP5
+ */
 
 
-/**
-* @author       AceTeaM
-*/
-class Catalog
+require_once("php/class/bases/iModule.php");
+require_once("php/xml_default.php");
+
+class CatalogModule implements iModule
 {
-    
     /**
-    * @var      int
-    */
-    public $catalogId;
+     * @brief Initialise le module
+     * @param $local_path Chemin d'accès local vers ce dossier
+     */
+    public static function load($local_path){
+        global $app;
+        
+        //initialise la configuration
+        $modParam = parse_ini_file("$local_path/config.ini", true);
+        $app->config = array_merge_recursive($modParam,$app->config);
+    }
     
+    public static function libPath(){
+        global $app;
+        return $app->getLibPath("catalog_module");
+    }
+        
+    public static function makeView($name,$attributes,$template_file){ 
+        return RESULT_OK();
+    }
+
     /**
-    * @var      String
-    */
-    public $catalogType;    
+     * @brief Recherche des items
+     * @param $list Tableau des instances de classes trouvés (CatalogItem)
+     * @param $region Instance de la classe Region, région d'origine de  l'item
+     * @param $text Texte de la recherche
+     * @return Réssultat de la fonction
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir Result::getLast pour plus d'informations
+     */
+    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=100)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        //obtient les items
+        $query = <<<EOT
+        select catalog_item_id from catalog_item i
+          inner join catalog_category c on c.catalog_category_id = i.catalog_category_id
+EOT;
 
-}
-
-/*
-   catalog Class manager
-   
-   This class is optimized for use with the Webfrmework project (www.webframework.fr)
-*/
-class CatalogMgr
-{
-    /*
-      @brief Get entry list
-      @param $list Array to receive new instances
-      @param $cond SQL Select condition
-      @param $db iDataBase derived instance
-    */
-    public static function getAll(&$list,$cond,$db=null){
-       //obtient la base de donnees courrante
-       global $app;
-       if(!$db && !$app->getDB($db))
-         return false;
-      
-      //execute la requete
-       //...
-    }
-    
-    /*
-      @brief Get single entry
-      @param $inst Catalog instance pointer to initialize
-      @param $cond SQL Select condition
-      @param $db iDataBase derived instance
-    */
-    public static function get(&$inst,$cond,$db=null){
-       //obtient la base de donnees courrante
-       global $app;
-       if(!$db && !$app->getDB($db))
-         return false;
-      
-      //execute la requete
-       $query = "SELECT * from catalog where $cond";
-       if($db->execute($query, $result)){
-            $inst = new Catalog();
-          $inst->catalogId = $db->fetchValue($result,"catalog_id");
-          $inst->catalogType = $db->fetchValue($result,"catalog_type");          
-
-          return true;
-       }
-       return false;
-    }
-    
-    /*
-      @brief Get single entry by id
-      @param $inst Catalog instance pointer to initialize
-      @param $id Primary unique identifier of entry to retreive
-      @param $db iDataBase derived instance
-    */
-    public static function getById(&$inst,$id,$db=null){
-       //obtient la base de donnees courrante
-       global $app;
-       if(!$db && !$app->getDB($db))
-         return false;
-      
-       if(is_string($id))
-           $id = "'$id'";
-           
-      //execute la requete
-       $query = "SELECT * from catalog where catalog_id=$id";
-       if($db->execute($query, $result)){
-            $inst = new Catalog();
-          $inst->catalogId = $db->fetchValue($result,"catalog_id");
-          $inst->catalogType = $db->fetchValue($result,"catalog_type");          
-
-          return true;
-       }
-       return false;
-    }
-
-   /** @brief Convert name to code */
-    public static function nameToCode($name){
-        for($i=strlen($name)-1;$i>=0;$i--){
-            $c = substr($name, $i, 1);
-            if(strpos("ABCDEFGHIJKLMNOPQRSTUVWXYZ",$c) !== FALSE){
-                $name = substr_replace($name,($i?"_":"").strtolower($c), $i, 1);
-            }
+        //ajoute les conditions a la requete
+        $cond="";
+        if($text){
+            $text = strtolower($text);
+            $cond .= " and (lower(i.item_title) like '%$text%' or lower(i.item_desc) like '%$text%')";
         }
-        return $name;
-    }
-    
-    /**
-      @brief Get entry by id's relation table
-      @param $inst Catalog instance pointer to initialize
-      @param $obj An another entry class object instance
-      @param $db iDataBase derived instance
-    */
-    public static function getByRelation(&$inst,$obj,$db=null){
-        $objectName = get_class($obj);
-        $objectTableName  = CatalogMgr::nameToCode($objectName);
-        $objectIdName = lcfirst($objectName)."Id";
-        
-        /*print_r($objectName.", ");
-        print_r($objectTableName.", ");
-        print_r($objectIdName.", ");
-        print_r($obj->$objectIdName);*/
-        
-        $select;
-        if(is_string($obj->$objectIdName))
-            $select = ("catalog_id = (select catalog_id from $objectTableName where ".$objectTableName."_id='".$obj->$objectIdName."')");
-        else
-            $select = ("catalog_id = (select catalog_id  from $objectTableName where ".$objectTableName."_id=".$obj->$objectIdName.")");
+        if($category){
+            $category = strtolower($category);
+            $cond .= " and (lower(i.catalog_category_id) = '$category')";
+        }
+        if($type && is_string($type)){
+            $type = strtolower($type);
+            $cond .= " and (lower(c.item_type) = '$type')";
+        }
+        if(!empty($cond))
+            $query.= " where 1=1 $cond";
 
-        return CatalogMgr::get($inst,$select,$db);
-    }
+        if($sort && is_string($sort)){
+            $sort = strtolower($sort);
+            $query .= " order by i.$sort";
+        }
 
+        //execute
+        if(!$db->execute($query, $result))
+            return false;
+
+        //extrait les données
+        while($offset<$limit && pg_result_seek($result,$offset) && $data = pg_fetch_assoc($result)){
+            if(!CatalogItemMgr::getById($item,$data["catalog_item_id"]))
+                return false;
+            array_push($list, $item);
+            $offset++;
+        }
+
+        return RESULT_OK();
+    }
 }
 
 ?>

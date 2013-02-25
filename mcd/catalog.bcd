@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{B5F6AB92-DFCD-4B19-9159-D87122916068}" Label="" LastModificationDate="1361783563" Name="catalog" Objects="47" Symbols="18" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{B5F6AB92-DFCD-4B19-9159-D87122916068}" Label="" LastModificationDate="1361783659" Name="catalog" Objects="47" Symbols="18" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,7 +12,7 @@
 <a:Code>CATALOG</a:Code>
 <a:CreationDate>1361612459</a:CreationDate>
 <a:Creator>developpement</a:Creator>
-<a:ModificationDate>1361783474</a:ModificationDate>
+<a:ModificationDate>1361783617</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
@@ -780,7 +780,7 @@ NameToCode=Yes
 CheckModel=Yes
 SaveLinks=Yes
 NameToCode=No
-PreserveMode=Yes</a:ModelOptionsText>
+PreserveMode=No</a:ModelOptionsText>
 <c:GeneratedModels>
 <o:Shortcut Id="o3">
 <a:ObjectID>8081E7A8-C60F-4B1D-B520-ACF3BC9CBA87</a:ObjectID>
@@ -1255,7 +1255,7 @@ CARD 0 Arial,8,N</a:FontList>
 </o:AssociationLinkSymbol>
 <o:EntitySymbol Id="o6">
 <a:CreationDate>1361783152</a:CreationDate>
-<a:ModificationDate>1361783213</a:ModificationDate>
+<a:ModificationDate>1361783617</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((7807,7344), (27529,14085))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -1565,11 +1565,11 @@ LABL 0 Arial,8,N</a:FontList>
 </o:DataItem>
 <o:DataItem Id="o39">
 <a:ObjectID>7350AF9A-E65A-4623-8785-06CFA96AB80E</a:ObjectID>
-<a:Name>catalog item category id</a:Name>
-<a:Code>CATALOG_ITEM_CATEGORY_ID</a:Code>
+<a:Name>catalog category id</a:Name>
+<a:Code>CATALOG_CATEGORY_ID</a:Code>
 <a:CreationDate>1361783152</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361783152</a:ModificationDate>
+<a:ModificationDate>1361783659</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:DataType>VA80</a:DataType>
 <a:Length>80</a:Length>

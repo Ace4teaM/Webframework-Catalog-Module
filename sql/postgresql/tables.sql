@@ -1,12 +1,12 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8 (WFW)                            */
-/* Date de création :  25/02/2013 10:15:48                      */
+/* Date de création :  25/02/2013 10:18:16                      */
 /*==============================================================*/
 
 
-drop table if exists CATALOG  CASCADE;
-
 drop table if exists CATALOG_CATEGORY  CASCADE;
+
+drop table if exists CATALOG_ENTRY  CASCADE;
 
 drop table if exists CATALOG_ITEM  CASCADE;
 
@@ -31,15 +31,6 @@ comment on domain CATALOG_TYPE is
 'Ajoutez ici les types de catalogues héritant de l''entité CATALOG';
 
 /*==============================================================*/
-/* Table : CATALOG                                              */
-/*==============================================================*/
-create table CATALOG (
-   CATALOG_ID           INT4                 not null,
-   CATALOG_TYPE         CATALOG_TYPE         not null,
-   constraint PK_CATALOG primary key (CATALOG_ID)
-);
-
-/*==============================================================*/
 /* Table : CATALOG_CATEGORY                                     */
 /*==============================================================*/
 create table CATALOG_CATEGORY (
@@ -49,11 +40,20 @@ create table CATALOG_CATEGORY (
 );
 
 /*==============================================================*/
+/* Table : CATALOG_ENTRY                                        */
+/*==============================================================*/
+create table CATALOG_ENTRY (
+   CATALOG_ENTRY_ID     INT4                 not null,
+   CATALOG_TYPE         CATALOG_TYPE         not null,
+   constraint PK_CATALOG_ENTRY primary key (CATALOG_ENTRY_ID)
+);
+
+/*==============================================================*/
 /* Table : CATALOG_ITEM                                         */
 /*==============================================================*/
 create table CATALOG_ITEM (
    CATALOG_ITEM_ID      INT4                 not null,
-   CATALOG_ID           INT4                 not null,
+   CATALOG_ENTRY_ID     INT4                 not null,
    CATALOG_CATEGORY_ID  VARCHAR(80)          null,
    ITEM_TITLE           VARCHAR(80)          not null,
    ITEM_DESC            VARCHAR(256)         not null,
@@ -62,8 +62,8 @@ create table CATALOG_ITEM (
 );
 
 alter table CATALOG_ITEM
-   add constraint FK_CATALOG__ASSOCIATI_CATALOG foreign key (CATALOG_ID)
-      references CATALOG (CATALOG_ID)
+   add constraint FK_CATALOG__ASSOCIATI_CATALOG_ foreign key (CATALOG_ENTRY_ID)
+      references CATALOG_ENTRY (CATALOG_ENTRY_ID)
       on delete restrict on update restrict;
 
 alter table CATALOG_ITEM

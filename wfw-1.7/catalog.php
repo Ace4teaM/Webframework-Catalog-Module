@@ -35,7 +35,7 @@ $result = cResult::getLast();
 
 //inclue le controleur
 if(isset($_GET["page"]) && cInputIdentifier::isValid($_GET["page"])){
-    include($app->getCfgValue("user_module","ctrl_path")."/".$_GET["page"].".php");
+    include($app->getCfgValue("catalog_module","ctrl_path")."/".$_GET["page"].".php");
 }
 
 // Traduit le nom du champ concerné
@@ -60,9 +60,14 @@ switch($format){
         break;
     case "html":
         if(isset($_GET["page"]))
-            echo $app->makeFormView($att,$fields,NULL,$_REQUEST);
+            $content = $app->makeFormView($att,$fields,NULL,$_REQUEST);
         else
-            echo $app->makeXMLView("view/user/pages/index.html",$att);
+            $content = $app->makeXMLView("view/catalog/pages/index.html",$att);
+        
+        if($content === false)
+            $app->processLastError();
+        
+        echo $content;
         break;
     default:
         RESULT(cResult::Failed,Application::UnsuportedFeature);

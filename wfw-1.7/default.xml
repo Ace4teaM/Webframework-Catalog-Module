@@ -8,14 +8,16 @@
     <index>
         <page id="index" name="Accueil">index.php</page>
         <!-- admin -->
-        <page id="send_message" role="administrator" name="Envoie un message">send_message.php</page>
+        <page id="catalog_create" role="administrator" name="Créer un catalogue">catalog.php?page=create</page>
         <!-- visiteur -->
+        <page id="catalog_serach_items" role="visitor" name="Rechercher des items">catalog.php?page=search</page>
         <!-- utilisateur -->
     </index>
 
     <tree>
         <index/>
-        <send_message/>
+        <catalog_create/>
+        <catalog_serach_items/>
     </tree>
     
     <results lang="fr">
@@ -27,7 +29,7 @@
 
         <errors>
             <!-- WFW (ERR_OK) -->
-            <INFORMATION>Information</INFORMATION>
+            <APP_INFORMATION>Information</APP_INFORMATION>
             <!-- WFW (ERR_FAILED) -->
             <NO_INPUT_FIELD>Aucun champ reçu</NO_INPUT_FIELD>
             <MISSING_FIELD>Champ manquant</MISSING_FIELD>
@@ -40,16 +42,13 @@
             <DB_CONNECTION>Connexion au serveur de base de données a échouée</DB_CONNECTION>
             <DB_SQL_QUERY>Requête SQL mal formée</DB_SQL_QUERY>
             <SOCK_OPEN_URL>La connexion au serveur a échouée</SOCK_OPEN_URL>
-            <UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</UNKNOWN_HOSTNAME>
-            <NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</NO_DATABASE_CONFIGURED>
+            <APP_UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</APP_UNKNOWN_HOSTNAME>
+            <APP_NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</APP_NO_DATABASE_CONFIGURED>
+            <APP_UNKNOWN_FORM_TEMPLATE_FILE>Le template de formulaire est indéfinit</APP_UNKNOWN_FORM_TEMPLATE_FILE>
             <!-- WFW (ERR_SYSTEM) -->
             <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
             <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
             
-            <!-- MAIL (ERR_OK) -->
-            <MAIL_SENDED>Message envoyé</MAIL_SENDED>
-            <!-- MAIL (ERR_FAILED) -->
-            <MAIL_SENDING>Erreur d'envoie</MAIL_SENDING>
         </errors>
         
         <messages>
@@ -64,26 +63,14 @@
             <WFW_MSG_POPULATE_FORM>
                 Merci de compléter le formulaire
             </WFW_MSG_POPULATE_FORM>
-            
-            <!-- MAIL -->
-            <MAIL_CMD_FAILED>
-                Une commande à retournée une réponse négative.
-                Commande: $CMD
-                Réponse: $RESPONSE
-            </MAIL_CMD_FAILED>
         </messages>
         
         <fields>
             <!-- MAIL -->
-            <to>Adresse du destinataire</to>
-            <from>Adresse de l'expéditeur</from>
-            <from_name>Nom de l'expéditeur</from_name>
-            <subject>Sujet</subject>
-            <msg>Message</msg>
-            <template>Fichier template</template>
-            <notify>Adresse de notification</notify>
-            <server>Adresse du serveur</server>
-            <port>Numéro de port</port>
+            <catalog_entry_id>Catalogue</catalog_entry_id>
+            <catalog_item_id>Item</catalog_item_id>
+            <catalog_category_id>Catégorie</catalog_category_id>
+            <search_string>Texte à rechercher</search_string>
         </fields>
         
     </results>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{B5F6AB92-DFCD-4B19-9159-D87122916068}" Label="" LastModificationDate="1361783659" Name="catalog" Objects="47" Symbols="18" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{B5F6AB92-DFCD-4B19-9159-D87122916068}" Label="" LastModificationDate="1361783869" Name="catalog" Objects="47" Symbols="18" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -1437,11 +1437,11 @@ LABL 0 Arial,8,N</a:FontList>
 </o:Entity>
 <o:Entity Id="o19">
 <a:ObjectID>1EAB9972-311C-4ADA-AE10-FCF92228B00D</a:ObjectID>
-<a:Name>catalog</a:Name>
-<a:Code>CATALOG</a:Code>
+<a:Name>catalog_entry</a:Name>
+<a:Code>CATALOG_ENTRY</a:Code>
 <a:CreationDate>1361783152</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361783152</a:ModificationDate>
+<a:ModificationDate>1361783869</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o32">
@@ -1591,11 +1591,11 @@ LABL 0 Arial,8,N</a:FontList>
 </o:DataItem>
 <o:DataItem Id="o34">
 <a:ObjectID>1ADB6D25-458B-448F-B210-D67AF339702D</a:ObjectID>
-<a:Name>catalog id</a:Name>
-<a:Code>CATALOG_ID</a:Code>
+<a:Name>catalog entry id</a:Name>
+<a:Code>CATALOG_ENTRY_ID</a:Code>
 <a:CreationDate>1361783152</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361783152</a:ModificationDate>
+<a:ModificationDate>1361783869</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:DataType>I</a:DataType>
 </o:DataItem>
