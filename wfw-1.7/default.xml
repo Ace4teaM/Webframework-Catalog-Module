@@ -10,7 +10,7 @@
         <!-- admin -->
         <page id="catalog_create" role="administrator" name="Créer un catalogue">catalog.php?page=create</page>
         <!-- visiteur -->
-        <page id="catalog_serach_items" role="visitor" name="Rechercher des items">catalog.php?page=search</page>
+        <page id="catalog_search" role="visitor" name="Rechercher des items">catalog_search.php</page>
         <!-- utilisateur -->
     </index>
 
@@ -70,6 +70,7 @@
             <catalog_entry_id>Catalogue</catalog_entry_id>
             <catalog_item_id>Item</catalog_item_id>
             <catalog_category_id>Catégorie</catalog_category_id>
+            <catalog_item_type>Type d'item</catalog_item_type>
             <search_string>Texte à rechercher</search_string>
         </fields>
         

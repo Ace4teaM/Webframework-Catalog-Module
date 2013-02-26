@@ -29,37 +29,42 @@
 /**
 * @author       developpement
 */
-class CatalogItem
+class Product
 {
     
     /**
     * @var      int
     */
-    public $catalogItemId;
+    public $productId;
+    
+    /**
+    * @var      float
+    */
+    public $price;
     
     /**
     * @var      String
     */
-    public $itemTitle;
+    public $money;
     
     /**
     * @var      String
     */
-    public $itemDesc;
+    public $unit;
     
     /**
-    * @var      Date
+    * @var      int
     */
-    public $creationDate;    
+    public $quantity;    
 
 }
 
 /*
-   catalog_item Class manager
+   product Class manager
    
    This class is optimized for use with the Webfrmework project (www.webframework.fr)
 */
-class CatalogItemMgr
+class ProductMgr
 {
     /*
       @brief Get entry list
@@ -79,7 +84,7 @@ class CatalogItemMgr
     
     /*
       @brief Get single entry
-      @param $inst CatalogItem instance pointer to initialize
+      @param $inst Product instance pointer to initialize
       @param $cond SQL Select condition
       @param $db iDataBase derived instance
     */
@@ -90,13 +95,14 @@ class CatalogItemMgr
          return false;
       
       //execute la requete
-       $query = "SELECT * from catalog_item where $cond";
+       $query = "SELECT * from product where $cond";
        if($db->execute($query, $result)){
-            $inst = new CatalogItem();
-          $inst->catalogItemId = $db->fetchValue($result,"catalog_item_id");
-          $inst->itemTitle = $db->fetchValue($result,"item_title");
-          $inst->itemDesc = $db->fetchValue($result,"item_desc");
-          $inst->creationDate = $db->fetchValue($result,"creation_date");          
+            $inst = new Product();
+          $inst->productId = $db->fetchValue($result,"product_id");
+          $inst->price = $db->fetchValue($result,"price");
+          $inst->money = $db->fetchValue($result,"money");
+          $inst->unit = $db->fetchValue($result,"unit");
+          $inst->quantity = $db->fetchValue($result,"quantity");          
 
           return true;
        }
@@ -105,7 +111,7 @@ class CatalogItemMgr
     
     /*
       @brief Get single entry by id
-      @param $inst CatalogItem instance pointer to initialize
+      @param $inst Product instance pointer to initialize
       @param $id Primary unique identifier of entry to retreive
       @param $db iDataBase derived instance
     */
@@ -119,13 +125,14 @@ class CatalogItemMgr
            $id = "'$id'";
            
       //execute la requete
-       $query = "SELECT * from catalog_item where catalog_item_id=$id";
+       $query = "SELECT * from product where product_id=$id";
        if($db->execute($query, $result)){
-            $inst = new CatalogItem();
-          $inst->catalogItemId = $db->fetchValue($result,"catalog_item_id");
-          $inst->itemTitle = $db->fetchValue($result,"item_title");
-          $inst->itemDesc = $db->fetchValue($result,"item_desc");
-          $inst->creationDate = $db->fetchValue($result,"creation_date");          
+            $inst = new Product();
+          $inst->productId = $db->fetchValue($result,"product_id");
+          $inst->price = $db->fetchValue($result,"price");
+          $inst->money = $db->fetchValue($result,"money");
+          $inst->unit = $db->fetchValue($result,"unit");
+          $inst->quantity = $db->fetchValue($result,"quantity");          
 
           return true;
        }
@@ -145,13 +152,13 @@ class CatalogItemMgr
     
     /**
       @brief Get entry by id's relation table
-      @param $inst CatalogItem instance pointer to initialize
+      @param $inst Product instance pointer to initialize
       @param $obj An another entry class object instance
       @param $db iDataBase derived instance
     */
     public static function getByRelation(&$inst,$obj,$db=null){
         $objectName = get_class($obj);
-        $objectTableName  = CatalogItemMgr::nameToCode($objectName);
+        $objectTableName  = ProductMgr::nameToCode($objectName);
         $objectIdName = lcfirst($objectName)."Id";
         
         /*print_r($objectName.", ");
@@ -161,11 +168,11 @@ class CatalogItemMgr
         
         $select;
         if(is_string($obj->$objectIdName))
-            $select = ("catalog_item_id = (select catalog_item_id from $objectTableName where ".$objectTableName."_id='".$obj->$objectIdName."')");
+            $select = ("product_id = (select product_id from $objectTableName where ".$objectTableName."_id='".$obj->$objectIdName."')");
         else
-            $select = ("catalog_item_id = (select catalog_item_id  from $objectTableName where ".$objectTableName."_id=".$obj->$objectIdName.")");
+            $select = ("product_id = (select product_id  from $objectTableName where ".$objectTableName."_id=".$obj->$objectIdName.")");
 
-        return CatalogItemMgr::get($inst,$select,$db);
+        return ProductMgr::get($inst,$select,$db);
     }
 
 }

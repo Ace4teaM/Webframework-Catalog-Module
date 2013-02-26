@@ -51,7 +51,7 @@ $att = array_merge($att,$_REQUEST);
 /* Génére la sortie */
 $format = "html";
 if(cInputFields::checkArray(array("output"=>"cInputIdentifier")))
-    $format = $_REQUEST["output"] ;
+    $format = $_REQUEST["output"];
 
 switch($format){
     case "xarg":

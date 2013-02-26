@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--(C)2010-ID-Informatik-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:template="http://www.webframework.fr/last/xmlns/template" xml:lang="fr" lang="fr" dir="ltr">
+    <head>
+        <!-- Title -->
+        <title>Catalogue</title>
+
+        <!-- Navigator Page Id -->
+        <meta http-equiv="wfw.page-id" content="catalog" /> 
+
+        <script type="text/javascript">
+            YUI(wfw_yui_config(wfw_yui_base_path)).use('node', 'event', function (Y)
+            {
+                var wfw = Y.namespace("wfw");
+
+                //connection status change
+                Ext.onReady(function() {
+
+                    //cache le contenu
+                    /*Y.Node.all("#page_content > *").hide();*/
+                    Y.Node.all("#items_list *").hide();
+
+                    var items = [];
+                    Y.Node.all("#items_list .item").each(function(node){
+                        items.push({
+                            width:"100%",
+                            title:node.one("h2").get("innerHTML"),
+                            html:node.one("p").get("innerHTML"),
+                            flex:1
+                        });
+                    });
+                    
+                    if(!items.length){
+                        Y.Node.all("#no_items_list").show();
+                        return;
+                    }
+
+                    //content
+                    Ext.create('Ext.Panel', {
+                        layout: 'vbox',
+                        width:"100%",
+                        items: items,
+                        renderTo: "items_list"
+                    });
+                });
+                
+            });
+
+        </script>
+    </head>
+
+    <!-- Document -->
+    <body>
+        <div template:action="select" template:path=":catalog.php:">
+            <h1>Résultat de votre recherche</h1>
+            <div id="no_items_list" style="display:none;">Désolé, aucun résultat trouvé.</div>
+            <!-- Items -->
+            <div id="items_list">
+                <div class="item" template:action="all" template:selector="> item">
+                        <h2>-{item_title}</h2>
+                        <p>-{item_desc}</p>
+                </div>
+            </div>
+            <hr/>
+            <a href="-{page:catalog_search}"><input type="button" value="Nouvelle recherche" /></a>
+        </div>
+    </body>
+
+</html>

@@ -29,37 +29,27 @@
 /**
 * @author       developpement
 */
-class CatalogItem
+class Vegetable
 {
     
     /**
     * @var      int
     */
-    public $catalogItemId;
+    public $vegetableId;
     
     /**
     * @var      String
     */
-    public $itemTitle;
-    
-    /**
-    * @var      String
-    */
-    public $itemDesc;
-    
-    /**
-    * @var      Date
-    */
-    public $creationDate;    
+    public $famille;    
 
 }
 
 /*
-   catalog_item Class manager
+   vegetable Class manager
    
    This class is optimized for use with the Webfrmework project (www.webframework.fr)
 */
-class CatalogItemMgr
+class VegetableMgr
 {
     /*
       @brief Get entry list
@@ -79,7 +69,7 @@ class CatalogItemMgr
     
     /*
       @brief Get single entry
-      @param $inst CatalogItem instance pointer to initialize
+      @param $inst Vegetable instance pointer to initialize
       @param $cond SQL Select condition
       @param $db iDataBase derived instance
     */
@@ -90,13 +80,11 @@ class CatalogItemMgr
          return false;
       
       //execute la requete
-       $query = "SELECT * from catalog_item where $cond";
+       $query = "SELECT * from vegetable where $cond";
        if($db->execute($query, $result)){
-            $inst = new CatalogItem();
-          $inst->catalogItemId = $db->fetchValue($result,"catalog_item_id");
-          $inst->itemTitle = $db->fetchValue($result,"item_title");
-          $inst->itemDesc = $db->fetchValue($result,"item_desc");
-          $inst->creationDate = $db->fetchValue($result,"creation_date");          
+            $inst = new Vegetable();
+          $inst->vegetableId = $db->fetchValue($result,"vegetable_id");
+          $inst->famille = $db->fetchValue($result,"famille");          
 
           return true;
        }
@@ -105,7 +93,7 @@ class CatalogItemMgr
     
     /*
       @brief Get single entry by id
-      @param $inst CatalogItem instance pointer to initialize
+      @param $inst Vegetable instance pointer to initialize
       @param $id Primary unique identifier of entry to retreive
       @param $db iDataBase derived instance
     */
@@ -119,13 +107,11 @@ class CatalogItemMgr
            $id = "'$id'";
            
       //execute la requete
-       $query = "SELECT * from catalog_item where catalog_item_id=$id";
+       $query = "SELECT * from vegetable where vegetable_id=$id";
        if($db->execute($query, $result)){
-            $inst = new CatalogItem();
-          $inst->catalogItemId = $db->fetchValue($result,"catalog_item_id");
-          $inst->itemTitle = $db->fetchValue($result,"item_title");
-          $inst->itemDesc = $db->fetchValue($result,"item_desc");
-          $inst->creationDate = $db->fetchValue($result,"creation_date");          
+            $inst = new Vegetable();
+          $inst->vegetableId = $db->fetchValue($result,"vegetable_id");
+          $inst->famille = $db->fetchValue($result,"famille");          
 
           return true;
        }
@@ -145,13 +131,13 @@ class CatalogItemMgr
     
     /**
       @brief Get entry by id's relation table
-      @param $inst CatalogItem instance pointer to initialize
+      @param $inst Vegetable instance pointer to initialize
       @param $obj An another entry class object instance
       @param $db iDataBase derived instance
     */
     public static function getByRelation(&$inst,$obj,$db=null){
         $objectName = get_class($obj);
-        $objectTableName  = CatalogItemMgr::nameToCode($objectName);
+        $objectTableName  = VegetableMgr::nameToCode($objectName);
         $objectIdName = lcfirst($objectName)."Id";
         
         /*print_r($objectName.", ");
@@ -161,11 +147,11 @@ class CatalogItemMgr
         
         $select;
         if(is_string($obj->$objectIdName))
-            $select = ("catalog_item_id = (select catalog_item_id from $objectTableName where ".$objectTableName."_id='".$obj->$objectIdName."')");
+            $select = ("vegetable_id = (select vegetable_id from $objectTableName where ".$objectTableName."_id='".$obj->$objectIdName."')");
         else
-            $select = ("catalog_item_id = (select catalog_item_id  from $objectTableName where ".$objectTableName."_id=".$obj->$objectIdName.")");
+            $select = ("vegetable_id = (select vegetable_id  from $objectTableName where ".$objectTableName."_id=".$obj->$objectIdName.")");
 
-        return CatalogItemMgr::get($inst,$select,$db);
+        return VegetableMgr::get($inst,$select,$db);
     }
 
 }

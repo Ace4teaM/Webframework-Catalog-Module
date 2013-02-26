@@ -27,7 +27,7 @@
 
 
 /**
-* @author       AceTeaM
+* @author       developpement
 */
 class CatalogEntry
 {

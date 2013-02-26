@@ -57,8 +57,9 @@ class CatalogModule implements iModule
      * @param $items Tableaux associatifs des items
      * @return Instance du document XML
      */
-    public function catalogToXML($items) {
-
+    public static function toXML($items) {
+        global $app;
+        
         //------------------------------------------------------
         // exporte les données au format XML (catalog)
         $doc = new XMLDocument();
@@ -77,8 +78,8 @@ class CatalogModule implements iModule
         //------------------------------------------------------
         // ajoute les définitions
         $setEl = $doc->createElement('set');
-        if ($this->getDefaultFile($def)) {
-            $setEl->appendChild($doc->createTextElement('title', $def->getResultText('fields', 'title')));
+        if ($app->getDefaultFile($def)) {
+            $setEl->appendChild($doc->createTextElement('item_title', $def->getResultText('fields', 'item_title')));
             $setEl->appendChild($doc->createTextElement('item_desc', $def->getResultText('fields', 'item_desc')));
         }
     
@@ -92,15 +93,8 @@ class CatalogModule implements iModule
                 $itemEl->setAttribute('guid', $catalogItem->catalogItemId);
                 //set's
                 $setEl = $doc->createElement('set');
-                $setEl->appendChild($doc->createTextElement('title', $catalogItem->title));
+                $setEl->appendChild($doc->createTextElement('item_title', $catalogItem->itemTitle));
                 $setEl->appendChild($doc->createTextElement('item_desc', $catalogItem->itemDesc));
-                $setEl->appendChild($doc->createTextElement('user', $catalogItem->itemDesc));
-                if(EtapeRegionale::getAverageScore($catalogItem,$score,true))
-                    $setEl->appendChild($doc->createTextElement('score', $score));
-                if(EtapeRegionale::getOpinionCnt($catalogItem,$cnt))
-                    $setEl->appendChild($doc->createTextElement('opinion', $cnt));
-                if(UserAccountMgr::getByRelation($user, $catalogItem))
-                    $setEl->appendChild($doc->createTextElement('user_id', $user->userAccountId));
                 $itemEl->appendChild($setEl);
                 //ok
                 $rootEl->appendChild($itemEl);
@@ -130,7 +124,7 @@ class CatalogModule implements iModule
 //        $db->rowSeek($offset);
 
         //extrait les données
-        while($result = $db->fetchRow(NULL) && $limit--){
+        while($result = $db->fetchRow(NULL)/* && $limit-- > 0*/){
             if(CatalogItemMgr::getById($item,$result["catalog_item_id"]))
                 array_push($list, $item);
         }

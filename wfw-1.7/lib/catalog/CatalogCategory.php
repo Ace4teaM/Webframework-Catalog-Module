@@ -27,7 +27,7 @@
 
 
 /**
-* @author       AceTeaM
+* @author       developpement
 */
 class CatalogCategory
 {
@@ -40,7 +40,12 @@ class CatalogCategory
     /**
     * @var      String
     */
-    public $categoryDesc;    
+    public $categoryDesc;
+    
+    /**
+    * @var      String
+    */
+    public $itemType;    
 
 }
 
@@ -84,7 +89,8 @@ class CatalogCategoryMgr
        if($db->execute($query, $result)){
             $inst = new CatalogCategory();
           $inst->catalogCategoryId = $db->fetchValue($result,"catalog_category_id");
-          $inst->categoryDesc = $db->fetchValue($result,"category_desc");          
+          $inst->categoryDesc = $db->fetchValue($result,"category_desc");
+          $inst->itemType = $db->fetchValue($result,"item_type");          
 
           return true;
        }
@@ -111,7 +117,8 @@ class CatalogCategoryMgr
        if($db->execute($query, $result)){
             $inst = new CatalogCategory();
           $inst->catalogCategoryId = $db->fetchValue($result,"catalog_category_id");
-          $inst->categoryDesc = $db->fetchValue($result,"category_desc");          
+          $inst->categoryDesc = $db->fetchValue($result,"category_desc");
+          $inst->itemType = $db->fetchValue($result,"item_type");          
 
           return true;
        }
