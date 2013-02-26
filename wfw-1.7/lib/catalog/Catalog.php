@@ -53,6 +53,92 @@ class CatalogModule implements iModule
     }
 
     /**
+     * @brief Crée un catalogue XML à partir de références
+     * @param $items Tableaux associatifs des items
+     * @return Instance du document XML
+     */
+    public function catalogToXML($items) {
+
+        //------------------------------------------------------
+        // exporte les données au format XML (catalog)
+        $doc = new XMLDocument();
+
+        //GUID catalog
+        $rootEl = $doc->createElement('data');
+
+        //GUID catalog
+        $guidEl = $doc->createElement('guid');
+        $guidEl->appendChild($doc->createTextNode('temporary'));
+        $rootEl->appendChild($guidEl);
+        
+        //infos
+        $rootEl->appendChild($doc->createTextElement('items_count', count($items)));
+
+        //------------------------------------------------------
+        // ajoute les définitions
+        $setEl = $doc->createElement('set');
+        if ($this->getDefaultFile($def)) {
+            $setEl->appendChild($doc->createTextElement('title', $def->getResultText('fields', 'title')));
+            $setEl->appendChild($doc->createTextElement('item_desc', $def->getResultText('fields', 'item_desc')));
+        }
+    
+        $rootEl->appendChild($setEl);
+
+        //------------------------------------------------------
+        // ajoute les items
+        if (is_array($items)) {
+            foreach ($items as $key => $catalogItem) {
+                $itemEl = $doc->createElement('item');
+                $itemEl->setAttribute('guid', $catalogItem->catalogItemId);
+                //set's
+                $setEl = $doc->createElement('set');
+                $setEl->appendChild($doc->createTextElement('title', $catalogItem->title));
+                $setEl->appendChild($doc->createTextElement('item_desc', $catalogItem->itemDesc));
+                $setEl->appendChild($doc->createTextElement('user', $catalogItem->itemDesc));
+                if(EtapeRegionale::getAverageScore($catalogItem,$score,true))
+                    $setEl->appendChild($doc->createTextElement('score', $score));
+                if(EtapeRegionale::getOpinionCnt($catalogItem,$cnt))
+                    $setEl->appendChild($doc->createTextElement('opinion', $cnt));
+                if(UserAccountMgr::getByRelation($user, $catalogItem))
+                    $setEl->appendChild($doc->createTextElement('user_id', $user->userAccountId));
+                $itemEl->appendChild($setEl);
+                //ok
+                $rootEl->appendChild($itemEl);
+            }
+        }
+
+        //ok
+        $doc->appendChild($rootEl);
+
+        return $doc;
+    }
+
+    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=100)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        $result = $db->call($app->getCfgValue("database","schema"), "catalog_find_items", array($text,$category,$type));
+        if($result === false)
+            return false;
+        
+        //offset
+//        $db->rowSeek($offset);
+
+        //extrait les données
+        while($result = $db->fetchRow(NULL) && $limit--){
+            if(CatalogItemMgr::getById($item,$result["catalog_item_id"]))
+                array_push($list, $item);
+        }
+
+        return RESULT_OK();
+    }
+    
+    /**
      * @brief Recherche des items
      * @param $list Tableau des instances de classes trouvés (CatalogItem)
      * @param $region Instance de la classe Region, région d'origine de  l'item
@@ -61,7 +147,7 @@ class CatalogModule implements iModule
      * @retval true La recherche à réussi, l'argument $list est initialisé
      * @retval false Impossible d'obtenir la liste, voir Result::getLast pour plus d'informations
      */
-    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=100)
+    public static function searchItems2(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=100)
     {
         $list = array();
         

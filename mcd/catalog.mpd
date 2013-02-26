@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{36A663FB-639A-4EC9-BE0E-D7221A3E4AF7}" Label="" LastModificationDate="1361807963" Name="catalog" Objects="57" Symbols="12" Target="PostgreSQL 8 (WFW)" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{36A663FB-639A-4EC9-BE0E-D7221A3E4AF7}" Label="" LastModificationDate="1361875417" Name="catalog" Objects="64" Symbols="15" Target="PostgreSQL 8 (WFW)" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,8 +12,8 @@
 <a:Code>CATALOG</a:Code>
 <a:CreationDate>1361783217</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807963</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:History>ORG {ABAE90B5-2290-4A85-A589-58CAD3AD8F22}
 DAT 1361783223
 ATT MOPT
@@ -254,7 +254,101 @@ DLD {C02F2DE3-CF60-4AE6-8494-C9CB5F718543}
 DLD {209256C0-F03E-48B1-9763-40FC71CAD6C8}
 DLD {16D70ED8-ECEB-4654-AAB1-84B2E09CFD67}
 DLD {10E7FA92-E0FA-4049-87B8-543B679B7122}
-DLD {FE64F73A-FB68-4FB1-BBAD-C4D3DD6CD686}</a:History>
+DLD {FE64F73A-FB68-4FB1-BBAD-C4D3DD6CD686}
+DLD {3646F5DA-4A7D-4A7B-B057-95AE1619AF8C}
+DLD {7C06B57E-CF8C-4599-A26C-859CAC9A32CB}
+DLD {B011BC20-59DC-4865-B0EA-06A05B05AA84}
+DLD {491A5FD6-4427-45CC-8615-AB5A58B1D7F8}
+DLD {B46C4F35-905C-44D3-B816-A4EC173669C5}
+DLD {1034D74F-82F6-444C-B3A1-849E167CC94A}
+DLD {45466C57-21B1-46E6-8B83-CEE26C3B9E03}
+DLD {EEE200E5-024F-4218-B804-A4C4C94FBE7B}
+DLD {F011F2E5-6FBB-451C-9C57-27A8708D9860}
+DLD {459785E6-B468-4E98-9C3C-DE0732F64A91}
+DLD {EEA840C4-EBD1-4070-84A3-AB49007F8B6C}
+DLD {4471070D-5647-4FF6-99F1-CDE28EF48F12}
+DLD {5C63F1CE-342D-4FEB-8AAD-572D82D4E8DE}
+DLD {E93145D7-A054-4240-9403-5B0073CEEC45}
+DLD {792E71A1-6D3C-4843-BE34-CB8B3E22420D}
+DLD {772D3F1F-C7EF-4EE4-97AE-531EAA346CBB}
+DLD {2F3320D1-AD5A-4547-9E68-10F49EB50FAF}
+DLD {D0DA5511-CE48-48E7-9358-81450F4BEC5B}
+DLD {9852A1D9-1A54-49D3-B3E2-13465A3F0D79}
+DLD {2633748F-6509-4BDD-AE6F-9F250323E3CB}
+DLD {4F7B2904-230F-4DA3-8F7A-609B5D1C995E}
+DLD {156DDA16-BA2C-4696-AEDD-E561E886D49C}
+DLD {E2D757BB-B880-4B54-B0FB-BD4BDB5DF30A}
+DLD {52CE9624-F113-48BC-BB0E-3CD86B18DFBE}
+DLD {13C959FF-33DD-4AC3-874A-612A98B95E26}
+DLD {06FFB947-3C45-4880-BB46-2CB0B90B5442}
+DLD {36252EAD-F09E-4163-AEBD-2FA9727ECC0F}
+DLD {172A4D4B-A9A2-4467-B269-B2FCE40368B7}
+DLD {6DD593F3-4972-4478-9C6A-2A1078B36D24}
+DLD {6483E329-3F37-4557-8C26-553DBA5C8AE4}
+DLD {AE4352F3-F1F6-4DFB-B35C-F40124A73887}
+DLD {1562E5CE-56BE-4301-B21B-A7B923AEBFEC}
+DLD {102ED077-6C4A-4F40-B96A-7A2F1A36F746}
+DLD {93DA8F4C-31DC-468C-B4DC-491F31CAD596}
+DLD {88C7E64F-B09E-4461-A725-5108148CBC87}
+DLD {46178DD8-A33B-494B-82B4-7C971038597D}
+DLD {332981D3-19A5-402D-ABCC-62F6253C7577}
+DLD {5199EB57-5112-4122-BE1B-1C5BA8090CBD}
+DLD {8CCDB96E-1973-4CF6-BA50-E466DAD6297A}
+DLD {F1237C7A-7127-4198-BD60-20A0F9837632}
+DLD {E38E5590-F8E5-4A15-8A7E-F4E0695B1313}
+DLD {AB9B9288-D8E5-4789-A1FF-1602AB3D3FEE}
+DLD {BE2E5E13-DFD1-496B-925F-869D1D01F918}
+DLD {22F42449-411E-4E70-A5D6-18E556DF4E1E}
+DLD {A3069E66-57B0-47A1-89F5-C8480C140852}
+DLD {0EC421C6-AD0A-4FB7-B3B6-CD55DDA1A7DB}
+DLD {09924432-6A74-433B-B462-CB2F16BFEA22}
+DLD {435C8893-10A3-4445-B3DB-0AD694CD4412}
+DLD {283BDEBF-4DF0-4CDD-86DC-B73F86586A31}
+DLD {B8C4EA94-863A-4C81-8665-316C1314817F}
+DLD {7150BFB8-3EFE-4DC3-BC59-D3894E395F1A}
+DLD {C1134729-C497-43CB-859A-7CAC5CEC9113}
+DLD {9E16DA9E-1DC3-4B7D-AFAF-63EBA109B165}
+DLD {6233F3ED-38F6-499C-8B4B-74A79B30E6BC}
+DLD {5E280AE3-FDD8-465B-9D3E-40E235F9D0BE}
+DLD {67A99B0D-C39D-46B8-9123-91289E2FEFE2}
+DLD {00D82B3E-AF0F-42C6-80F6-392C5B6571A6}
+DLD {69396E14-43BF-4DF6-9B79-05568BF6AE39}
+DLD {3D95770C-8607-41F8-9C5A-17F90175938F}
+DLD {A387C624-C98F-470D-AED9-4083CBC9DB71}
+DLD {8DC59C19-B08A-4C02-95BA-C7042880EEDC}
+DLD {ED77F6ED-37E2-42FD-B940-6F6E1DFBEC4F}
+DLD {C6B25976-EA6F-4567-9B5D-6ADD104E8558}
+DLD {EAB2088B-7C27-4C8D-863E-216A939DE509}
+DLD {1EE6F34B-F0B3-48CF-B7D3-E6FFA98E5B04}
+DLD {CA6491F8-7CDD-4BE3-8803-C938C8A7E33C}
+DLD {63B34E5B-B5BA-4182-8147-3DDE24E1F591}
+DLD {86C0D1F1-F5A0-442E-8E9D-81B4B085B0FA}
+DLD {8A517925-7AB1-49CC-AAB0-0AC669294A27}
+DLD {DE43FDF6-3B15-4B9F-BAE5-9F554EDD460F}
+DLD {91E6F5A8-FC66-4F36-B0AC-93D75B6F9760}
+DLD {E73F2A0D-0CC1-4898-82C1-D569BDB68A08}
+DLD {D7E6A731-9402-4572-85DC-CC09DBEAF65D}
+DLD {34DA21BF-DF4F-49C6-9FA7-7D6AD99F8150}
+DLD {138D2BB6-670F-4B87-A2F0-26242AEFDC73}
+DLD {249AD42A-6EB6-4682-9BBE-3B4DA020F357}
+DLD {640EF051-8982-441C-8043-32B631807EE1}
+DLD {946F5D2A-BBFD-404A-90F5-BAAE41A2EEE0}
+DLD {D858F9C3-0736-4DED-B1A0-D28020C753D5}
+DLD {D2955840-A1CA-49C3-BF97-9804B2248ABF}
+DLD {ED1111B6-6111-450E-A67C-A062E9B39E3B}
+DLD {9A45405A-A3EC-43DF-9668-BF737C8CCF92}
+DLD {F3EFDCB7-C889-487B-AFB1-9D88CEFC05B7}
+DLD {DFA1257A-9D9F-415A-8ECF-21DABBD3DA1B}
+DLD {DF0A55ED-0B09-4373-9640-B70F9EE17181}
+DLD {21C91477-F26A-418F-9F4B-122EE2C7E132}
+DLD {3F6ABEA7-C326-4D08-8670-E1790C77A2BB}
+DLD {3DDB9DA8-46D3-4B10-A84C-8045E49D911F}
+DLD {21E04423-4D72-4CF3-9777-F04DA17BA800}
+DLD {8A24A0EC-11A0-4F87-B662-DCC954811415}
+DLD {60CBCB76-C712-4913-B40F-EDFEE99DDF5D}
+DLD {414F1522-17DC-4450-A0A0-4255C0CD3AF5}
+DLD {CF5891A5-C2E0-4DAE-AB87-CE2964976228}
+DLD {3C300846-17E2-49BA-BD29-2F0F5687AC1B}</a:History>
 <a:PackageOptionsText>[FolderOptions]
 
 [FolderOptions\Physical Objects]
@@ -328,7 +422,7 @@ GenScriptName6=
 GenScriptName7=
 GenScriptName8=
 GenScriptName9=
-GenPathName=C:\Users\AceTeaM\Documents\GitHub\Webframework-Catalog-Module\sql\postgresql\
+GenPathName=C:\Users\developpement\Documents\GitHub\Webframework-Catalog-Module\sql\postgresql\
 GenSingleFile=Yes
 GenODBC=No
 GenCheckModel=Yes
@@ -345,7 +439,7 @@ GenScriptNamLabl=No
 GenScriptQDtbs=No
 GenScriptQOwnr=Yes
 GenScriptCase=0
-GenScriptEncoding=ANSI
+GenScriptEncoding=UTF8
 GenScriptNAcct=No
 IdentifierDelimiter=&quot;
 
@@ -2705,10 +2799,10 @@ PhysOpts=</a:ModelOptionsText>
 <a:ObjectID>ACC56E37-7336-473E-ACCF-DCC9B2E8AECA</a:ObjectID>
 <a:Name>catalog</a:Name>
 <a:Code>CATALOG</a:Code>
-<a:CreationDate>1361807963</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807963</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:TargetStereotype/>
 <a:TargetID>ABAE90B5-2290-4A85-A589-58CAD3AD8F22</a:TargetID>
 <a:TargetClassID>5F45F978-C4F3-4E35-A3FC-AF3318663A0F</a:TargetClassID>
@@ -2730,17 +2824,17 @@ PhysOpts=</a:ModelOptionsText>
 </c:DBMS>
 <c:PhysicalDiagrams>
 <o:PhysicalDiagram Id="o6">
-<a:ObjectID>ECE38888-BAC9-4E2B-B98B-4DC6CF830F59</a:ObjectID>
+<a:ObjectID>74A37537-A04C-4B83-BB9C-9C7376DD1C9F</a:ObjectID>
 <a:Name>base</a:Name>
 <a:Code>BASE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {3646F5DA-4A7D-4A7B-B057-95AE1619AF8C}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {E26A27B2-09E2-45A2-AA77-5DF66BF11AB9}
+DAT 1361875407
 ORG {BC406511-556B-46AD-8439-6490ACCF3B46}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DisplayPreferences>[DisplayPreferences]
 
 [DisplayPreferences\PDM]
@@ -3474,8 +3568,9 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o11">
-<a:Rect>((21654,2205), (48794,5331))</a:Rect>
-<a:ListOfPoints>((48794,2205),(42707,2205),(42707,5331),(21654,5331),(21654,5037))</a:ListOfPoints>
+<a:ModificationDate>1361875417</a:ModificationDate>
+<a:Rect>((21654,2205), (48794,5037))</a:Rect>
+<a:ListOfPoints>((48794,2205),(42707,2205),(42707,5037),(21654,5037))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -3494,8 +3589,8 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o14">
-<a:Rect>((2871,4537), (23952,4987))</a:Rect>
-<a:ListOfPoints>((2871,4762),(23952,4762))</a:ListOfPoints>
+<a:Rect>((21654,-7275), (46891,5037))</a:Rect>
+<a:ListOfPoints>((46891,-7275),(39362,-7275),(39362,5037),(21654,5037))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -3514,6 +3609,26 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o17">
+<a:Rect>((2871,4537), (23952,4987))</a:Rect>
+<a:ListOfPoints>((2871,4762),(23952,4762))</a:ListOfPoints>
+<a:CornerStyle>1</a:CornerStyle>
+<a:ArrowStyle>1</a:ArrowStyle>
+<a:LineColor>16744576</a:LineColor>
+<a:ShadowColor>12632256</a:ShadowColor>
+<a:FontList>CENTER 0 Arial,8,N
+SOURCE 0 Arial,8,N
+DESTINATION 0 Arial,8,N</a:FontList>
+<c:SourceSymbol>
+<o:TableSymbol Ref="o18"/>
+</c:SourceSymbol>
+<c:DestinationSymbol>
+<o:TableSymbol Ref="o8"/>
+</c:DestinationSymbol>
+<c:Object>
+<o:Reference Ref="o19"/>
+</c:Object>
+</o:ReferenceSymbol>
+<o:ReferenceSymbol Id="o20">
 <a:Rect>((-19429,4170), (2871,4620))</a:Rect>
 <a:ListOfPoints>((2871,4395),(-19429,4395))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3524,16 +3639,16 @@ DESTINATION 0 Arial,8,N</a:FontList>
 SOURCE 0 Arial,8,N
 DESTINATION 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:TableSymbol Ref="o15"/>
+<o:TableSymbol Ref="o18"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:TableSymbol Ref="o18"/>
+<o:TableSymbol Ref="o21"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:Reference Ref="o19"/>
+<o:Reference Ref="o22"/>
 </c:Object>
 </o:ReferenceSymbol>
-<o:ReferenceSymbol Id="o20">
+<o:ReferenceSymbol Id="o23">
 <a:Rect>((21654,5037), (49391,14183))</a:Rect>
 <a:ListOfPoints>((49391,14183),(39362,14183),(39362,5037),(21654,5037))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3544,22 +3659,22 @@ DESTINATION 0 Arial,8,N</a:FontList>
 SOURCE 0 Arial,8,N
 DESTINATION 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:TableSymbol Ref="o21"/>
+<o:TableSymbol Ref="o24"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
 <o:TableSymbol Ref="o8"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:Reference Ref="o22"/>
+<o:Reference Ref="o25"/>
 </c:Object>
 </o:ReferenceSymbol>
-<o:NoteSymbol Id="o23">
+<o:NoteSymbol Id="o26">
 <a:Text>{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\qc\f0\fs32 CATALOG MODULE\f1\fs20\par
 }
 </a:Text>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:ModificationDate>1361807962</a:ModificationDate>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:ModificationDate>1361875407</a:ModificationDate>
 <a:Rect>((-36957,23552), (-11350,13889))</a:Rect>
 <a:TextStyle>4130</a:TextStyle>
 <a:LineColor>16711680</a:LineColor>
@@ -3587,7 +3702,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Table Ref="o24"/>
+<o:Table Ref="o27"/>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o9">
@@ -3611,10 +3726,10 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Table Ref="o25"/>
+<o:Table Ref="o28"/>
 </c:Object>
 </o:TableSymbol>
-<o:TableSymbol Id="o18">
+<o:TableSymbol Id="o21">
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-26008,2010), (-10148,6505))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
@@ -3635,10 +3750,10 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Table Ref="o26"/>
+<o:Table Ref="o29"/>
 </c:Object>
 </o:TableSymbol>
-<o:TableSymbol Id="o15">
+<o:TableSymbol Id="o18">
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-5445,2513), (11187,6512))</a:Rect>
 <a:LineColor>16744576</a:LineColor>
@@ -3658,10 +3773,10 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Table Ref="o27"/>
+<o:Table Ref="o30"/>
 </c:Object>
 </o:TableSymbol>
-<o:TableSymbol Id="o21">
+<o:TableSymbol Id="o24">
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((46305,9203), (61007,16620))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -3681,7 +3796,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Table Ref="o28"/>
+<o:Table Ref="o31"/>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o12">
@@ -3704,7 +3819,30 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <c:Object>
-<o:Table Ref="o29"/>
+<o:Table Ref="o32"/>
+</c:Object>
+</o:TableSymbol>
+<o:TableSymbol Id="o15">
+<a:IconMode>-1</a:IconMode>
+<a:Rect>((45458,-10048), (60622,-5553))</a:Rect>
+<a:LineColor>11184640</a:LineColor>
+<a:FillColor>16777136</a:FillColor>
+<a:ShadowColor>12632256</a:ShadowColor>
+<a:FontList>STRN 0 Arial,8,N
+DISPNAME 0 Arial,8,N
+OWNRDISPNAME 0 Arial,8,N
+Columns 0 Arial,8,N
+TablePkColumns 0 Arial,8,U
+TableFkColumns 0 Arial,8,N
+Keys 0 Arial,8,N
+Indexes 0 Arial,8,N
+Triggers 0 Arial,8,N
+LABL 0 Arial,8,N</a:FontList>
+<a:BrushStyle>6</a:BrushStyle>
+<a:GradientFillMode>65</a:GradientFillMode>
+<a:GradientEndColor>16777215</a:GradientEndColor>
+<c:Object>
+<o:Table Ref="o33"/>
 </c:Object>
 </o:TableSymbol>
 </c:Symbols>
@@ -3714,313 +3852,224 @@ LABL 0 Arial,8,N</a:FontList>
 <o:PhysicalDiagram Ref="o6"/>
 </c:DefaultDiagram>
 <c:Domains>
-<o:PhysicalDomain Id="o30">
-<a:ObjectID>538A98C8-8855-42DC-9C3E-4A1DE915DC3C</a:ObjectID>
+<o:PhysicalDomain Id="o34">
+<a:ObjectID>DF979CFE-6B0D-402F-A51A-BC2901A40265</a:ObjectID>
 <a:Name>catalog item type</a:Name>
 <a:Code>CATALOG_ITEM_TYPE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:Comment>Ajouter ici les types d&#39;items héritant de l&#39;entité CATALOG_ITEM</a:Comment>
-<a:History>ORG {0EC421C6-AD0A-4FB7-B3B6-CD55DDA1A7DB}
-DAT 1361807963
+<a:History>ORG {6EEEEA8D-B9B0-4C94-8835-7DCDA0DCFBC7}
+DAT 1361875407
 ORG {B2F775DC-6B70-42BF-8A77-5D952D42A622}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:ListOfValues>GENERIC	Générique</a:ListOfValues>
 <a:DataType>VARCHAR(10)</a:DataType>
 <a:Length>10</a:Length>
 </o:PhysicalDomain>
-<o:PhysicalDomain Id="o31">
-<a:ObjectID>9C043096-8044-4450-8A01-FADB97B709C7</a:ObjectID>
+<o:PhysicalDomain Id="o35">
+<a:ObjectID>9B8A1779-7BCF-49EB-9498-5F8ACBF30112</a:ObjectID>
 <a:Name>catalog type</a:Name>
 <a:Code>CATALOG_TYPE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
 <a:Comment>Ajoutez ici les types de catalogues héritant de l&#39;entité CATALOG</a:Comment>
-<a:History>ORG {09924432-6A74-433B-B462-CB2F16BFEA22}
-DAT 1361807963
+<a:History>ORG {978335AC-4640-415D-8762-3F80C2B3B11A}
+DAT 1361875407
 ORG {A8585985-6099-47BD-B913-C6B48A30876A}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:ListOfValues>GENERIC	Générique</a:ListOfValues>
 <a:DataType>VARCHAR(10)</a:DataType>
 <a:Length>10</a:Length>
 </o:PhysicalDomain>
 </c:Domains>
 <c:Tables>
-<o:Table Id="o24">
-<a:ObjectID>DA668B3A-2AAA-4026-9BC0-7FF2661F5D8B</a:ObjectID>
+<o:Table Id="o27">
+<a:ObjectID>81F4D6A0-032A-48E3-9A60-4C260B23B9CF</a:ObjectID>
 <a:Name>catalog_item</a:Name>
 <a:Code>CATALOG_ITEM</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {7C06B57E-CF8C-4599-A26C-859CAC9A32CB}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {0A1E07AD-9994-47A5-AB32-367537B4225E}
+DAT 1361875407
 ORG {92C3801D-876C-4FA4-B6E5-D9B4D87144A4}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o32">
-<a:ObjectID>31ECBAB1-4F56-4DC7-970F-F2A16EFBDA6E</a:ObjectID>
+<o:Column Id="o36">
+<a:ObjectID>844951E5-C125-4E2A-9371-850C85614EA3</a:ObjectID>
 <a:Name>catalog item id</a:Name>
 <a:Code>CATALOG_ITEM_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {5C63F1CE-342D-4FEB-8AAD-572D82D4E8DE}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {D0BD1F3B-5D90-42D8-A57D-5E76433F7626}
+DAT 1361875407
 ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o33">
-<a:ObjectID>B2B7C581-0915-4385-A476-B2DDED6FC0C6</a:ObjectID>
+<o:Column Id="o37">
+<a:ObjectID>A7061232-D379-405F-AD8D-16F5A3D06B24</a:ObjectID>
 <a:Name>catalog entry id</a:Name>
 <a:Code>CATALOG_ENTRY_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {F011F2E5-6FBB-451C-9C57-27A8708D9860}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {3CCD828B-0E23-4C71-AF4B-A43BDFAE5074}
+DAT 1361875407
 ORG {2F5D32D6-27C7-4B40-8D2C-A49ED16F99A7},{B024234B-3B01-4338-A41C-61BE310822B7}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o34">
-<a:ObjectID>5CE8DB14-B278-4F85-B773-DED785219398</a:ObjectID>
+<o:Column Id="o38">
+<a:ObjectID>515C26E9-4ED4-4776-A92E-BEA650CF3135</a:ObjectID>
 <a:Name>item title</a:Name>
 <a:Code>ITEM_TITLE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {4471070D-5647-4FF6-99F1-CDE28EF48F12}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {500454EF-2559-4745-BDA1-A44C82151A26}
+DAT 1361875407
 ORG {80B73335-049C-4693-968B-46D9E9DC00D3}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>VARCHAR(80)</a:DataType>
 <a:Length>80</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o35">
-<a:ObjectID>B5F3E9DB-AB1B-4EA4-A2D6-03EFF734385D</a:ObjectID>
+<o:Column Id="o39">
+<a:ObjectID>8A4EF8A1-4BC5-43BB-9518-534350739F97</a:ObjectID>
 <a:Name>item desc</a:Name>
 <a:Code>ITEM_DESC</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {EEA840C4-EBD1-4070-84A3-AB49007F8B6C}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {59440B27-C0F5-43AA-BB14-181C805C50D1}
+DAT 1361875407
 ORG {7122596F-F1B4-47C0-A260-9239774E5F75}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>VARCHAR(256)</a:DataType>
 <a:Length>256</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o36">
-<a:ObjectID>446C22B0-C8C9-4A8D-9A71-FD0A6C9AEEC4</a:ObjectID>
+<o:Column Id="o40">
+<a:ObjectID>AECCAACC-99FF-4425-8846-93D9E99BD7D8</a:ObjectID>
 <a:Name>creation_date</a:Name>
 <a:Code>CREATION_DATE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {459785E6-B468-4E98-9C3C-DE0732F64A91}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {C403F7A0-2331-45E3-B7F6-678C16F42A39}
+DAT 1361875407
 ORG {DE2ECCFF-E76C-4104-9CB1-2D664C3F31D8}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>TIMESTAMP</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o37">
-<a:ObjectID>7D84C936-0261-4025-8908-830B122F0904</a:ObjectID>
+<o:Key Id="o41">
+<a:ObjectID>1878E7F8-2B0D-4C8A-9E4D-BC4E2528E587</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {E93145D7-A054-4240-9403-5B0073CEEC45}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {C06327B4-F32C-4913-B122-7D61BD7A932D}
+DAT 1361875407
 ORG {B04DBF7D-F868-4C96-A434-F4913B2FF71C}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <c:Key.Columns>
-<o:Column Ref="o32"/>
+<o:Column Ref="o36"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:PrimaryKey>
-<o:Key Ref="o37"/>
+<o:Key Ref="o41"/>
 </c:PrimaryKey>
 </o:Table>
-<o:Table Id="o25">
-<a:ObjectID>EAD4E720-2553-48AB-B254-7614AEA8597F</a:ObjectID>
+<o:Table Id="o28">
+<a:ObjectID>26847FBC-CEE1-4585-9D42-EEF0CAF53989</a:ObjectID>
 <a:Name>catalog_entry</a:Name>
 <a:Code>CATALOG_ENTRY</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {792E71A1-6D3C-4843-BE34-CB8B3E22420D}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {64BA02BF-8CF4-4540-BFF5-499E84AC1421}
+DAT 1361875407
 ORG {1EAB9972-311C-4ADA-AE10-FCF92228B00D}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o38">
-<a:ObjectID>D8F4ECBC-D8F2-4E2E-A2BB-90165AE5F0A6</a:ObjectID>
+<o:Column Id="o42">
+<a:ObjectID>EEB33C96-F345-43EB-BAC9-87ED90B00D38</a:ObjectID>
 <a:Name>catalog entry id</a:Name>
 <a:Code>CATALOG_ENTRY_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {2F3320D1-AD5A-4547-9E68-10F49EB50FAF}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {608E256A-7CE3-4296-A83C-A8EE5A58F731}
+DAT 1361875407
 ORG {2F5D32D6-27C7-4B40-8D2C-A49ED16F99A7}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o39">
-<a:ObjectID>CCFE34C9-9249-4742-9458-1C3892A2667E</a:ObjectID>
+<o:Column Id="o43">
+<a:ObjectID>0EE3D808-E4ED-4286-B8E4-C78AE583AA73</a:ObjectID>
 <a:Name>catalog type</a:Name>
 <a:Code>CATALOG_TYPE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {772D3F1F-C7EF-4EE4-97AE-531EAA346CBB}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {CD1A3CEB-B6E2-44B9-AF0E-9636A866931F}
+DAT 1361875407
 ORG {5981AF08-DA1B-4441-B11E-37CB200A582B}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:ListOfValues>GENERIC	Générique</a:ListOfValues>
 <a:DataType>VARCHAR(10)</a:DataType>
 <a:Length>10</a:Length>
 <a:Mandatory>1</a:Mandatory>
 <c:Domain>
-<o:PhysicalDomain Ref="o31"/>
-</c:Domain>
-</o:Column>
-</c:Columns>
-<c:Keys>
-<o:Key Id="o40">
-<a:ObjectID>72FBFFCB-0A78-4AB8-BA0F-285E78208C5C</a:ObjectID>
-<a:Name>Identifiant_1</a:Name>
-<a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {D0DA5511-CE48-48E7-9358-81450F4BEC5B}
-DAT 1361807963
-ORG {4A34DDBC-51C9-4C17-9A2D-1E7C3EE904F8}
-DAT 1361807959</a:History>
-<c:Key.Columns>
-<o:Column Ref="o38"/>
-</c:Key.Columns>
-</o:Key>
-</c:Keys>
-<c:PrimaryKey>
-<o:Key Ref="o40"/>
-</c:PrimaryKey>
-</o:Table>
-<o:Table Id="o26">
-<a:ObjectID>7111CC03-400E-4DA4-9527-B11C7B221B31</a:ObjectID>
-<a:Name>catalog_category</a:Name>
-<a:Code>CATALOG_CATEGORY</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {9852A1D9-1A54-49D3-B3E2-13465A3F0D79}
-DAT 1361807963
-ORG {5D042040-E015-47A5-B700-BB975B2E8582}
-DAT 1361807959</a:History>
-<a:TotalSavingCurrency/>
-<c:Columns>
-<o:Column Id="o41">
-<a:ObjectID>F2765E61-FF40-4BEA-A597-F1BB6CD1137E</a:ObjectID>
-<a:Name>catalog category id</a:Name>
-<a:Code>CATALOG_CATEGORY_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {52CE9624-F113-48BC-BB0E-3CD86B18DFBE}
-DAT 1361807963
-ORG {79F84664-98CC-4D16-AD2D-C17F295E25D2}
-DAT 1361807959</a:History>
-<a:DataType>VARCHAR(80)</a:DataType>
-<a:Length>80</a:Length>
-<a:Mandatory>1</a:Mandatory>
-</o:Column>
-<o:Column Id="o42">
-<a:ObjectID>838A0E72-AB7A-4CDD-9511-7D7D9A04AD8D</a:ObjectID>
-<a:Name>category desc</a:Name>
-<a:Code>CATEGORY_DESC</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {E2D757BB-B880-4B54-B0FB-BD4BDB5DF30A}
-DAT 1361807963
-ORG {727BC0EE-4DF2-459C-B81E-ED9DA711491A}
-DAT 1361807959</a:History>
-<a:DataType>VARCHAR(256)</a:DataType>
-<a:Length>256</a:Length>
-<a:Mandatory>1</a:Mandatory>
-</o:Column>
-<o:Column Id="o43">
-<a:ObjectID>F64691EC-C9E2-4915-810B-8237E6034294</a:ObjectID>
-<a:Name>item type</a:Name>
-<a:Code>ITEM_TYPE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {156DDA16-BA2C-4696-AEDD-E561E886D49C}
-DAT 1361807963
-ORG {F6293C46-CF7B-4884-A8E3-72A3394CE4CA}
-DAT 1361807959</a:History>
-<a:ListOfValues>GENERIC	Générique</a:ListOfValues>
-<a:DataType>VARCHAR(10)</a:DataType>
-<a:Length>10</a:Length>
-<a:Mandatory>1</a:Mandatory>
-<c:Domain>
-<o:PhysicalDomain Ref="o30"/>
+<o:PhysicalDomain Ref="o35"/>
 </c:Domain>
 </o:Column>
 </c:Columns>
 <c:Keys>
 <o:Key Id="o44">
-<a:ObjectID>DD754BBE-8ECE-44D2-9501-98BADC14C6C3</a:ObjectID>
+<a:ObjectID>18C87D40-4A0E-4675-9D35-5960205AE6AD</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {13C959FF-33DD-4AC3-874A-612A98B95E26}
-DAT 1361807963
-ORG {4CA312B9-929D-4F82-93A6-399729245ABE}
-DAT 1361807959</a:History>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {5A215F53-8EC2-47D5-A924-756C8800DA68}
+DAT 1361875407
+ORG {4A34DDBC-51C9-4C17-9A2D-1E7C3EE904F8}
+DAT 1361875403</a:History>
 <c:Key.Columns>
-<o:Column Ref="o41"/>
+<o:Column Ref="o42"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
@@ -4028,441 +4077,532 @@ DAT 1361807959</a:History>
 <o:Key Ref="o44"/>
 </c:PrimaryKey>
 </o:Table>
-<o:Table Id="o28">
-<a:ObjectID>BBD8EEA2-E6A9-43C6-8B99-43F860543CD4</a:ObjectID>
-<a:Name>product</a:Name>
-<a:Code>PRODUCT</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {06FFB947-3C45-4880-BB46-2CB0B90B5442}
-DAT 1361807963
-ORG {01016F40-881D-4E33-951A-BD84148F5925}
-DAT 1361807959</a:History>
+<o:Table Id="o29">
+<a:ObjectID>8E2E6AB6-3AC8-4FB5-B96A-0212BDFF3F58</a:ObjectID>
+<a:Name>catalog_category</a:Name>
+<a:Code>CATALOG_CATEGORY</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {F163F449-10CA-44BB-BE18-7FD2856FA86D}
+DAT 1361875407
+ORG {5D042040-E015-47A5-B700-BB975B2E8582}
+DAT 1361875403</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
 <o:Column Id="o45">
-<a:ObjectID>BBEF07AC-36A1-43CD-A5DA-5EFF08090AFF</a:ObjectID>
-<a:Name>catalog item id</a:Name>
-<a:Code>CATALOG_ITEM_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {1562E5CE-56BE-4301-B21B-A7B923AEBFEC}
-DAT 1361807963
-ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6},{76B8A217-9E33-433B-9DB9-E8783BCB4D56}
-DAT 1361807959</a:History>
-<a:DataType>INT4</a:DataType>
-<a:Length>4</a:Length>
+<a:ObjectID>F19F96E2-77F2-49B5-8142-2E74FC0E4E48</a:ObjectID>
+<a:Name>catalog category id</a:Name>
+<a:Code>CATALOG_CATEGORY_ID</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {4157B972-D197-430E-8BD9-56A167EB30D6}
+DAT 1361875407
+ORG {79F84664-98CC-4D16-AD2D-C17F295E25D2}
+DAT 1361875403</a:History>
+<a:DataType>VARCHAR(80)</a:DataType>
+<a:Length>80</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o46">
-<a:ObjectID>7FFCD888-BFDF-4486-B4A4-9C3EF8C81A45</a:ObjectID>
-<a:Name>product id</a:Name>
-<a:Code>PRODUCT_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {AE4352F3-F1F6-4DFB-B35C-F40124A73887}
-DAT 1361807963
-ORG {7B6B8024-6E22-4161-9984-E6F18F860D99}
-DAT 1361807959</a:History>
+<a:ObjectID>99260BAD-2933-4404-AC9C-BB33EC8F66B1</a:ObjectID>
+<a:Name>category desc</a:Name>
+<a:Code>CATEGORY_DESC</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {B9E0CCA6-9065-4FE1-9920-81301F1C90BF}
+DAT 1361875407
+ORG {727BC0EE-4DF2-459C-B81E-ED9DA711491A}
+DAT 1361875403</a:History>
+<a:DataType>VARCHAR(256)</a:DataType>
+<a:Length>256</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
+<o:Column Id="o47">
+<a:ObjectID>8FA1B6F3-6255-4D4C-9FFC-ECA60D4DA482</a:ObjectID>
+<a:Name>item type</a:Name>
+<a:Code>ITEM_TYPE</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {0C703402-6A96-4A14-BECB-5301F0B3D60A}
+DAT 1361875407
+ORG {F6293C46-CF7B-4884-A8E3-72A3394CE4CA}
+DAT 1361875403</a:History>
+<a:ListOfValues>GENERIC	Générique</a:ListOfValues>
+<a:DataType>VARCHAR(10)</a:DataType>
+<a:Length>10</a:Length>
+<a:Mandatory>1</a:Mandatory>
+<c:Domain>
+<o:PhysicalDomain Ref="o34"/>
+</c:Domain>
+</o:Column>
+</c:Columns>
+<c:Keys>
+<o:Key Id="o48">
+<a:ObjectID>E72BA0C9-F74B-4E62-B137-501B504E3C8F</a:ObjectID>
+<a:Name>Identifiant_1</a:Name>
+<a:Code>IDENTIFIANT_1</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {5DDA427F-D59C-4DBB-A404-B6A2DD73153B}
+DAT 1361875407
+ORG {4CA312B9-929D-4F82-93A6-399729245ABE}
+DAT 1361875403</a:History>
+<c:Key.Columns>
+<o:Column Ref="o45"/>
+</c:Key.Columns>
+</o:Key>
+</c:Keys>
+<c:PrimaryKey>
+<o:Key Ref="o48"/>
+</c:PrimaryKey>
+</o:Table>
+<o:Table Id="o31">
+<a:ObjectID>CDD54C39-B579-4D11-8692-10071388DE04</a:ObjectID>
+<a:Name>product</a:Name>
+<a:Code>PRODUCT</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {2008B44A-B3F4-48F8-BB2D-77E230BC25E6}
+DAT 1361875407
+ORG {01016F40-881D-4E33-951A-BD84148F5925}
+DAT 1361875403</a:History>
+<a:TotalSavingCurrency/>
+<c:Columns>
+<o:Column Id="o49">
+<a:ObjectID>9B29A58C-9D46-4FB7-883A-11EE6CA915D9</a:ObjectID>
+<a:Name>catalog item id</a:Name>
+<a:Code>CATALOG_ITEM_ID</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {5F380E7B-305C-4B34-98D1-8FC8192D4182}
+DAT 1361875407
+ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6},{76B8A217-9E33-433B-9DB9-E8783BCB4D56}
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o47">
-<a:ObjectID>15309AFE-AB4F-4EB3-AC86-D71155328A3A</a:ObjectID>
+<o:Column Id="o50">
+<a:ObjectID>99A51E81-9B4B-4A61-8599-D833B704AA25</a:ObjectID>
+<a:Name>product id</a:Name>
+<a:Code>PRODUCT_ID</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {9140BA7C-EFDE-4975-88EF-5384E9A57DAD}
+DAT 1361875407
+ORG {7B6B8024-6E22-4161-9984-E6F18F860D99}
+DAT 1361875403</a:History>
+<a:DataType>INT4</a:DataType>
+<a:Length>4</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
+<o:Column Id="o51">
+<a:ObjectID>5CF1290F-A72A-4AEA-950E-598F1C96A82B</a:ObjectID>
 <a:Name>price</a:Name>
 <a:Code>PRICE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {6483E329-3F37-4557-8C26-553DBA5C8AE4}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {94C2F9C4-A721-404A-9F0D-CBB9DFFAD720}
+DAT 1361875407
 ORG {5523797A-4A89-4D63-9750-1901AD29EB73}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>FLOAT8</a:DataType>
 <a:Length>8</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o48">
-<a:ObjectID>3EDDDAF9-6E87-44D9-A318-A0D2B75BEDD4</a:ObjectID>
+<o:Column Id="o52">
+<a:ObjectID>B92800C2-AFFE-4B8C-829C-DA6261FB697D</a:ObjectID>
 <a:Name>money</a:Name>
 <a:Code>MONEY</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {6DD593F3-4972-4478-9C6A-2A1078B36D24}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {095909D6-41A1-4B99-B700-0A1A4204EF60}
+DAT 1361875407
 ORG {48AD7FF5-E839-4B33-AE15-D6D830A3BBE7}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>VARCHAR(3)</a:DataType>
 <a:Length>3</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o49">
-<a:ObjectID>B6970643-EE89-4660-9F20-DE0D11B78C4C</a:ObjectID>
+<o:Column Id="o53">
+<a:ObjectID>E1778AC6-6F2E-4EC1-86AA-24AB11B230AF</a:ObjectID>
 <a:Name>unit</a:Name>
 <a:Code>UNIT</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {172A4D4B-A9A2-4467-B269-B2FCE40368B7}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {DC23E713-0D86-4B5D-BF37-1E40F3A28B7A}
+DAT 1361875407
 ORG {710ADD96-8AE4-4061-87DE-28AA521BA413}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>VARCHAR(16)</a:DataType>
 <a:Length>16</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o50">
-<a:ObjectID>9579147C-BA6C-4374-9093-D7224B8F92C1</a:ObjectID>
+<o:Column Id="o54">
+<a:ObjectID>A90548D1-22B8-4FEA-A678-8F6F5FEECCB9</a:ObjectID>
 <a:Name>quantity</a:Name>
 <a:Code>QUANTITY</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {36252EAD-F09E-4163-AEBD-2FA9727ECC0F}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {B345D529-1187-4D0E-B25E-ABC210CA6607}
+DAT 1361875407
 ORG {F2F9E590-CCBF-4852-85F0-BA144CBDAA30}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o51">
-<a:ObjectID>9840C721-1468-4A13-B3C3-ED8B6B8A6396</a:ObjectID>
+<o:Key Id="o55">
+<a:ObjectID>9B8F1595-83EA-4FF8-B908-ACCDF1B10AA8</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {102ED077-6C4A-4F40-B96A-7A2F1A36F746}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {7B586DBC-51AA-4320-9C2C-20DF0ACD9D7B}
+DAT 1361875407
 ORG {E7BC2C2D-C5A2-4C7B-8838-A9DE91901EE1}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <c:Key.Columns>
-<o:Column Ref="o45"/>
-<o:Column Ref="o46"/>
+<o:Column Ref="o49"/>
+<o:Column Ref="o50"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:PrimaryKey>
-<o:Key Ref="o51"/>
+<o:Key Ref="o55"/>
 </c:PrimaryKey>
 </o:Table>
-<o:Table Id="o29">
-<a:ObjectID>C7F6CAF3-B8E1-47CF-B9E8-CC66CEA921C5</a:ObjectID>
+<o:Table Id="o32">
+<a:ObjectID>73214D65-14A2-4610-8B40-E368304A7F6C</a:ObjectID>
 <a:Name>vehicle</a:Name>
 <a:Code>VEHICLE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {93DA8F4C-31DC-468C-B4DC-491F31CAD596}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {98CED14C-0EBB-4215-ADA5-643198B80F58}
+DAT 1361875407
 ORG {734CDF4E-350D-4F2B-88BF-E1BCCAD93AD2}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o52">
-<a:ObjectID>8F483B6A-3A7E-49C9-9B74-DF955A50C928</a:ObjectID>
+<o:Column Id="o56">
+<a:ObjectID>B85A5FC3-0105-4743-A962-A0A622FD8DF4</a:ObjectID>
 <a:Name>catalog item id</a:Name>
 <a:Code>CATALOG_ITEM_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {F1237C7A-7127-4198-BD60-20A0F9837632}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {27388332-E4E4-4E25-9F9C-9A83DEDDD976}
+DAT 1361875407
 ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6},{E554AD9A-5504-4B82-B38D-BBAC43E5CCB4}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o53">
-<a:ObjectID>077B3649-9749-4D1F-91BF-834868094461</a:ObjectID>
+<o:Column Id="o57">
+<a:ObjectID>01DB788D-9DAD-4C97-963E-DA69F948AFCA</a:ObjectID>
 <a:Name>vehicle id</a:Name>
 <a:Code>VEHICLE_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {8CCDB96E-1973-4CF6-BA50-E466DAD6297A}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {B874C487-0192-43AB-91A1-93ED0C3AD96C}
+DAT 1361875407
 ORG {BB32D0EA-3B31-49A9-A175-9A8B82E8A061}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o54">
-<a:ObjectID>045109D5-3AC5-412C-8C49-EFB2A3F244F3</a:ObjectID>
+<o:Column Id="o58">
+<a:ObjectID>E9D56520-438A-4ACB-AC56-15AAF860DAF8</a:ObjectID>
 <a:Name>type</a:Name>
 <a:Code>TYPE</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {5199EB57-5112-4122-BE1B-1C5BA8090CBD}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {8053259E-9040-49C2-BAA5-2D8798599094}
+DAT 1361875407
 ORG {1E87F44B-0F76-48B1-B35B-D6B44A04BABA}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>VARCHAR(50)</a:DataType>
 <a:Length>50</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o55">
-<a:ObjectID>81813525-4F33-4DD0-90BF-CC87B8B3EE56</a:ObjectID>
+<o:Column Id="o59">
+<a:ObjectID>C33AECAB-9064-4779-B418-07DAEFB70029</a:ObjectID>
 <a:Name>n places</a:Name>
 <a:Code>N_PLACES</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {332981D3-19A5-402D-ABCC-62F6253C7577}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {0AFD428E-2369-48C6-AFB8-AB735F84AD4B}
+DAT 1361875407
 ORG {3540CD38-FDB2-4D87-9D2A-1106C1C75CD0}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 </o:Column>
-<o:Column Id="o56">
-<a:ObjectID>73B6A0E9-5DFB-4B92-856E-D46CA64CE285</a:ObjectID>
+<o:Column Id="o60">
+<a:ObjectID>3D4D543B-6C5F-4C2E-81BB-8D7887BBCEDD</a:ObjectID>
 <a:Name>n doors</a:Name>
 <a:Code>N_DOORS</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {46178DD8-A33B-494B-82B4-7C971038597D}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {4DDDF1A9-0709-48C7-AA0A-288CC1B7E37A}
+DAT 1361875407
 ORG {3D414557-0208-410D-B8D3-360D84027A62}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 </o:Column>
-<o:Column Id="o57">
-<a:ObjectID>ACB1E88E-A8F8-423E-980F-A89DF6D42F27</a:ObjectID>
+<o:Column Id="o61">
+<a:ObjectID>90FF7AEF-D0CE-49BB-90D1-1B6F1E0F3BCA</a:ObjectID>
 <a:Name>consumption</a:Name>
 <a:Code>CONSUMPTION</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {88C7E64F-B09E-4461-A725-5108148CBC87}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {0DDA7E6B-1BE7-4F33-A9DF-8A7CDEFC1C46}
+DAT 1361875407
 ORG {7656EB8F-2D19-4274-B28D-92E4087B9BCB}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>FLOAT8</a:DataType>
 <a:Length>8</a:Length>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o58">
-<a:ObjectID>6C3F3D37-1241-4365-A0D0-9B2434465A02</a:ObjectID>
+<o:Key Id="o62">
+<a:ObjectID>147733E8-1F89-4D93-8C71-B8BA93AEC702</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {E38E5590-F8E5-4A15-8A7E-F4E0695B1313}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {23C4E30D-5CB7-4C6F-8970-59D045BB75C5}
+DAT 1361875407
 ORG {8C393BC9-6C84-476D-BC75-014D6DAA2111}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <c:Key.Columns>
-<o:Column Ref="o52"/>
-<o:Column Ref="o53"/>
+<o:Column Ref="o56"/>
+<o:Column Ref="o57"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:PrimaryKey>
-<o:Key Ref="o58"/>
+<o:Key Ref="o62"/>
 </c:PrimaryKey>
 </o:Table>
-<o:Table Id="o27">
-<a:ObjectID>5FFDA9FB-B6F6-4E1B-B1C4-4578D2537166</a:ObjectID>
-<a:Name>Associer</a:Name>
-<a:Code>ASSOCIER</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {AB9B9288-D8E5-4789-A1FF-1602AB3D3FEE}
-DAT 1361807963
-ORG {71D58402-2143-417C-ACE2-33B5037BBC51}
-DAT 1361807959</a:History>
+<o:Table Id="o33">
+<a:ObjectID>B4139636-A586-44D4-BEC3-087CB8A83A0E</a:ObjectID>
+<a:Name>vegetable</a:Name>
+<a:Code>VEGETABLE</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {0174B207-06A4-4595-BC8E-C864D348F341}
+DAT 1361875407
+ORG {4AE05B8C-B5E9-403A-AF9D-2E065DC4EE4C}
+DAT 1361875403</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o59">
-<a:ObjectID>717CF76E-B392-4C30-8599-185A36149D87</a:ObjectID>
+<o:Column Id="o63">
+<a:ObjectID>5C23D0F2-FC7C-4C30-9543-046D948B264F</a:ObjectID>
 <a:Name>catalog item id</a:Name>
 <a:Code>CATALOG_ITEM_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {22F42449-411E-4E70-A5D6-18E556DF4E1E}
-DAT 1361807963
-ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6},{14C534A2-2F81-45BA-B54B-047E04E09492}
-DAT 1361807959</a:History>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {DA61018E-5744-447F-A026-4C76F4B65650}
+DAT 1361875407
+ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6},{880C7050-5BA0-467F-B177-EDA9391A79A1}
+DAT 1361875403</a:History>
 <a:DataType>INT4</a:DataType>
 <a:Length>4</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o60">
-<a:ObjectID>21512E29-2FB9-41E8-87F8-73E461C247D7</a:ObjectID>
+<o:Column Id="o64">
+<a:ObjectID>FCB83B39-59B5-4C6F-9D9E-DB61C0719832</a:ObjectID>
+<a:Name>vegetable id</a:Name>
+<a:Code>VEGETABLE_ID</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {09A73A08-99F5-46F3-B6D7-A0FB1577FE97}
+DAT 1361875407
+ORG {D4EB7677-5B7A-46DF-B721-947673C6A8BF}
+DAT 1361875403</a:History>
+<a:DataType>INT4</a:DataType>
+<a:Length>4</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
+<o:Column Id="o65">
+<a:ObjectID>01E66638-FD4B-451D-9FC0-2ABBFCD0ADC3</a:ObjectID>
+<a:Name>famille</a:Name>
+<a:Code>FAMILLE</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {2B0BE45D-0B5B-4189-91C7-4BB9D3EB81E3}
+DAT 1361875407
+ORG {AD5C1ADE-1B7D-43F0-B848-9E3CE48276A6}
+DAT 1361875403</a:History>
+<a:DataType>VARCHAR(120)</a:DataType>
+<a:Length>120</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
+</c:Columns>
+<c:Keys>
+<o:Key Id="o66">
+<a:ObjectID>90F0CDAD-B187-4C58-8B60-568979F7808E</a:ObjectID>
+<a:Name>Identifiant_1</a:Name>
+<a:Code>IDENTIFIANT_1</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {E6516A14-D33C-4835-B3A4-7370987B7529}
+DAT 1361875407
+ORG {E57739B3-7349-4103-A37F-CBBCBCAA5B85}
+DAT 1361875403</a:History>
+<c:Key.Columns>
+<o:Column Ref="o63"/>
+<o:Column Ref="o64"/>
+</c:Key.Columns>
+</o:Key>
+</c:Keys>
+<c:PrimaryKey>
+<o:Key Ref="o66"/>
+</c:PrimaryKey>
+</o:Table>
+<o:Table Id="o30">
+<a:ObjectID>B18C0535-FA80-40C7-BCBB-FB48646D5182</a:ObjectID>
+<a:Name>Associer</a:Name>
+<a:Code>ASSOCIER</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {38810A4C-ABBE-49A9-968D-F3AE7A5BED83}
+DAT 1361875407
+ORG {71D58402-2143-417C-ACE2-33B5037BBC51}
+DAT 1361875403</a:History>
+<a:TotalSavingCurrency/>
+<c:Columns>
+<o:Column Id="o67">
+<a:ObjectID>E93B4D17-C106-46C2-B87F-3ACA1342A426</a:ObjectID>
+<a:Name>catalog item id</a:Name>
+<a:Code>CATALOG_ITEM_ID</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {E7912E4F-671E-4F62-8F30-11E9B4C5A827}
+DAT 1361875407
+ORG {2C1EA1F6-1533-4C98-896D-7ED93835DAD6},{14C534A2-2F81-45BA-B54B-047E04E09492}
+DAT 1361875403</a:History>
+<a:DataType>INT4</a:DataType>
+<a:Length>4</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
+<o:Column Id="o68">
+<a:ObjectID>1EE0C7E5-5E9E-4006-A9F7-F616B032F124</a:ObjectID>
 <a:Name>catalog category id</a:Name>
 <a:Code>CATALOG_CATEGORY_ID</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {BE2E5E13-DFD1-496B-925F-869D1D01F918}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {9D243CE3-3E83-4A3C-A79E-8094AA041DC3}
+DAT 1361875407
 ORG {79F84664-98CC-4D16-AD2D-C17F295E25D2},{FEFF2ABD-FA84-4692-8808-F2D55661D47E}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:DataType>VARCHAR(80)</a:DataType>
 <a:Length>80</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o61">
-<a:ObjectID>F767EA35-3215-4922-A410-D3B24F332A8B</a:ObjectID>
+<o:Key Id="o69">
+<a:ObjectID>9EAA7C3A-0A62-4E43-B434-2BBC3DB1EC2E</a:ObjectID>
 <a:Name>Identifiant_1</a:Name>
 <a:Code>IDENTIFIANT_1</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {A3069E66-57B0-47A1-89F5-C8480C140852}
-DAT 1361807963</a:History>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {38CB97BA-3BE4-44CA-9441-D4FA62341E47}
+DAT 1361875407</a:History>
 <c:Key.Columns>
-<o:Column Ref="o59"/>
-<o:Column Ref="o60"/>
+<o:Column Ref="o67"/>
+<o:Column Ref="o68"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:PrimaryKey>
-<o:Key Ref="o61"/>
+<o:Key Ref="o69"/>
 </c:PrimaryKey>
 </o:Table>
 </c:Tables>
 <c:References>
 <o:Reference Id="o10">
-<a:ObjectID>86FC4C03-C506-464C-81DD-D3079A45927C</a:ObjectID>
+<a:ObjectID>2B185661-0CB5-4476-8D1A-C52A4B4D39CE</a:ObjectID>
 <a:Name>Attacher</a:Name>
 <a:Code>ASSOCIATION_11</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {45466C57-21B1-46E6-8B83-CEE26C3B9E03}
-DAT 1361807963
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {705E711E-663A-4580-9C0D-8A29F7D16B73}
+DAT 1361875407
 ORG {B024234B-3B01-4338-A41C-61BE310822B7}
-DAT 1361807959</a:History>
+DAT 1361875403</a:History>
 <a:Cardinality>0..*</a:Cardinality>
 <a:UpdateConstraint>1</a:UpdateConstraint>
 <a:DeleteConstraint>1</a:DeleteConstraint>
 <c:ParentTable>
-<o:Table Ref="o25"/>
-</c:ParentTable>
-<c:ChildTable>
-<o:Table Ref="o24"/>
-</c:ChildTable>
-<c:ParentKey>
-<o:Key Ref="o40"/>
-</c:ParentKey>
-<c:Joins>
-<o:ReferenceJoin Id="o62">
-<a:ObjectID>67559D85-8BDD-4959-8510-C80153377C63</a:ObjectID>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {EEE200E5-024F-4218-B804-A4C4C94FBE7B}
-DAT 1361807963</a:History>
-<c:Object1>
-<o:Column Ref="o38"/>
-</c:Object1>
-<c:Object2>
-<o:Column Ref="o33"/>
-</c:Object2>
-</o:ReferenceJoin>
-</c:Joins>
-</o:Reference>
-<o:Reference Id="o16">
-<a:ObjectID>97008EE5-4ED6-4F99-B1CF-854EB1E32FEC</a:ObjectID>
-<a:Name>Associer</a:Name>
-<a:Code>ASSOCIER2</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {491A5FD6-4427-45CC-8615-AB5A58B1D7F8}
-DAT 1361807963
-ORG {14C534A2-2F81-45BA-B54B-047E04E09492}
-DAT 1361807959</a:History>
-<a:Cardinality>0..*</a:Cardinality>
-<a:UpdateConstraint>1</a:UpdateConstraint>
-<a:DeleteConstraint>1</a:DeleteConstraint>
-<c:ParentTable>
-<o:Table Ref="o24"/>
-</c:ParentTable>
-<c:ChildTable>
-<o:Table Ref="o27"/>
-</c:ChildTable>
-<c:ParentKey>
-<o:Key Ref="o37"/>
-</c:ParentKey>
-<c:Joins>
-<o:ReferenceJoin Id="o63">
-<a:ObjectID>339CA7EA-9BCF-4178-9826-ECDBE16549F8</a:ObjectID>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {B46C4F35-905C-44D3-B816-A4EC173669C5}
-DAT 1361807963</a:History>
-<c:Object1>
-<o:Column Ref="o32"/>
-</c:Object1>
-<c:Object2>
-<o:Column Ref="o59"/>
-</c:Object2>
-</o:ReferenceJoin>
-</c:Joins>
-</o:Reference>
-<o:Reference Id="o19">
-<a:ObjectID>2E182EF8-EEC3-4B6B-BD93-AEB9E21AB34C</a:ObjectID>
-<a:Name>Associer</a:Name>
-<a:Code>ASSOCIER</a:Code>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {2633748F-6509-4BDD-AE6F-9F250323E3CB}
-DAT 1361807963
-ORG {FEFF2ABD-FA84-4692-8808-F2D55661D47E}
-DAT 1361807959</a:History>
-<a:Cardinality>0..*</a:Cardinality>
-<a:UpdateConstraint>1</a:UpdateConstraint>
-<a:DeleteConstraint>1</a:DeleteConstraint>
-<c:ParentTable>
-<o:Table Ref="o26"/>
+<o:Table Ref="o28"/>
 </c:ParentTable>
 <c:ChildTable>
 <o:Table Ref="o27"/>
@@ -4471,102 +4611,224 @@ DAT 1361807959</a:History>
 <o:Key Ref="o44"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o64">
-<a:ObjectID>65471830-2047-42DF-9932-2862782BED7F</a:ObjectID>
-<a:CreationDate>1361807962</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361807962</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:History>ORG {4F7B2904-230F-4DA3-8F7A-609B5D1C995E}
-DAT 1361807963</a:History>
+<o:ReferenceJoin Id="o70">
+<a:ObjectID>FF2A4E4D-4DBE-4EB8-A1D2-585869F54F1B</a:ObjectID>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {94DD9B57-00B5-45E8-B90A-4E8907F319DA}
+DAT 1361875407</a:History>
 <c:Object1>
-<o:Column Ref="o41"/>
+<o:Column Ref="o42"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o60"/>
+<o:Column Ref="o37"/>
+</c:Object2>
+</o:ReferenceJoin>
+</c:Joins>
+</o:Reference>
+<o:Reference Id="o19">
+<a:ObjectID>C6743086-6CCE-4317-A73E-9A7E4F85BDE6</a:ObjectID>
+<a:Name>Associer</a:Name>
+<a:Code>ASSOCIER2</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {AE6EEC04-C3F7-4461-9F22-A233643A5590}
+DAT 1361875407
+ORG {14C534A2-2F81-45BA-B54B-047E04E09492}
+DAT 1361875403</a:History>
+<a:Cardinality>0..*</a:Cardinality>
+<a:UpdateConstraint>1</a:UpdateConstraint>
+<a:DeleteConstraint>1</a:DeleteConstraint>
+<c:ParentTable>
+<o:Table Ref="o27"/>
+</c:ParentTable>
+<c:ChildTable>
+<o:Table Ref="o30"/>
+</c:ChildTable>
+<c:ParentKey>
+<o:Key Ref="o41"/>
+</c:ParentKey>
+<c:Joins>
+<o:ReferenceJoin Id="o71">
+<a:ObjectID>FB9063CD-2A01-4E6D-BB3E-70B06460C0EC</a:ObjectID>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {EE13BF0C-9A48-4806-A318-FD7E2F97A687}
+DAT 1361875407</a:History>
+<c:Object1>
+<o:Column Ref="o36"/>
+</c:Object1>
+<c:Object2>
+<o:Column Ref="o67"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
 </o:Reference>
 <o:Reference Id="o22">
-<a:ObjectID>D54ED936-487B-4590-9BFB-BCE4F14B60FD</a:ObjectID>
+<a:ObjectID>867BBF1B-5FA6-4C8C-9FDD-AADF9AAC6E20</a:ObjectID>
+<a:Name>Associer</a:Name>
+<a:Code>ASSOCIER</a:Code>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {812F5927-58E5-490E-BDB4-1810A739A4E4}
+DAT 1361875407
+ORG {FEFF2ABD-FA84-4692-8808-F2D55661D47E}
+DAT 1361875403</a:History>
+<a:Cardinality>0..*</a:Cardinality>
+<a:UpdateConstraint>1</a:UpdateConstraint>
+<a:DeleteConstraint>1</a:DeleteConstraint>
+<c:ParentTable>
+<o:Table Ref="o29"/>
+</c:ParentTable>
+<c:ChildTable>
+<o:Table Ref="o30"/>
+</c:ChildTable>
+<c:ParentKey>
+<o:Key Ref="o48"/>
+</c:ParentKey>
+<c:Joins>
+<o:ReferenceJoin Id="o72">
+<a:ObjectID>6FB04E75-7A3C-4382-ADC4-9D989B085720</a:ObjectID>
+<a:CreationDate>1361875407</a:CreationDate>
+<a:Creator>developpement</a:Creator>
+<a:ModificationDate>1361875407</a:ModificationDate>
+<a:Modifier>developpement</a:Modifier>
+<a:History>ORG {A3022A2E-D8CC-45AF-A14C-9A38B3369330}
+DAT 1361875407</a:History>
+<c:Object1>
+<o:Column Ref="o45"/>
+</c:Object1>
+<c:Object2>
+<o:Column Ref="o68"/>
+</c:Object2>
+</o:ReferenceJoin>
+</c:Joins>
+</o:Reference>
+<o:Reference Id="o25">
+<a:ObjectID>C355385D-2EA9-4AA2-9505-59B07180FD00</a:ObjectID>
 <a:Name>Heritage_1</a:Name>
 <a:Code>HERITAGE_1</a:Code>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
 <a:ModificationDate>0</a:ModificationDate>
 <a:Modifier/>
-<a:History>ORG {B011BC20-59DC-4865-B0EA-06A05B05AA84}
-DAT 1361807963</a:History>
+<a:History>ORG {1811F371-BC54-4EE4-A707-4D829779AF64}
+DAT 1361875407</a:History>
 <a:Cardinality>0..*</a:Cardinality>
 <a:UpdateConstraint>1</a:UpdateConstraint>
 <a:DeleteConstraint>1</a:DeleteConstraint>
 <c:ParentTable>
-<o:Table Ref="o24"/>
+<o:Table Ref="o27"/>
 </c:ParentTable>
 <c:ChildTable>
-<o:Table Ref="o28"/>
+<o:Table Ref="o31"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o37"/>
+<o:Key Ref="o41"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o65">
-<a:ObjectID>114E3DF3-2ACC-4318-8C87-5374A2392C23</a:ObjectID>
+<o:ReferenceJoin Id="o73">
+<a:ObjectID>59E6A3F7-6365-44F0-8BB1-09DCED676B85</a:ObjectID>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
 <a:ModificationDate>0</a:ModificationDate>
 <a:Modifier/>
 <c:Object1>
-<o:Column Ref="o32"/>
+<o:Column Ref="o36"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o45"/>
+<o:Column Ref="o49"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
 </o:Reference>
 <o:Reference Id="o13">
-<a:ObjectID>9361468B-B690-4D14-AED8-21AB1E5D36D7</a:ObjectID>
+<a:ObjectID>2E10DAE4-6330-461F-B577-2AFBDABDD630</a:ObjectID>
 <a:Name>Heritage_1</a:Name>
 <a:Code>HERITAGE_2</a:Code>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
 <a:ModificationDate>0</a:ModificationDate>
 <a:Modifier/>
-<a:History>ORG {1034D74F-82F6-444C-B3A1-849E167CC94A}
-DAT 1361807963</a:History>
+<a:History>ORG {90167046-4CE4-4059-B2BE-1F06C4347313}
+DAT 1361875407</a:History>
 <a:Cardinality>0..*</a:Cardinality>
 <a:UpdateConstraint>1</a:UpdateConstraint>
 <a:DeleteConstraint>1</a:DeleteConstraint>
 <c:ParentTable>
-<o:Table Ref="o24"/>
+<o:Table Ref="o27"/>
 </c:ParentTable>
 <c:ChildTable>
-<o:Table Ref="o29"/>
+<o:Table Ref="o32"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o37"/>
+<o:Key Ref="o41"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o66">
-<a:ObjectID>2C99908D-9408-42C9-B11B-B8BA5E321127</a:ObjectID>
+<o:ReferenceJoin Id="o74">
+<a:ObjectID>33D17C62-1050-4ADB-88D5-907CF7CB554A</a:ObjectID>
 <a:CreationDate>0</a:CreationDate>
 <a:Creator/>
 <a:ModificationDate>0</a:ModificationDate>
 <a:Modifier/>
 <c:Object1>
-<o:Column Ref="o32"/>
+<o:Column Ref="o36"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o52"/>
+<o:Column Ref="o56"/>
+</c:Object2>
+</o:ReferenceJoin>
+</c:Joins>
+</o:Reference>
+<o:Reference Id="o16">
+<a:ObjectID>AD351818-7A37-446D-AD57-030E01766925</a:ObjectID>
+<a:Name>Heritage_1</a:Name>
+<a:Code>HERITAGE_3</a:Code>
+<a:CreationDate>0</a:CreationDate>
+<a:Creator/>
+<a:ModificationDate>0</a:ModificationDate>
+<a:Modifier/>
+<a:History>ORG {DC42F655-3C0C-4949-8211-C343B9C79FAE}
+DAT 1361875407</a:History>
+<a:Cardinality>0..*</a:Cardinality>
+<a:UpdateConstraint>1</a:UpdateConstraint>
+<a:DeleteConstraint>1</a:DeleteConstraint>
+<c:ParentTable>
+<o:Table Ref="o27"/>
+</c:ParentTable>
+<c:ChildTable>
+<o:Table Ref="o33"/>
+</c:ChildTable>
+<c:ParentKey>
+<o:Key Ref="o41"/>
+</c:ParentKey>
+<c:Joins>
+<o:ReferenceJoin Id="o75">
+<a:ObjectID>8EAC94B7-BC5D-4813-A2E1-E7C974FF23C3</a:ObjectID>
+<a:CreationDate>0</a:CreationDate>
+<a:Creator/>
+<a:ModificationDate>0</a:ModificationDate>
+<a:Modifier/>
+<c:Object1>
+<o:Column Ref="o36"/>
+</c:Object1>
+<c:Object2>
+<o:Column Ref="o63"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
 </o:Reference>
 </c:References>
 <c:DefaultGroups>
-<o:Group Id="o67">
+<o:Group Id="o76">
 <a:ObjectID>3E6FDE78-7EBC-4907-BDAB-639F8E6E6B2B</a:ObjectID>
 <a:Name>PUBLIC</a:Name>
 <a:Code>PUBLIC</a:Code>
@@ -4577,7 +4839,7 @@ DAT 1361807963</a:History>
 </o:Group>
 </c:DefaultGroups>
 <c:TargetModels>
-<o:TargetModel Id="o68">
+<o:TargetModel Id="o77">
 <a:ObjectID>FE13E3FB-3B16-41B3-80F3-3DC19869D2A3</a:ObjectID>
 <a:Name>PostgreSQL 8 (WFW)</a:Name>
 <a:Code>PGSQL80</a:Code>
@@ -4585,14 +4847,14 @@ DAT 1361807963</a:History>
 <a:Creator>AceTeaM</a:Creator>
 <a:ModificationDate>1361783218</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
-<a:TargetModelURL>file:///%_DBMS%/pgsql8-wfw.xdb</a:TargetModelURL>
+<a:TargetModelURL>file:///%_DBMS%/pgsql8.xdb</a:TargetModelURL>
 <a:TargetModelID>8AF15AEA-CCBC-4EDC-B468-7DB8DB5300B2</a:TargetModelID>
 <a:TargetModelClassID>4BA9F647-DAB1-11D1-9944-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o5"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o69">
+<o:TargetModel Id="o78">
 <a:ObjectID>D2AA7C19-E3E6-47C1-AED1-1FFE75E1125E</a:ObjectID>
 <a:Name>catalog</a:Name>
 <a:Code>CATALOG</a:Code>
@@ -4600,14 +4862,14 @@ DAT 1361807963</a:History>
 <a:Creator>AceTeaM</a:Creator>
 <a:ModificationDate>1361783274</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/AceTeaM/Documents/GitHub/Webframework-Catalog-Module/mcd/catalog.mld</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework-Catalog-Module/mcd/catalog.mld</a:TargetModelURL>
 <a:TargetModelID>ABAE90B5-2290-4A85-A589-58CAD3AD8F22</a:TargetModelID>
 <a:TargetModelClassID>5F45F978-C4F3-4E35-A3FC-AF3318663A0F</a:TargetModelClassID>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o70">
+<o:TargetModel Id="o79">
 <a:ObjectID>EBA187EC-FE27-4794-AE2D-AB2E2FF09779</a:ObjectID>
 <a:Name>catalog</a:Name>
 <a:Code>CATALOG</a:Code>

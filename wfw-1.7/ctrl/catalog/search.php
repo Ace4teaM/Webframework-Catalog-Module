@@ -34,15 +34,20 @@ $fields = array(
     "search_string"=>"cInputString"
 );
 
+$op_fields = array(
+    "item_category"=>"cInputString",
+    "item_type"=>"cInputString"
+);
+
 if(!empty($_REQUEST)){
     // exemples JS
-    if(!cInputFields::checkArray($fields))
+    if(!cInputFields::checkArray($fields,$op_fields,$_REQUEST))
         goto failed;
     
     //crée le compte utilisateur
-    //if(!CatalogModule::searchItems($_REQUEST["string"]))
-    //    goto failed;
-    
+    if(!CatalogModule::searchItems($list,NULL,$_REQUEST["search_string"],NULL,NULL))
+        goto failed;
+
     //retourne le resultat de cette fonction
     $result = cResult::getLast();
 }
