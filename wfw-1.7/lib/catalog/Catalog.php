@@ -128,7 +128,7 @@ class CatalogModule implements iModule
      * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
      * @remarks Les accents ne sont pas prit en compte dans la recherche.
      */
-    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=-1)
+    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=-1, &$count=NULL)
     {
         $list = array();
         
@@ -139,12 +139,16 @@ class CatalogModule implements iModule
         
         if(!$db->call($app->getCfgValue("database","schema"), "catalog_search_items", array($text,$category,$type), $result))
             return false;
+
+        if($count !== NULL)
+            $count = $result->rowCount();
         
         //offset
-//        $db->rowSeek($offset);
+        if($offset && !$result->seek($offset,iDatabaseQuery::Origin))
+            return false;
 
         //extrait les données
-        while($row = $result->fetchRow()){
+        while(is_array($row = $result->fetchRow()) && ($limit==-1 || $limit-->0)){
             if(CatalogItemMgr::getById($item,$row["catalog_item_id"]))
                 array_push($list, $item);
         }
