@@ -96,13 +96,13 @@ class ProductMgr
       
       //execute la requete
        $query = "SELECT * from product where $cond";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new Product();
-          $inst->productId = $db->fetchValue($result,"product_id");
-          $inst->price = $db->fetchValue($result,"price");
-          $inst->money = $db->fetchValue($result,"money");
-          $inst->unit = $db->fetchValue($result,"unit");
-          $inst->quantity = $db->fetchValue($result,"quantity");          
+          $inst->productId = $result->fetchValue("product_id");
+          $inst->price = $result->fetchValue("price");
+          $inst->money = $result->fetchValue("money");
+          $inst->unit = $result->fetchValue("unit");
+          $inst->quantity = $result->fetchValue("quantity");          
 
           return true;
        }
@@ -126,13 +126,13 @@ class ProductMgr
            
       //execute la requete
        $query = "SELECT * from product where product_id=$id";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new Product();
-          $inst->productId = $db->fetchValue($result,"product_id");
-          $inst->price = $db->fetchValue($result,"price");
-          $inst->money = $db->fetchValue($result,"money");
-          $inst->unit = $db->fetchValue($result,"unit");
-          $inst->quantity = $db->fetchValue($result,"quantity");          
+          $inst->productId = $result->fetchValue("product_id");
+          $inst->price = $result->fetchValue("price");
+          $inst->money = $result->fetchValue("money");
+          $inst->unit = $result->fetchValue("unit");
+          $inst->quantity = $result->fetchValue("quantity");          
 
           return true;
        }

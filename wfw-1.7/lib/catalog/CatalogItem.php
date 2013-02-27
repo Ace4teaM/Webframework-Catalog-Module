@@ -91,12 +91,12 @@ class CatalogItemMgr
       
       //execute la requete
        $query = "SELECT * from catalog_item where $cond";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new CatalogItem();
-          $inst->catalogItemId = $db->fetchValue($result,"catalog_item_id");
-          $inst->itemTitle = $db->fetchValue($result,"item_title");
-          $inst->itemDesc = $db->fetchValue($result,"item_desc");
-          $inst->creationDate = $db->fetchValue($result,"creation_date");          
+          $inst->catalogItemId = $result->fetchValue("catalog_item_id");
+          $inst->itemTitle = $result->fetchValue("item_title");
+          $inst->itemDesc = $result->fetchValue("item_desc");
+          $inst->creationDate = $result->fetchValue("creation_date");          
 
           return true;
        }
@@ -120,12 +120,12 @@ class CatalogItemMgr
            
       //execute la requete
        $query = "SELECT * from catalog_item where catalog_item_id=$id";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new CatalogItem();
-          $inst->catalogItemId = $db->fetchValue($result,"catalog_item_id");
-          $inst->itemTitle = $db->fetchValue($result,"item_title");
-          $inst->itemDesc = $db->fetchValue($result,"item_desc");
-          $inst->creationDate = $db->fetchValue($result,"creation_date");          
+          $inst->catalogItemId = $result->fetchValue("catalog_item_id");
+          $inst->itemTitle = $result->fetchValue("item_title");
+          $inst->itemDesc = $result->fetchValue("item_desc");
+          $inst->creationDate = $result->fetchValue("creation_date");          
 
           return true;
        }

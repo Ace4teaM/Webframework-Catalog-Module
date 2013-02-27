@@ -86,11 +86,11 @@ class CatalogCategoryMgr
       
       //execute la requete
        $query = "SELECT * from catalog_category where $cond";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new CatalogCategory();
-          $inst->catalogCategoryId = $db->fetchValue($result,"catalog_category_id");
-          $inst->categoryDesc = $db->fetchValue($result,"category_desc");
-          $inst->itemType = $db->fetchValue($result,"item_type");          
+          $inst->catalogCategoryId = $result->fetchValue("catalog_category_id");
+          $inst->categoryDesc = $result->fetchValue("category_desc");
+          $inst->itemType = $result->fetchValue("item_type");          
 
           return true;
        }
@@ -114,11 +114,11 @@ class CatalogCategoryMgr
            
       //execute la requete
        $query = "SELECT * from catalog_category where catalog_category_id=$id";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new CatalogCategory();
-          $inst->catalogCategoryId = $db->fetchValue($result,"catalog_category_id");
-          $inst->categoryDesc = $db->fetchValue($result,"category_desc");
-          $inst->itemType = $db->fetchValue($result,"item_type");          
+          $inst->catalogCategoryId = $result->fetchValue("catalog_category_id");
+          $inst->categoryDesc = $result->fetchValue("category_desc");
+          $inst->itemType = $result->fetchValue("item_type");          
 
           return true;
        }

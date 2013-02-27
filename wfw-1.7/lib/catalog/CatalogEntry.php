@@ -81,10 +81,10 @@ class CatalogEntryMgr
       
       //execute la requete
        $query = "SELECT * from catalog_entry where $cond";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new CatalogEntry();
-          $inst->catalogEntryId = $db->fetchValue($result,"catalog_entry_id");
-          $inst->catalogType = $db->fetchValue($result,"catalog_type");          
+          $inst->catalogEntryId = $result->fetchValue("catalog_entry_id");
+          $inst->catalogType = $result->fetchValue("catalog_type");          
 
           return true;
        }
@@ -108,10 +108,10 @@ class CatalogEntryMgr
            
       //execute la requete
        $query = "SELECT * from catalog_entry where catalog_entry_id=$id";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new CatalogEntry();
-          $inst->catalogEntryId = $db->fetchValue($result,"catalog_entry_id");
-          $inst->catalogType = $db->fetchValue($result,"catalog_type");          
+          $inst->catalogEntryId = $result->fetchValue("catalog_entry_id");
+          $inst->catalogType = $result->fetchValue("catalog_type");          
 
           return true;
        }

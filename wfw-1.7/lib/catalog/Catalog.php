@@ -116,16 +116,15 @@ class CatalogModule implements iModule
         if(!$app->getDB($db))
             return false;
         
-        $result = $db->call($app->getCfgValue("database","schema"), "catalog_find_items", array($text,$category,$type));
-        if($result === false)
+        if(!$db->call($app->getCfgValue("database","schema"), "catalog_find_items", array($text,$category,$type), $result))
             return false;
         
         //offset
 //        $db->rowSeek($offset);
 
         //extrait les données
-        while($result = $db->fetchRow(NULL)/* && $limit-- > 0*/){
-            if(CatalogItemMgr::getById($item,$result["catalog_item_id"]))
+        while($row = $result->fetchRow()){
+            if(CatalogItemMgr::getById($item,$row["catalog_item_id"]))
                 array_push($list, $item);
         }
 

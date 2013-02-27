@@ -96,13 +96,13 @@ class VehicleMgr
       
       //execute la requete
        $query = "SELECT * from vehicle where $cond";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new Vehicle();
-          $inst->vehicleId = $db->fetchValue($result,"vehicle_id");
-          $inst->type = $db->fetchValue($result,"type");
-          $inst->nPlaces = $db->fetchValue($result,"n_places");
-          $inst->nDoors = $db->fetchValue($result,"n_doors");
-          $inst->consumption = $db->fetchValue($result,"consumption");          
+          $inst->vehicleId = $result->fetchValue("vehicle_id");
+          $inst->type = $result->fetchValue("type");
+          $inst->nPlaces = $result->fetchValue("n_places");
+          $inst->nDoors = $result->fetchValue("n_doors");
+          $inst->consumption = $result->fetchValue("consumption");          
 
           return true;
        }
@@ -126,13 +126,13 @@ class VehicleMgr
            
       //execute la requete
        $query = "SELECT * from vehicle where vehicle_id=$id";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new Vehicle();
-          $inst->vehicleId = $db->fetchValue($result,"vehicle_id");
-          $inst->type = $db->fetchValue($result,"type");
-          $inst->nPlaces = $db->fetchValue($result,"n_places");
-          $inst->nDoors = $db->fetchValue($result,"n_doors");
-          $inst->consumption = $db->fetchValue($result,"consumption");          
+          $inst->vehicleId = $result->fetchValue("vehicle_id");
+          $inst->type = $result->fetchValue("type");
+          $inst->nPlaces = $result->fetchValue("n_places");
+          $inst->nDoors = $result->fetchValue("n_doors");
+          $inst->consumption = $result->fetchValue("consumption");          
 
           return true;
        }

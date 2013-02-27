@@ -60,7 +60,7 @@ switch($format){
         break;
     case "html":
         if(isset($_GET["page"]))
-            $content = $app->makeFormView($att,$fields,isset($op_fields)?$op_fields:NULL,$_REQUEST);
+            $content = $app->makeFormView($att, isset($fields)?$fields:NULL, isset($op_fields)?$op_fields:NULL, $_REQUEST);
         else
             $content = $app->makeXMLView("view/catalog/pages/index.html",$att);
         

@@ -81,10 +81,10 @@ class VegetableMgr
       
       //execute la requete
        $query = "SELECT * from vegetable where $cond";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new Vegetable();
-          $inst->vegetableId = $db->fetchValue($result,"vegetable_id");
-          $inst->famille = $db->fetchValue($result,"famille");          
+          $inst->vegetableId = $result->fetchValue("vegetable_id");
+          $inst->famille = $result->fetchValue("famille");          
 
           return true;
        }
@@ -108,10 +108,10 @@ class VegetableMgr
            
       //execute la requete
        $query = "SELECT * from vegetable where vegetable_id=$id";
-       if($db->execute($query, $result)){
+       if($db->execute($query,$result)){
             $inst = new Vegetable();
-          $inst->vegetableId = $db->fetchValue($result,"vegetable_id");
-          $inst->famille = $db->fetchValue($result,"famille");          
+          $inst->vegetableId = $result->fetchValue("vegetable_id");
+          $inst->famille = $result->fetchValue("famille");          
 
           return true;
        }
