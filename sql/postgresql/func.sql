@@ -49,13 +49,29 @@ begin
 
 	RAISE NOTICE '%',query;
 
-	--execute la requete (chaque entrée est ajoutée au resultat)
+	--execute la requete (ajoute les entrees au resultat)
 	for ret in execute query
 	loop
 		return next ret;
 	end loop;
 
 	return;
+end;
+$$
+LANGUAGE plpgsql;
+
+
+/*
+  Recherche les types associés à un item
+*/
+create or replace function catalog_items_types( 
+	p_item_id catalog_item.catalog_item_id%type
+)
+returns SETOF catalog_category.item_type%type
+as $$
+begin
+    return query select distinct c.item_type as item_type from catalog_category c
+            inner join associer a on a.catalog_category_id = c.catalog_category_id and a.catalog_item_id = p_item_id;
 end;
 $$
 LANGUAGE plpgsql;

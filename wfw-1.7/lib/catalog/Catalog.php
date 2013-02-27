@@ -53,12 +53,14 @@ class CatalogModule implements iModule
     }
 
     /**
-     * @brief Crée un catalogue XML à partir de références
-     * @param $items Tableaux associatifs des items
-     * @return Instance du document XML
+     * @brief Crée un catalogue au format XML
+     * @param $items Tableaux des instances d'items (CatalogItem)
+     * @return Document XML
+     * @retval XMLDocument Instance du document XML
      */
     public static function toXML($items) {
         global $app;
+        $items_keys = array();
         
         //------------------------------------------------------
         // exporte les données au format XML (catalog)
@@ -76,16 +78,6 @@ class CatalogModule implements iModule
         $rootEl->appendChild($doc->createTextElement('items_count', count($items)));
 
         //------------------------------------------------------
-        // ajoute les définitions
-        $setEl = $doc->createElement('set');
-        if ($app->getDefaultFile($def)) {
-            $setEl->appendChild($doc->createTextElement('item_title', $def->getResultText('fields', 'item_title')));
-            $setEl->appendChild($doc->createTextElement('item_desc', $def->getResultText('fields', 'item_desc')));
-        }
-    
-        $rootEl->appendChild($setEl);
-
-        //------------------------------------------------------
         // ajoute les items
         if (is_array($items)) {
             foreach ($items as $key => $catalogItem) {
@@ -93,13 +85,28 @@ class CatalogModule implements iModule
                 $itemEl->setAttribute('guid', $catalogItem->catalogItemId);
                 //set's
                 $setEl = $doc->createElement('set');
-                $setEl->appendChild($doc->createTextElement('item_title', $catalogItem->itemTitle));
-                $setEl->appendChild($doc->createTextElement('item_desc', $catalogItem->itemDesc));
+                if(CatalogModule::getItemsFields($catalogItem, $fields) && is_array($fields)){
+                        $doc->appendAssocArray($setEl,$fields);
+                        $items_keys = array_merge($items_keys,$fields);
+                }
+                //$setEl->appendChild($doc->createTextElement('item_title', $catalogItem->itemTitle));
+                //$setEl->appendChild($doc->createTextElement('item_desc', $catalogItem->itemDesc));
                 $itemEl->appendChild($setEl);
                 //ok
                 $rootEl->appendChild($itemEl);
             }
         }
+        
+        //------------------------------------------------------
+        // ajoute les traductions de champs
+        $setEl = $doc->createElement('set');
+        if ($app->getDefaultFile($def) && is_array($items_keys)) {
+            foreach($items_keys as $key=>&$value)
+                $value = $def->getResultText('fields', $key);
+            $doc->appendAssocArray($setEl,$items_keys);
+        }
+    
+        $rootEl->appendChild($setEl);
 
         //ok
         $doc->appendChild($rootEl);
@@ -107,7 +114,21 @@ class CatalogModule implements iModule
         return $doc;
     }
 
-    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=100)
+    /**
+     * @brief Recherche des items
+     * @param $list Tableau des instances d'items trouvés (CatalogItem)
+     * @param $category Catégorie désiré. Si NULL, toutes les catégories sont admises
+     * @param $text Texte à rechercher dans le titre ou la description
+     * @param $type Type d'item admis. Si NULL, tous les types sont admis
+     * @param $sort Colonne à trier. Si NULL, aucun tri
+     * @param $offset Offset de départ
+     * @param $limit Limite de recherche. Si -1, aucune
+     * @return Résultat de procédure
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks Les accents ne sont pas prit en compte dans la recherche.
+     */
+    public static function searchItems(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=-1)
     {
         $list = array();
         
@@ -116,7 +137,7 @@ class CatalogModule implements iModule
         if(!$app->getDB($db))
             return false;
         
-        if(!$db->call($app->getCfgValue("database","schema"), "catalog_find_items", array($text,$category,$type), $result))
+        if(!$db->call($app->getCfgValue("database","schema"), "catalog_search_items", array($text,$category,$type), $result))
             return false;
         
         //offset
@@ -132,15 +153,15 @@ class CatalogModule implements iModule
     }
     
     /**
-     * @brief Recherche des items
-     * @param $list Tableau des instances de classes trouvés (CatalogItem)
-     * @param $region Instance de la classe Region, région d'origine de  l'item
-     * @param $text Texte de la recherche
-     * @return Réssultat de la fonction
+     * @brief Retourne tous les champs d'un item
+     * @param $item Instance ou identifiant de l'item
+     * @param $fields Tableau associatif recevant les champs
+     * @return Résultat de procédure
      * @retval true La recherche à réussi, l'argument $list est initialisé
-     * @retval false Impossible d'obtenir la liste, voir Result::getLast pour plus d'informations
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks getItemsFields retourne tous les champs d'un item y compris les champs des tables étendus
      */
-    public static function searchItems2(&$list, $category=NULL, $text=NULL, $type=NULL, $sort=NULL, $offset=0, $limit=100)
+    public static function getItemsFields($item, &$fields)
     {
         $list = array();
         
@@ -149,46 +170,33 @@ class CatalogModule implements iModule
         if(!$app->getDB($db))
             return false;
         
-        //obtient les items
-        $query = <<<EOT
-        select catalog_item_id from catalog_item i
-          inner join catalog_category c on c.catalog_category_id = i.catalog_category_id
-EOT;
+        //identifiant de l'item
+        $item_id = $item instanceof CatalogItem ? $item->catalogItemId : $item;
 
-        //ajoute les conditions a la requete
-        $cond="";
-        if($text){
-            $text = strtolower($text);
-            $cond .= " and (lower(i.item_title) like '%$text%' or lower(i.item_desc) like '%$text%')";
+        //prepare la requete
+        $query = "select distinct * from catalog_item i ";
+        
+        //obtient le nom des tables liées à l'item
+        if($db->execute("select * from catalog_items_types($item_id) as item_type", $result))
+        {
+            // join les tables au resultat
+            $cnt=0;
+            while($row = $result->fetchRow()){
+                $table_name = $row["item_type"];
+                $cnt++;
+                $query .= " inner join $table_name j$cnt on j$cnt.catalog_item_id = i.catalog_item_id";
+            }
         }
-        if($category){
-            $category = strtolower($category);
-            $cond .= " and (lower(i.catalog_category_id) = '$category')";
-        }
-        if($type && is_string($type)){
-            $type = strtolower($type);
-            $cond .= " and (lower(c.item_type) = '$type')";
-        }
-        if(!empty($cond))
-            $query.= " where 1=1 $cond";
+        
+        //termine la requete
+        $query .= " where i.catalog_item_id = $item_id;";
 
-        if($sort && is_string($sort)){
-            $sort = strtolower($sort);
-            $query .= " order by i.$sort";
-        }
-
-        //execute
+        //execute la requete
         if(!$db->execute($query, $result))
             return false;
-
-        //extrait les données
-        while($offset<$limit && pg_result_seek($result,$offset) && $data = pg_fetch_assoc($result)){
-            if(!CatalogItemMgr::getById($item,$data["catalog_item_id"]))
-                return false;
-            array_push($list, $item);
-            $offset++;
-        }
-
+        
+        $fields = $result->fetchRow();
+ //     print_r($fields);
         return RESULT_OK();
     }
 }
