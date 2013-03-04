@@ -137,7 +137,7 @@ class CatalogModule implements iModule
         if(!$app->getDB($db))
             return false;
         
-        if(!$db->call($app->getCfgValue("database","schema"), "catalog_search_items", array($text,$category,$type), $result))
+        if(!$db->call($app->getCfgValue("database","schema"), "catalog_search_items", array($text,$category,$type,$sort), $result))
             return false;
 
         if($count !== NULL)
@@ -201,6 +201,75 @@ class CatalogModule implements iModule
         
         $fields = $result->fetchRow();
  //     print_r($fields);
+        return RESULT_OK();
+    }
+    
+    /**
+     * @brief Liste les catégories associées à un item
+     * @param $item Instance ou identifiant de l'item (CatalogItem)
+     * @param $list Instances des catégories trouvées (CatalogCategory[])
+     * @return Résultat de procédures
+     */
+    public static function getItemsCategory($item,&$list)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+
+        //identifiant de l'item
+        $item_id = $item instanceof CatalogItem ? $item->catalogItemId : $item;
+
+        //prepare la requete
+        $query = "select * from catalog_items_category($item_id);";
+
+        //obtient le nom des tables liées à l'item
+        if(!$db->execute($query, $result))
+            return false;
+
+        while($row = $result->fetchRow()){
+            $cat = new CatalogCategory();
+            $cat->catalogCategoryId = $row["catalog_category_id"];
+            $cat->categoryDesc = $row["category_desc"];
+            $cat->itemType = $row["item_type"];
+            array_push($list, $cat);
+        }
+
+        return RESULT_OK();
+    }
+    
+    /**
+     * @brief Liste les catégories triées par type d'item
+     * @param $type Type d'item
+     * @param $list Instances des catégories trouvées (CatalogCategory[])
+     * @return Résultat de procédures
+     */
+    public static function getCategoryByType($type,&$list)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+
+        //prepare la requete
+        $query = "select distinct * from catalog_category where item_type = '$type';";
+
+        //obtient le nom des tables liées à l'item
+        if(!$db->execute($query, $result))
+            return false;
+
+        while($row = $result->fetchRow()){
+            $cat = new CatalogCategory();
+            $cat->catalogCategoryId = $row["catalog_category_id"];
+            $cat->categoryDesc = $row["category_desc"];
+            $cat->itemType = $row["item_type"];
+            array_push($list, $cat);
+        }
+
         return RESULT_OK();
     }
 }

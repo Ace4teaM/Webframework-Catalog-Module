@@ -12,7 +12,8 @@
 create or replace function catalog_search_items( 
 	p_text varchar,
 	p_category catalog_category.catalog_category_id%type,
-	p_type catalog_category.item_type%type
+	p_type catalog_category.item_type%type,
+	p_sort varchar
 )
 returns SETOF catalog_item
 as $$
@@ -47,6 +48,11 @@ begin
 	-- Ajoute la condition
 	query := query || ' where 1=1' || cond;
 
+	-- Type
+	if p_sort is not null then 
+		query := query || ' order by ' || p_sort;
+	end if;
+	
 	RAISE NOTICE '%',query;
 
 	--execute la requete (ajoute les entrees au resultat)
@@ -76,3 +82,20 @@ end;
 $$
 LANGUAGE plpgsql;
 
+
+/*
+  Recherche les catégories associés à un item
+*/
+create or replace function catalog_items_category( 
+	p_item_id catalog_item.catalog_item_id%type
+)
+returns SETOF catalog_category
+as $$
+begin
+    return query select distinct c.* from catalog_category c
+        inner join catalog_item i on i.catalog_item_id = p_item_id
+        inner join associer a on a.catalog_item_id = i.catalog_item_id
+        where c.catalog_category_id = a.catalog_category_id;
+end;
+$$
+LANGUAGE plpgsql;
