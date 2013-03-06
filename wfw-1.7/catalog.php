@@ -58,6 +58,14 @@ switch($format){
         header("content-type: text/xarg");
         echo xarg_encode_array($att);
         break;
+    case "xml":
+        header("content-type: text/xml");
+        $doc = new XMLDocument();
+        $rootEl = $doc->createElement('data');
+        $doc->appendChild($rootEl);
+        $doc->appendAssocArray($rootEl,$att);
+        echo '<?xml version="1.0" encoding="UTF-8" ?>'.$doc->saveXML( $doc->documentElement );
+        break;
     case "html":
         if(isset($_GET["page"]))
             $content = $app->makeFormView($att, isset($fields)?$fields:NULL, isset($op_fields)?$op_fields:NULL, $_REQUEST);
