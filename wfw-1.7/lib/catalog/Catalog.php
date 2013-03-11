@@ -58,7 +58,7 @@ class CatalogModule implements iModule
      * @return Document XML
      * @retval XMLDocument Instance du document XML
      */
-    public static function toXML($items) {
+    public static function toXML($catalog,$items) {
         global $app;
         $items_keys = array();
         
@@ -77,6 +77,19 @@ class CatalogModule implements iModule
         //infos
         $rootEl->appendChild($doc->createTextElement('items_count', count($items)));
 
+        //------------------------------------------------------
+        // ajoute le catalogue
+        if($catalog instanceof CatalogEntry){
+            $catalogEl = CatalogEntryMgr::toXML($catalog, $doc);
+            $rootEl->appendChild($catalogEl);
+
+            $typeClassName = ucfirst($catalog->catalogType)."Mgr";
+            if($typeClassName::get($item,"catalog_entry_id=".$catalog->catalogEntryId)){
+                $itemEl = $typeClassName::toXML($item, $doc);
+                $rootEl->appendChild($itemEl);
+            }
+        }
+        
         //------------------------------------------------------
         // ajoute les items
         if (is_array($items)) {
