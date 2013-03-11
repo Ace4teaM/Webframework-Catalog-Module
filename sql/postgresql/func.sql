@@ -11,6 +11,7 @@
 */
 create or replace function catalog_search_items( 
 	p_text varchar,
+	p_catalog catalog_entry.catalog_entry_id%type,
 	p_category catalog_category.catalog_category_id%type,
 	p_type catalog_category.item_type%type,
 	p_sort varchar
@@ -27,6 +28,11 @@ begin
 	query := 'select distinct i.* from catalog_item i' ||
 		 ' inner join catalog_category c on c.catalog_category_id in (select a.catalog_category_id from associer a where a.catalog_item_id = i.catalog_item_id)';
 
+	-- Catalogue
+	if p_catalog is not null then 
+		cond := cond || ' and ( catalog_entry_id = ' || p_catalog || ')';
+	end if;
+	
 	-- Text
 	if p_text is not null then 
 		find_text := quote_literal('%'||lower(escape_accents(p_text))||'%');
@@ -65,6 +71,7 @@ begin
 end;
 $$
 LANGUAGE plpgsql;
+
 
 
 /*

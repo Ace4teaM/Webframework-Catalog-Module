@@ -35,7 +35,7 @@ if(cInputFields::checkArray($arg, $opt_arg , $_REQUEST))
     $category = isset($_REQUEST["catalog_category_id"]) && !empty($_REQUEST["catalog_category_id"]) ? $_REQUEST["catalog_category_id"] : NULL;
     $sort = isset($_REQUEST["sort"]) && !empty($_REQUEST["sort"]) ? $_REQUEST["sort"] : NULL;
     $type = isset($_REQUEST["catalog_item_type"]) && !empty($_REQUEST["catalog_item_type"]) ? $_REQUEST["catalog_item_type"] : NULL;
-    if (!CatalogModule::searchItems($items, $category, $_REQUEST["search_string"], $type, $sort, 0, 50))
+    if (!CatalogModule::searchItems($items, NULL, $category, $_REQUEST["search_string"], $type, $sort, 0, 50))
         goto failed;
 
     $bResult = true;
