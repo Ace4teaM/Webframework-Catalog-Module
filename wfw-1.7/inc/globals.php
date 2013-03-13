@@ -11,13 +11,14 @@ if(!isset($config["PATH"])){
     exit(-1);
 }
 $config["PATH"] = array_change_key_case($config["PATH"], CASE_UPPER);
-if(!isset($config["PATH"]["WFW"])){
+if(!isset($config["PATH"]["WFW"])||!isset($config["PATH"]["WFW_LOCAL"])){
     echo("Cant't find Webframework Path");
     exit(-1);
 }
 
 //ajoute le chemin d'accès à WFW
-set_include_path(get_include_path() . PATH_SEPARATOR . $config["PATH"]["WFW"]);
+set_include_path(get_include_path() . PATH_SEPARATOR . $config["PATH"]["WFW_LOCAL"]);
+
 
 //instancie l'application
 require_once("Application.php");
