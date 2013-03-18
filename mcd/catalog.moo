@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{0961E6B1-9A95-449A-9C3F-753941906B1E}" Label="" LastModificationDate="1361950161" Name="catalog" Objects="46" Symbols="12" Target="PHP (WFW)" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{0961E6B1-9A95-449A-9C3F-753941906B1E}" Label="" LastModificationDate="1363603161" Name="catalog" Objects="46" Symbols="12" Target="PHP (WFW)" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,8 +12,8 @@
 <a:Code>CATALOG</a:Code>
 <a:CreationDate>1361783229</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361900240</a:ModificationDate>
-<a:Modifier>developpement</a:Modifier>
+<a:ModificationDate>1363603161</a:ModificationDate>
+<a:Modifier>AceTeaM</a:Modifier>
 <a:History>ORG {36A663FB-639A-4EC9-BE0E-D7221A3E4AF7}
 DAT 1361783232
 DLD {3445A587-9C4E-4842-B342-C3C5C1148BE2}
@@ -78,7 +78,7 @@ DLD {D521D42D-AFF9-4EBC-90B9-4ABEC8439E5E}</a:History>
 
 [FolderOptions\Class Diagram Objects]
 GenerationCheckModel=Yes
-GenerationPath=C:\Users\developpement\Documents\GitHub\Webframework-Catalog-Module\wfw-1.7\lib\catalog\
+GenerationPath=C:\Users\AceTeaM\Documents\GitHub\Webframework-Catalog-Module\wfw-1.7\lib\catalog\
 GenerationOptions=
 GenerationTasks=
 GenerationTargets=
