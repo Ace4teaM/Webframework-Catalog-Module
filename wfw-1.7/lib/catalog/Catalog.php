@@ -100,13 +100,16 @@ class CatalogModule implements iModule
             foreach ($items as $key => $catalogItem) {
                 $itemEl = $doc->createElement('item');
                 $itemEl->setAttribute('guid', $catalogItem->catalogItemId);
-                //categories
+                //types et categories
                 if(CatalogModule::getItemsCategory($catalogItem, $categoryList)){
                     $cat = "";
+                    $type = "";
                     foreach($categoryList as $key=>$categoryItem){
                         $cat.= $categoryItem->catalogCategoryId." ";
+                        $type.= $categoryItem->itemType." ";
                     }
                     $itemEl->setAttribute('category', $cat);
+                    $itemEl->setAttribute('type', $type);
                 }
                 //set's
                 $setEl = $doc->createElement('set');
