@@ -61,6 +61,25 @@ class CatalogItem
 */
 class CatalogItemMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (CatalogItem)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement("CatalogItem");
+        
+        $node->appendChild($doc->createTextElement("catalog_item_id",$inst->catalogItemId));
+        $node->appendChild($doc->createTextElement("item_title",$inst->itemTitle));
+        $node->appendChild($doc->createTextElement("item_desc",$inst->itemDesc));
+        $node->appendChild($doc->createTextElement("creation_date",$inst->creationDate));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -68,13 +87,43 @@ class CatalogItemMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from catalog_item where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while($result->seek($i)){
+        $inst = new CatalogItem();
+        CatalogItemMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return true;
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst CatalogItem instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->catalogItemId = $result->fetchValue("catalog_item_id");
+          $inst->itemTitle = $result->fetchValue("item_title");
+          $inst->itemDesc = $result->fetchValue("item_desc");
+          $inst->creationDate = $result->fetchValue("creation_date");          
+
+       return true;
     }
     
     /*
@@ -93,12 +142,7 @@ class CatalogItemMgr
        $query = "SELECT * from catalog_item where $cond";
        if($db->execute($query,$result)){
             $inst = new CatalogItem();
-          $inst->catalogItemId = $result->fetchValue("catalog_item_id");
-          $inst->itemTitle = $result->fetchValue("item_title");
-          $inst->itemDesc = $result->fetchValue("item_desc");
-          $inst->creationDate = $result->fetchValue("creation_date");          
-
-          return true;
+          return CatalogItemMgr::bindResult($inst,$result);
        }
        return false;
     }

@@ -51,6 +51,23 @@ class Vegetable
 */
 class VegetableMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (Vegetable)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement("Vegetable");
+        
+        $node->appendChild($doc->createTextElement("vegetable_id",$inst->vegetableId));
+        $node->appendChild($doc->createTextElement("famille",$inst->famille));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -58,13 +75,41 @@ class VegetableMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from vegetable where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while($result->seek($i)){
+        $inst = new Vegetable();
+        VegetableMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return true;
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst Vegetable instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->vegetableId = $result->fetchValue("vegetable_id");
+          $inst->famille = $result->fetchValue("famille");          
+
+       return true;
     }
     
     /*
@@ -83,10 +128,7 @@ class VegetableMgr
        $query = "SELECT * from vegetable where $cond";
        if($db->execute($query,$result)){
             $inst = new Vegetable();
-          $inst->vegetableId = $result->fetchValue("vegetable_id");
-          $inst->famille = $result->fetchValue("famille");          
-
-          return true;
+          return VegetableMgr::bindResult($inst,$result);
        }
        return false;
     }

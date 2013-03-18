@@ -66,6 +66,26 @@ class Product
 */
 class ProductMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (Product)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement("Product");
+        
+        $node->appendChild($doc->createTextElement("product_id",$inst->productId));
+        $node->appendChild($doc->createTextElement("price",$inst->price));
+        $node->appendChild($doc->createTextElement("money",$inst->money));
+        $node->appendChild($doc->createTextElement("unit",$inst->unit));
+        $node->appendChild($doc->createTextElement("quantity",$inst->quantity));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -73,13 +93,44 @@ class ProductMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from product where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while($result->seek($i)){
+        $inst = new Product();
+        ProductMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return true;
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst Product instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->productId = $result->fetchValue("product_id");
+          $inst->price = $result->fetchValue("price");
+          $inst->money = $result->fetchValue("money");
+          $inst->unit = $result->fetchValue("unit");
+          $inst->quantity = $result->fetchValue("quantity");          
+
+       return true;
     }
     
     /*
@@ -98,13 +149,7 @@ class ProductMgr
        $query = "SELECT * from product where $cond";
        if($db->execute($query,$result)){
             $inst = new Product();
-          $inst->productId = $result->fetchValue("product_id");
-          $inst->price = $result->fetchValue("price");
-          $inst->money = $result->fetchValue("money");
-          $inst->unit = $result->fetchValue("unit");
-          $inst->quantity = $result->fetchValue("quantity");          
-
-          return true;
+          return ProductMgr::bindResult($inst,$result);
        }
        return false;
     }

@@ -96,6 +96,13 @@ class CatalogModule implements iModule
             foreach ($items as $key => $catalogItem) {
                 $itemEl = $doc->createElement('item');
                 $itemEl->setAttribute('guid', $catalogItem->catalogItemId);
+                //categories
+                if(CatalogModule::getItemsCategory($catalogItem, $categoryList)){
+                    $cat = "";
+                    foreach($categoryList as $key=>$categoryItem)
+                        $cat.=" ".$categoryItem->catalogCategoryId;
+                    $itemEl->setAttribute('category', $cat);
+                }
                 //set's
                 $setEl = $doc->createElement('set');
                 if(CatalogModule::getItemsFields($catalogItem, $fields) && is_array($fields)){
@@ -242,11 +249,11 @@ class CatalogModule implements iModule
         if(!$db->execute($query, $result))
             return false;
 
-        while($row = $result->fetchRow()){
+        $i=0;
+        while($result->seek($i,iDatabaseQuery::Current)){
             $cat = new CatalogCategory();
-            $cat->catalogCategoryId = $row["catalog_category_id"];
-            $cat->categoryDesc = $row["category_desc"];
-            $cat->itemType = $row["item_type"];
+            CatalogCategoryMgr::bindResult($cat, $result);
+            $i++;
             array_push($list, $cat);
         }
 
@@ -275,13 +282,14 @@ class CatalogModule implements iModule
         if(!$db->execute($query, $result))
             return false;
 
-        while($row = $result->fetchRow()){
+        $i=0;
+        while($result->seek($i,iDatabaseQuery::Current)){
             $cat = new CatalogCategory();
-            $cat->catalogCategoryId = $row["catalog_category_id"];
-            $cat->categoryDesc = $row["category_desc"];
-            $cat->itemType = $row["item_type"];
+            CatalogCategoryMgr::bindResult($cat, $result);
+            $i++;
             array_push($list, $cat);
         }
+        
 
         return RESULT_OK();
     }

@@ -56,6 +56,24 @@ class CatalogCategory
 */
 class CatalogCategoryMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (CatalogCategory)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement("CatalogCategory");
+        
+        $node->appendChild($doc->createTextElement("catalog_category_id",$inst->catalogCategoryId));
+        $node->appendChild($doc->createTextElement("category_desc",$inst->categoryDesc));
+        $node->appendChild($doc->createTextElement("item_type",$inst->itemType));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -63,13 +81,42 @@ class CatalogCategoryMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from catalog_category where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while($result->seek($i)){
+        $inst = new CatalogCategory();
+        CatalogCategoryMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return true;
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst CatalogCategory instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->catalogCategoryId = $result->fetchValue("catalog_category_id");
+          $inst->categoryDesc = $result->fetchValue("category_desc");
+          $inst->itemType = $result->fetchValue("item_type");          
+
+       return true;
     }
     
     /*
@@ -88,11 +135,7 @@ class CatalogCategoryMgr
        $query = "SELECT * from catalog_category where $cond";
        if($db->execute($query,$result)){
             $inst = new CatalogCategory();
-          $inst->catalogCategoryId = $result->fetchValue("catalog_category_id");
-          $inst->categoryDesc = $result->fetchValue("category_desc");
-          $inst->itemType = $result->fetchValue("item_type");          
-
-          return true;
+          return CatalogCategoryMgr::bindResult($inst,$result);
        }
        return false;
     }

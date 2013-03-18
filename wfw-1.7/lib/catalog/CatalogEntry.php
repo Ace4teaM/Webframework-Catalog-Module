@@ -51,6 +51,23 @@ class CatalogEntry
 */
 class CatalogEntryMgr
 {
+    /**
+     * @brief Convert existing instance to XML element
+     * @param $inst Entity instance (CatalogEntry)
+     * @param $doc Parent document
+     * @return New element node
+     */
+    public static function toXML(&$inst,$doc) {
+        $node = $doc->createElement("CatalogEntry");
+        
+        $node->appendChild($doc->createTextElement("catalog_entry_id",$inst->catalogEntryId));
+        $node->appendChild($doc->createTextElement("catalog_type",$inst->catalogType));       
+
+          
+        return $node;
+    }
+    
+    
     /*
       @brief Get entry list
       @param $list Array to receive new instances
@@ -58,13 +75,41 @@ class CatalogEntryMgr
       @param $db iDataBase derived instance
     */
     public static function getAll(&$list,$cond,$db=null){
+       $list = array();
+      
        //obtient la base de donnees courrante
        global $app;
        if(!$db && !$app->getDB($db))
          return false;
       
       //execute la requete
-       //...
+       $query = "SELECT * from catalog_entry where $cond";
+       if(!$db->execute($query,$result))
+          return false;
+       
+      //extrait les instances
+       $i=0;
+       while($result->seek($i)){
+        $inst = new CatalogEntry();
+        CatalogEntryMgr::bindResult($inst,$result);
+        array_push($list,$inst);
+        $i++;
+       }
+       
+       return true;
+    }
+    
+    /*
+      @brief Get single entry
+      @param $inst CatalogEntry instance pointer to initialize
+      @param $cond SQL Select condition
+      @param $db iDataBase derived instance
+    */
+    public static function bindResult(&$inst,$result){
+          $inst->catalogEntryId = $result->fetchValue("catalog_entry_id");
+          $inst->catalogType = $result->fetchValue("catalog_type");          
+
+       return true;
     }
     
     /*
@@ -83,10 +128,7 @@ class CatalogEntryMgr
        $query = "SELECT * from catalog_entry where $cond";
        if($db->execute($query,$result)){
             $inst = new CatalogEntry();
-          $inst->catalogEntryId = $result->fetchValue("catalog_entry_id");
-          $inst->catalogType = $result->fetchValue("catalog_type");          
-
-          return true;
+          return CatalogEntryMgr::bindResult($inst,$result);
        }
        return false;
     }
