@@ -65,10 +65,12 @@ class CatalogModule implements iModule
         //------------------------------------------------------
         // exporte les données au format XML (catalog)
         $doc = new XMLDocument();
-
-        //GUID catalog
+  
+        //Cree l'élément racine
         $rootEl = $doc->createElement('data');
 
+        $rootEl->appendChild($doc->createComment( "Infos" ));
+          
         //GUID catalog
         $guidEl = $doc->createElement('guid');
         $guidEl->appendChild($doc->createTextNode('temporary'));
@@ -80,6 +82,7 @@ class CatalogModule implements iModule
         //------------------------------------------------------
         // ajoute le catalogue
         if($catalog instanceof CatalogEntry){
+            $rootEl->appendChild($doc->createComment( "Catalog entity" ));
             $catalogEl = CatalogEntryMgr::toXML($catalog, $doc);
             $rootEl->appendChild($catalogEl);
 
@@ -93,14 +96,16 @@ class CatalogModule implements iModule
         //------------------------------------------------------
         // ajoute les items
         if (is_array($items)) {
+            $rootEl->appendChild($doc->createComment( "Items list" ));
             foreach ($items as $key => $catalogItem) {
                 $itemEl = $doc->createElement('item');
                 $itemEl->setAttribute('guid', $catalogItem->catalogItemId);
                 //categories
                 if(CatalogModule::getItemsCategory($catalogItem, $categoryList)){
                     $cat = "";
-                    foreach($categoryList as $key=>$categoryItem)
-                        $cat.=" ".$categoryItem->catalogCategoryId;
+                    foreach($categoryList as $key=>$categoryItem){
+                        $cat.= $categoryItem->catalogCategoryId." ";
+                    }
                     $itemEl->setAttribute('category', $cat);
                 }
                 //set's
@@ -119,6 +124,7 @@ class CatalogModule implements iModule
         
         //------------------------------------------------------
         // ajoute les traductions de champs
+        $rootEl->appendChild($doc->createComment( "Field descriptions" ));
         $setEl = $doc->createElement('set');
         if ($app->getDefaultFile($def) && is_array($items_keys)) {
             foreach($items_keys as $key=>&$value)
