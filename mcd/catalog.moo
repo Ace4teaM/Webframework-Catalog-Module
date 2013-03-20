@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{0961E6B1-9A95-449A-9C3F-753941906B1E}" Label="" LastModificationDate="1363603161" Name="catalog" Objects="46" Symbols="12" Target="PHP (WFW)" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{0961E6B1-9A95-449A-9C3F-753941906B1E}" Label="" LastModificationDate="1363763972" Name="catalog" Objects="46" Symbols="12" Target="PHP (WFW)" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4177,12 +4177,11 @@ DAT 1361875403</a:History>
 <a:ObjectID>572660E4-876B-4CA1-9FCF-1176CD1F7518</a:ObjectID>
 <a:Name>catalog</a:Name>
 <a:Code>CATALOG</a:Code>
-<a:ExtractionID>3339027</a:ExtractionID>
 <a:CreationDate>1361783232</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361783273</a:ModificationDate>
+<a:ModificationDate>1363763972</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/developpement/Documents/GitHub/Webframework-Catalog-Module/mcd/catalog.mpd</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/AceTeaM/Documents/GitHub/Webframework-Catalog-Module/mcd/catalog.mpd</a:TargetModelURL>
 <a:TargetModelID>36A663FB-639A-4EC9-BE0E-D7221A3E4AF7</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>

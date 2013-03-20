@@ -1,10 +1,10 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8 (WFW)                            */
-/* Date de création :  26/02/2013 11:43:48                      */
+/* Date de création :  20/03/2013 08:11:49                      */
 /*==============================================================*/
 
 
-drop table if exists ASSOCIER  CASCADE;
+drop table if exists CATALOG_ASSOCIER  CASCADE;
 
 drop table if exists CATALOG_CATEGORY  CASCADE;
 
@@ -39,12 +39,12 @@ comment on domain CATALOG_TYPE is
 'Ajoutez ici les types de catalogues héritant de l''entité CATALOG';
 
 /*==============================================================*/
-/* Table : ASSOCIER                                             */
+/* Table : CATALOG_ASSOCIER                                     */
 /*==============================================================*/
-create table ASSOCIER (
-   CATALOG_ITEM_ID      INT4                 not null,
+create table CATALOG_ASSOCIER (
    CATALOG_CATEGORY_ID  VARCHAR(80)          not null,
-   constraint PK_ASSOCIER primary key (CATALOG_ITEM_ID, CATALOG_CATEGORY_ID)
+   CATALOG_ITEM_ID      INT4                 not null,
+   constraint PK_CATALOG_ASSOCIER primary key (CATALOG_CATEGORY_ID, CATALOG_ITEM_ID)
 );
 
 /*==============================================================*/
@@ -114,33 +114,33 @@ create table VEHICLE (
    constraint PK_VEHICLE primary key (CATALOG_ITEM_ID, VEHICLE_ID)
 );
 
-alter table ASSOCIER
-   add constraint FK_ASSOCIER_ASSOCIER_CATALOG_ foreign key (CATALOG_CATEGORY_ID)
-      references CATALOG_CATEGORY (CATALOG_CATEGORY_ID)
-      on delete restrict on update restrict;
-
-alter table ASSOCIER
-   add constraint FK_ASSOCIER_ASSOCIER2_CATALOG_ foreign key (CATALOG_ITEM_ID)
+alter table CATALOG_ASSOCIER
+   add constraint FK_CATALOG_ASSOCIER foreign key (CATALOG_ITEM_ID)
       references CATALOG_ITEM (CATALOG_ITEM_ID)
       on delete restrict on update restrict;
 
+alter table CATALOG_ASSOCIER
+   add constraint FK_CATALOG_ASSOCIER2 foreign key (CATALOG_CATEGORY_ID)
+      references CATALOG_CATEGORY (CATALOG_CATEGORY_ID)
+      on delete restrict on update restrict;
+
 alter table CATALOG_ITEM
-   add constraint FK_CATALOG__ASSOCIATI_CATALOG_ foreign key (CATALOG_ENTRY_ID)
+   add constraint FK_CATALOG_ATTACHER foreign key (CATALOG_ENTRY_ID)
       references CATALOG_ENTRY (CATALOG_ENTRY_ID)
       on delete restrict on update restrict;
 
 alter table PRODUCT
-   add constraint FK_PRODUCT_HERITAGE__CATALOG_ foreign key (CATALOG_ITEM_ID)
+   add constraint FK_CATALOG_ITEM_EXTENDS foreign key (CATALOG_ITEM_ID)
       references CATALOG_ITEM (CATALOG_ITEM_ID)
       on delete restrict on update restrict;
 
 alter table VEGETABLE
-   add constraint FK_VEGETABL_HERITAGE__CATALOG_ foreign key (CATALOG_ITEM_ID)
+   add constraint FK_CATALOG_ITEM_EXTENDS3 foreign key (CATALOG_ITEM_ID)
       references CATALOG_ITEM (CATALOG_ITEM_ID)
       on delete restrict on update restrict;
 
 alter table VEHICLE
-   add constraint FK_VEHICLE_HERITAGE__CATALOG_ foreign key (CATALOG_ITEM_ID)
+   add constraint FK_CATALOG_ITEM_EXTENDS2 foreign key (CATALOG_ITEM_ID)
       references CATALOG_ITEM (CATALOG_ITEM_ID)
       on delete restrict on update restrict;
 

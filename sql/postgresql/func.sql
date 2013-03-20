@@ -26,7 +26,7 @@ declare
 begin
 	-- Requete
 	query := 'select distinct i.* from catalog_item i' ||
-		 ' inner join catalog_category c on c.catalog_category_id in (select a.catalog_category_id from associer a where a.catalog_item_id = i.catalog_item_id)';
+		 ' inner join catalog_category c on c.catalog_category_id in (select a.catalog_category_id from catalog_associer a where a.catalog_item_id = i.catalog_item_id)';
 
 	-- Catalogue
 	if p_catalog is not null then 
@@ -84,7 +84,7 @@ returns SETOF catalog_category.item_type%type
 as $$
 begin
     return query select distinct c.item_type as item_type from catalog_category c
-            inner join associer a on a.catalog_category_id = c.catalog_category_id and a.catalog_item_id = p_item_id;
+            inner join catalog_associer a on a.catalog_category_id = c.catalog_category_id and a.catalog_item_id = p_item_id;
 end;
 $$
 LANGUAGE plpgsql;
@@ -101,7 +101,7 @@ as $$
 begin
     return query select distinct c.* from catalog_category c
         inner join catalog_item i on i.catalog_item_id = p_item_id
-        inner join associer a on a.catalog_item_id = i.catalog_item_id
+        inner join catalog_associer a on a.catalog_item_id = i.catalog_item_id
         where c.catalog_category_id = a.catalog_category_id;
 end;
 $$
