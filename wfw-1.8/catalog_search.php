@@ -4,18 +4,7 @@ require_once("inc/globals.php");
 global $app;
 
 $att = array();
-
-//fabrique le template
-$template_file = $app->getCfgValue("application", "main_template");
-
-$template = new cXMLTemplate();
-
-//charge le contenu en selection
-$select = new XMLDocument("1.0", "utf-8");
-$select->load("view/catalog/pages/catalog.html");
-
-//ajoute le fichier de configuration
-$template->load_xml_file('default.xml', $app->getRootPath());
+$items = null;
 
 //requis
 if(!$app->makeFiledList(
@@ -51,20 +40,59 @@ $att = array_merge($att, $app->translateResult(cResult::getLast()));
 success:
 $att = array_merge($att, $_REQUEST);
 
-if(!$bResult){
-    //affiche le formulaire
-    echo $app->makeFormView($att,$arg,$opt_arg,$_REQUEST);
-    exit;
-}
-
 //ajoute le catalogue (XML version)
 $doc = CatalogModule::toXML(NULL,$items);
-$template->push_xml_file('catalog.php', $doc);
 
-//initialise la classe template 
-if (!$template->Initialise( $template_file, NULL, $select, NULL, array_merge($att, $app->getAttributes()) ))
-    return false;
+/* Génére la sortie */
+$format = "html";
+if(isset($_REQUEST["output"]))
+    $format = $_REQUEST["output"];
 
-//sortie
-echo $template->Make();
+switch($format){
+    case "xarg":
+        header("content-type: text/xarg");
+        $out = xarg_encode_array($att);
+        //$out .= xarg_encode_object($items);
+        echo($out);
+        break;
+    case "xml":
+        header("content-type: text/xml");
+        $doc->appendAssocArray($doc->documentElement,$att);
+        $doc->appendAssocArray($doc->documentElement,cResult::getLast()->toArray());
+        echo '<?xml version="1.0" encoding="UTF-8" ?>'.$doc->saveXML( $doc->documentElement );
+        break;
+    case "html":
+        if(!$bResult){
+            //affiche le formulaire
+            echo $app->makeFormView($att,$arg,$opt_arg,$_REQUEST);
+            exit;
+        }
+
+        //fabrique le template
+        $template_file = $app->getCfgValue("application", "main_template");
+
+        $template = new cXMLTemplate();
+
+        //charge le contenu en selection
+        $select = new XMLDocument("1.0", "utf-8");
+        $select->load("view/catalog/pages/catalog.html");
+
+        //ajoute le fichier de configuration
+        $template->load_xml_file('default.xml', $app->getRootPath());
+
+        $template->push_xml_file('catalog.php', $doc);
+        //initialise la classe template 
+        if (!$template->Initialise( $template_file, NULL, $select, NULL, array_merge($att, $app->getAttributes()) ))
+            return false;
+
+        //sortie
+        echo $template->Make();
+        break;
+    default:
+        RESULT(cResult::Failed,Application::UnsuportedFeature);
+        $app->processLastError();
+        break;
+}
+
+
 ?>
