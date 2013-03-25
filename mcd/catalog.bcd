@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{B5F6AB92-DFCD-4B19-9159-D87122916068}" Label="" LastModificationDate="1363763478" Name="catalog" Objects="75" Symbols="18" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{B5F6AB92-DFCD-4B19-9159-D87122916068}" Label="" LastModificationDate="1364216485" Name="catalog" Objects="75" Symbols="18" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -1210,8 +1210,8 @@ Shadow=0</a:DisplayPreferences>
 <o:AssociationLinkSymbol Id="o12">
 <a:CreationDate>1363761966</a:CreationDate>
 <a:ModificationDate>1363761966</a:ModificationDate>
-<a:Rect>((-9866,5043), (4010,6217))</a:Rect>
-<a:ListOfPoints>((-9866,5043),(4010,5043))</a:ListOfPoints>
+<a:Rect>((4010,4454), (21654,5628))</a:Rect>
+<a:ListOfPoints>((21654,5041),(4010,5041))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1231,8 +1231,8 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o16">
 <a:CreationDate>1363761966</a:CreationDate>
 <a:ModificationDate>1363761966</a:ModificationDate>
-<a:Rect>((4010,4644), (17884,5818))</a:Rect>
-<a:ListOfPoints>((17884,5231),(4010,5231))</a:ListOfPoints>
+<a:Rect>((-18078,4987), (4010,6161))</a:Rect>
+<a:ListOfPoints>((-18078,4987),(4010,4987))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1275,7 +1275,7 @@ CARD 0 Arial,8,N</a:FontList>
 <a:FontList>ROLE 0 Arial,8,N
 CARD 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:EntitySymbol Ref="o17"/>
+<o:EntitySymbol Ref="o13"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
 <o:AssociationSymbol Ref="o21"/>
@@ -1319,7 +1319,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:InheritanceSymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:EntitySymbol Ref="o17"/>
+<o:EntitySymbol Ref="o13"/>
 </c:DestinationSymbol>
 <c:Object>
 <o:Inheritance Ref="o27"/>
@@ -1344,7 +1344,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:InheritanceLink Ref="o30"/>
 </c:Object>
 </o:InheritanceLinkSymbol>
-<o:EntitySymbol Id="o17">
+<o:EntitySymbol Id="o13">
 <a:CreationDate>1361783152</a:CreationDate>
 <a:ModificationDate>1361796854</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
@@ -1406,7 +1406,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:Association Ref="o33"/>
 </c:Object>
 </o:AssociationSymbol>
-<o:EntitySymbol Id="o13">
+<o:EntitySymbol Id="o17">
 <a:CreationDate>1361783152</a:CreationDate>
 <a:ModificationDate>1361796854</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
@@ -1539,7 +1539,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>CATALOG_ITEM</a:Code>
 <a:CreationDate>1361783152</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361805126</a:ModificationDate>
+<a:ModificationDate>1364216485</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o39">
@@ -1661,7 +1661,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>CATALOG_CATEGORY</a:Code>
 <a:CreationDate>1361783152</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1361802990</a:ModificationDate>
+<a:ModificationDate>1364216485</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o53">
@@ -2315,7 +2315,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>CATALOG_ASSOCIER</a:Code>
 <a:CreationDate>1363761966</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1363763137</a:ModificationDate>
+<a:ModificationDate>1364216485</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 </o:Association>
 </c:Associations>
@@ -2352,21 +2352,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ObjectID>0C518C8E-017D-426C-A94E-3B3D627BE2DC</a:ObjectID>
 <a:CreationDate>1363761966</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1363761966</a:ModificationDate>
-<a:Modifier>AceTeaM</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
-<c:Object1>
-<o:Association Ref="o38"/>
-</c:Object1>
-<c:Object2>
-<o:Entity Ref="o34"/>
-</c:Object2>
-</o:AssociationLink>
-<o:AssociationLink Id="o18">
-<a:ObjectID>9A2408C4-75D4-4E83-A915-7B6CF727BA83</a:ObjectID>
-<a:CreationDate>1363761966</a:CreationDate>
-<a:Creator>AceTeaM</a:Creator>
-<a:ModificationDate>1363761966</a:ModificationDate>
+<a:ModificationDate>1364216480</a:ModificationDate>
 <a:Modifier>AceTeaM</a:Modifier>
 <a:Cardinality>0,n</a:Cardinality>
 <c:Object1>
@@ -2376,12 +2362,27 @@ LABL 0 Arial,8,N</a:FontList>
 <o:Entity Ref="o31"/>
 </c:Object2>
 </o:AssociationLink>
+<o:AssociationLink Id="o18">
+<a:ObjectID>9A2408C4-75D4-4E83-A915-7B6CF727BA83</a:ObjectID>
+<a:CreationDate>1363761966</a:CreationDate>
+<a:Creator>AceTeaM</a:Creator>
+<a:ModificationDate>1364216485</a:ModificationDate>
+<a:Modifier>AceTeaM</a:Modifier>
+<a:Cardinality>0,n</a:Cardinality>
+<c:Object1>
+<o:Association Ref="o38"/>
+</c:Object1>
+<c:Object2>
+<o:Entity Ref="o34"/>
+</c:Object2>
+</o:AssociationLink>
 </c:AssociationsLinks>
 <c:TargetModels>
 <o:TargetModel Id="o94">
 <a:ObjectID>84B75F46-BBA5-46C1-B197-0E3A9B3AEF23</a:ObjectID>
 <a:Name>catalog</a:Name>
 <a:Code>CATALOG</a:Code>
+<a:ExtractionID>1623225876</a:ExtractionID>
 <a:CreationDate>1361783213</a:CreationDate>
 <a:Creator>AceTeaM</a:Creator>
 <a:ModificationDate>1361783274</a:ModificationDate>
