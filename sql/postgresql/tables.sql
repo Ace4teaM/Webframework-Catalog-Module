@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8 (WFW)                            */
-/* Date de création :  20/03/2013 08:11:49                      */
+/* Date de création :  25/03/2013 14:01:48                      */
 /*==============================================================*/
 
 
@@ -42,9 +42,9 @@ comment on domain CATALOG_TYPE is
 /* Table : CATALOG_ASSOCIER                                     */
 /*==============================================================*/
 create table CATALOG_ASSOCIER (
-   CATALOG_CATEGORY_ID  VARCHAR(80)          not null,
    CATALOG_ITEM_ID      INT4                 not null,
-   constraint PK_CATALOG_ASSOCIER primary key (CATALOG_CATEGORY_ID, CATALOG_ITEM_ID)
+   CATALOG_CATEGORY_ID  VARCHAR(80)          not null,
+   constraint PK_CATALOG_ASSOCIER primary key (CATALOG_ITEM_ID, CATALOG_CATEGORY_ID)
 );
 
 /*==============================================================*/
@@ -115,13 +115,13 @@ create table VEHICLE (
 );
 
 alter table CATALOG_ASSOCIER
-   add constraint FK_CATALOG_ASSOCIER foreign key (CATALOG_ITEM_ID)
-      references CATALOG_ITEM (CATALOG_ITEM_ID)
+   add constraint FK_CATALOG_ASSOCIER foreign key (CATALOG_CATEGORY_ID)
+      references CATALOG_CATEGORY (CATALOG_CATEGORY_ID)
       on delete restrict on update restrict;
 
 alter table CATALOG_ASSOCIER
-   add constraint FK_CATALOG_ASSOCIER2 foreign key (CATALOG_CATEGORY_ID)
-      references CATALOG_CATEGORY (CATALOG_CATEGORY_ID)
+   add constraint FK_CATALOG_ASSOCIER2 foreign key (CATALOG_ITEM_ID)
+      references CATALOG_ITEM (CATALOG_ITEM_ID)
       on delete restrict on update restrict;
 
 alter table CATALOG_ITEM
