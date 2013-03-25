@@ -17,25 +17,27 @@ $select->load("view/catalog/pages/catalog.html");
 //ajoute le fichier de configuration
 $template->load_xml_file('default.xml', $app->getRootPath());
 
-$arg     = array(
-    "search_string" => "cInputString"
-);
-$opt_arg = array(
-    "catalog_category_id" => "cInputIdentifier",
-    "catalog_item_type" => "cInputIdentifier",
-    "sort" => "cInputIdentifier",
-);
+//requis
+if(!$app->makeFiledList(
+        $arg,
+        array( 'search_string' ),
+        cXMLDefault::FieldFormatClassName )
+   ) $app->processLastError();
+
+//optionnels
+if(!$app->makeFiledList(
+        $opt_arg,
+        array( 'catalog_category_id', 'item_type', 'sort' ),
+        cXMLDefault::FieldFormatClassName )
+   ) $app->processLastError();
 
 $bResult = false; // affiche les resultats
 
-// exemples JS
-if(cInputFields::checkArray($arg, $opt_arg , $_REQUEST))
+// vérifie la validitée des champs
+$p = array();
+if(cInputFields::checkArray($arg, $opt_arg, $_REQUEST, $p))
 {
-    //recherche les items
-    $category = isset($_REQUEST["catalog_category_id"]) && !empty($_REQUEST["catalog_category_id"]) ? $_REQUEST["catalog_category_id"] : NULL;
-    $sort = isset($_REQUEST["sort"]) && !empty($_REQUEST["sort"]) ? $_REQUEST["sort"] : NULL;
-    $type = isset($_REQUEST["catalog_item_type"]) && !empty($_REQUEST["catalog_item_type"]) ? $_REQUEST["catalog_item_type"] : NULL;
-    if (!CatalogModule::searchItems($items, NULL, $category, $_REQUEST["search_string"], $type, $sort, 0, 50))
+    if (!CatalogModule::searchItems($items, NULL, $p->catalog_category_id, $p->search_string, $p->item_type, $p->sort, 0, 50))
         goto failed;
 
     $bResult = true;
@@ -56,7 +58,7 @@ if(!$bResult){
 }
 
 //ajoute le catalogue (XML version)
-$doc = CatalogModule::toXML($items);
+$doc = CatalogModule::toXML(NULL,$items);
 $template->push_xml_file('catalog.php', $doc);
 
 //initialise la classe template 
