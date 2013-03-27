@@ -214,6 +214,8 @@ MyApp.onInitForm = function(Y)
     var wfw = Y.namespace("wfw");
     var g = MyApp.global.Vars;
     var formEl = Y.Node.one("#form");
+    if(!formEl)
+        return;
                 
     //champs
     var items=[];
