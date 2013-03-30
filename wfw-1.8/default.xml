@@ -54,7 +54,7 @@
         <messages>
             <!-- WFW -->
             <INPUT_MSG_INVALID_FIELD>
-                Merci de renseigner le champ: $FIELD_NAME.
+                Merci de renseigner le champ: $TXT_FIELD_NAME ($FIELD_NAME).
             </INPUT_MSG_INVALID_FIELD>
             <SOCK_SERVER_CONNECTION>
                 Cause retourné par le socket #$ERRNO : $ERRSTR
