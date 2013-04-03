@@ -177,7 +177,7 @@ class CatalogModule implements iModule
             return false;
 
         //extrait les données
-        while(is_array($row = $result->fetchRow()) && ($limit==-1 || $limit-->0)){
+        while(is_array($row = $result->fetchRow()) && ($limit==-1 || $limit-- > 0)){
             if(CatalogItemMgr::getById($item,$row["catalog_item_id"]))
                 array_push($list, $item);
         }
