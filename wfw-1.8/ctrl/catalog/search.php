@@ -26,38 +26,63 @@
  * UC   : catalog_search_items
  */
 
-//résultat de la requete
-RESULT(cResult::Ok,cApplication::Information,array("message"=>"WFW_MSG_POPULATE_FORM"));
-$result = cResult::getLast();
+class Ctrl extends cApplicationCtrl{
+    public $fields    = array( 'search_string' );
+    public $op_fields = array( 'catalog_category_id', 'item_type', 'sort' );
 
-$fields = array(
-    "search_string"=>"cInputString"
-);
+    function main(iApplication $app, $app_path, $p) {
 
-$op_fields = array(
-    "item_category"=>"cInputString",
-    "item_type"=>"cInputString"
-);
+        if (!CatalogModule::searchItems($items, NULL, $p->catalog_category_id, $p->search_string, $p->item_type, $p->sort, 0, 50))
+            return false;
 
-if(!empty($_REQUEST)){
-    // exemples JS
-    if(!cInputFields::checkArray($fields,$op_fields,$_REQUEST))
-        goto failed;
-    
-    //crée le compte utilisateur
-    if(!CatalogModule::searchItems($list,NULL,$_REQUEST["search_string"],NULL,NULL))
-        goto failed;
+        $att = array();
+        //$att = array_merge($att, $_REQUEST);
 
-    //retourne le resultat de cette fonction
-    $result = cResult::getLast();
-}
+        //ajoute le catalogue (XML version)
+        $doc = CatalogModule::toXML(NULL,$items);
 
-goto success;
-failed:
-// redefinit le resultat avec l'erreur en cours
-$result = cResult::getLast();
+        /* Génére la sortie */
+        $format = "html";
+        if(isset($_REQUEST["output"]))
+            $format = $_REQUEST["output"];
 
-success:
-;;
+        switch($format){
+            case "xarg":
+                break;
+            case "xml":
+                break;
+            case "html":
+                if(empty($items)){
+                    //affiche le formulaire
+                    echo $app->makeFormView($att,$arg,$opt_arg,$_REQUEST);
+                    exit;
+                }
 
+                //fabrique le template
+                $template_file = $app->getCfgValue("application", "main_template");
+
+                $template = new cXMLTemplate();
+
+                //charge le contenu en selection
+                $select = new XMLDocument("1.0", "utf-8");
+                $select->load("view/catalog/pages/catalog.html");
+
+                //ajoute le fichier de configuration
+                $template->load_xml_file('default.xml', $app->getRootPath());
+
+                $template->push_xml_file('catalog.php', $doc);
+                //initialise la classe template 
+                if (!$template->Initialise( $template_file, NULL, $select, NULL, array_merge($att, $app->getAttributes()) ))
+                    return false;
+
+                //sortie
+                echo $template->Make();
+                exit;
+            default:
+                break;
+        }
+        
+        return RESULT_OK();
+    }
+};
 ?>

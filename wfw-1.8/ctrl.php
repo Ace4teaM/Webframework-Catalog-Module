@@ -1,7 +1,7 @@
 <?php
 /*
     ---------------------------------------------------------------------------------------------------------------------------------------
-    (C)2012-2013 Thomas AUGUEY <contact@aceteam.org>
+    (C)2013 Thomas AUGUEY <contact@aceteam.org>
     ---------------------------------------------------------------------------------------------------------------------------------------
     This file is part of WebFrameWork.
 
@@ -19,12 +19,35 @@
     along with WebFrameWork.  If not, see <http://www.gnu.org/licenses/>.
     ---------------------------------------------------------------------------------------------------------------------------------------
 */
-if(isset($_REQUEST["ctrl"]))
-    include("ctrl.php");
+
+/*
+ * Point d'entree des controleurs principaux
+ * Rôle : Visiteur
+ * UC   : user_activate_account
+ */
 
 require_once("inc/globals.php");
 global $app;
 
-$app->showXMLView("view/catalog/pages/index.html",array());
+// Champs requis
+if(!$app->makeFiledList(
+        $fields,
+        array( 'ctrl' ),
+        cXMLDefault::FieldFormatClassName )
+   ) $app->processLastError();
+
+// Champs requis
+if(!$app->makeFiledList(
+        $op_fields,
+        array( 'app' ),
+        cXMLDefault::FieldFormatClassName )
+   ) $app->processLastError();
+
+// vérifie la validitée des champs
+$p = array();
+if(!cInputFields::checkArray($fields,$op_fields,$_REQUEST,$p))
+    $app->processLastError();
+
+$app->execCtrl($p->ctrl,$p->app);
 
 ?>

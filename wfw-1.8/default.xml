@@ -8,16 +8,16 @@
     <index>
         <page id="index" name="Accueil">index.php</page>
         <!-- admin -->
-        <page id="catalog_create" role="administrator" name="Créer un catalogue">catalog.php?page=create</page>
+        <page id="catalog_create" role="administrator" name="Créer un catalogue">ctrl.php?app=catalog_module&amp;ctrl=create</page>
         <!-- visiteur -->
-        <page id="catalog_search" role="visitor" name="Rechercher des items">catalog_search.php</page>
+        <page id="catalog_search" role="visitor" name="Rechercher des items">ctrl.php?app=catalog_module&amp;ctrl=search</page>
         <!-- utilisateur -->
     </index>
 
     <tree>
         <index/>
         <catalog_create/>
-        <catalog_serach_items/>
+        <catalog_serach/>
     </tree>
     
     <results lang="fr">
@@ -28,8 +28,11 @@
         </codes>
 
         <errors>
+            <!-- **************************************************************
+                   Webframework
+            ************************************************************** -->
             <!-- WFW (ERR_OK) -->
-            <APP_INFORMATION>Information</APP_INFORMATION>
+            <INFORMATION>Information</INFORMATION>
             <!-- WFW (ERR_FAILED) -->
             <NO_INPUT_FIELD>Aucun champ reçu</NO_INPUT_FIELD>
             <MISSING_FIELD>Champ manquant</MISSING_FIELD>
@@ -45,6 +48,8 @@
             <APP_UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</APP_UNKNOWN_HOSTNAME>
             <APP_NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</APP_NO_DATABASE_CONFIGURED>
             <APP_UNKNOWN_FORM_TEMPLATE_FILE>Le template de formulaire est indéfinit</APP_UNKNOWN_FORM_TEMPLATE_FILE>
+            <APP_UNKNOWN_FIELD>Paramètre d'entrée inconnu</APP_UNKNOWN_FIELD>
+            <APP_UNKNOWN_FIELD_FORMAT>Format de paramètre d'entrée inconnu</APP_UNKNOWN_FIELD_FORMAT>
             <!-- WFW (ERR_SYSTEM) -->
             <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
             <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
@@ -52,17 +57,23 @@
         </errors>
         
         <messages>
-            <!-- WFW -->
-            <INPUT_MSG_INVALID_FIELD>
+            <!-- **************************************************************
+                   Webframework
+            ************************************************************** -->
+            <MISSING_FIELD>
                 Merci de renseigner le champ: $TXT_FIELD_NAME ($FIELD_NAME).
-            </INPUT_MSG_INVALID_FIELD>
+            </MISSING_FIELD>
             <SOCK_SERVER_CONNECTION>
                 Cause retourné par le socket #$ERRNO : $ERRSTR
-                [$SERVER : $PORT]
             </SOCK_SERVER_CONNECTION>
             <WFW_MSG_POPULATE_FORM>
                 Merci de compléter le formulaire
             </WFW_MSG_POPULATE_FORM>
+            <APP_UNKNOWN_FIELD>L'Application doit définir le champs '$FIELD_NAME'</APP_UNKNOWN_FIELD>
+            <APP_UNKNOWN_FIELD_FORMAT>L'Application doit définir le format du champs '$FIELD_NAME'. Ajoutez ce format à la configuration (section [fields_formats]).</APP_UNKNOWN_FIELD_FORMAT>
+            <APP_UNKNOWN_FIELD_CLASS>L'Application doit définir la classe du champs '$CLASS_NAME'.</APP_UNKNOWN_FIELD_CLASS>
+            
+            
         </messages>
         
         <fields>
@@ -70,7 +81,7 @@
             <catalog_entry_id>Catalogue</catalog_entry_id>
             <catalog_item_id>Item</catalog_item_id>
             <catalog_category_id>Catégorie</catalog_category_id>
-            <catalog_item_type>Type d'item</catalog_item_type>
+            <item_type>Type d'item</item_type>
             <search_string>Texte à rechercher</search_string>
         </fields>
         
