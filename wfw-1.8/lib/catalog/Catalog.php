@@ -259,7 +259,9 @@ class CatalogModule implements iModule
             return false;
 
         $i=0;
-        while($result->seek($i,iDatabaseQuery::Current)){
+        while($result->seek($i,iDatabaseQuery::Origin)){
+            //if($item->catalogItemId==1)
+            //    echo($i);
             $cat = new CatalogCategory();
             CatalogCategoryMgr::bindResult($cat, $result);
             $i++;
@@ -292,7 +294,7 @@ class CatalogModule implements iModule
             return false;
 
         $i=0;
-        while($result->seek($i,iDatabaseQuery::Current)){
+        while($result->seek($i,iDatabaseQuery::Origin)){
             $cat = new CatalogCategory();
             CatalogCategoryMgr::bindResult($cat, $result);
             $i++;
