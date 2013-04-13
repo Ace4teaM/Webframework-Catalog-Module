@@ -181,7 +181,6 @@ class CatalogModule implements iModule
         $query = "select table_name, column_name from INFORMATION_SCHEMA.COLUMNS where table_name IN('".strtolower(implode("','",$list))."');";
         if(!$db->execute($query,$result))
                 return false;
-            echo("$query\n");
         
         // liste les colonnes qui serons affectées (par table)
         $table_columns = array();
@@ -190,7 +189,7 @@ class CatalogModule implements iModule
         {
             $table_name = $result->fetchValue("table_name");
             $column_name = $result->fetchValue("column_name");
-            echo("test $table_name:$column_name \n");
+
             if(!isset($fields[$column_name]))
                 continue;
             
@@ -213,7 +212,6 @@ class CatalogModule implements iModule
                     $query.="$column_name=".$db->parseValue($fields[$column_name]).",";
                 $query = substr($query,0,-1);
                 $query .= " where ".$table_name."_id=".$db->parseValue($item_id);
-                echo("$query\n");
             }
             else{
                 //met a jour l'entree
@@ -222,7 +220,6 @@ class CatalogModule implements iModule
                     $query .= $db->parseValue($fields[$column_name]).",";
                 $query = substr($query,0,-1);
                 $query .= ")";
-                echo("$query\n");
             }
             if(!$db->execute($query,$result))
                 return false;
