@@ -53,6 +53,47 @@ class CatalogModule implements iModule
     }
 
     /**
+     * @brief Crée un catalogue
+     * @param $inst Pointeur recevant l'instance du catalogue (CatalogEntry)
+     * @param $type Type de catalogue à initialiser (nom d'une table héritant de CATALOG_ENTRY)
+     * @param $typeInst Instance de la classe correspondant au type 'Type'
+     * @return Résultat de procédure
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks getItemsFields retourne tous les champs d'un item y compris les champs des tables étendus
+     */
+    public static function createCatalog(&$inst, $type, $typeInst)
+    {
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        if(!$db->call($app->getCfgValue("database","schema"), "make_id", array('catalog_entry','catalog_entry_id'), $result))
+            return false;
+
+        $row = $result->fetchRow();
+
+        //return $result;
+        $result = new cResult($row["err_code"], $row["err_str"], stra_to_array($row["ext_fields"]));
+
+        $inst = new CatalogEntry();
+        $inst->catalogEntryId = intval($result->getAtt("ID"));
+        $inst->catalogType = $type;
+
+        if(!CatalogEntryMgr::insert($inst))
+            return false;
+
+        $typeInst->setId($inst->catalogEntryId);
+        $typeInst->catalogEntryId = $inst->catalogEntryId;
+        $mgr = str_replace("_", "", $type)."Mgr";
+        if(!$mgr::insert($typeInst, array("CATALOG_ENTRY_ID"=>$inst->getId())))
+            return false;
+        
+        return RESULT_OK();
+    }
+    
+    /**
      * @brief Crée un catalogue au format XML
      * @param $items Tableaux des instances d'items (CatalogItem)
      * @return Document XML
