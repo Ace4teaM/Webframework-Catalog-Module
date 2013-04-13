@@ -94,6 +94,144 @@ class CatalogModule implements iModule
     }
     
     /**
+     * @brief Crée un item
+     * @param $catalog Instance ou identifiant du catalogue recevant le nouvel item (CatalogEntry)
+     * @param $item Pointeur recevant l'instance du nouvel item (CatalogItem)
+     * @param $title Titre de l'item
+     * @param $desc Description de l'item
+     * @param $category Tableau des catégories à associés
+     * @param $fields Tableau associatif des champs à initialiser
+     * @return Résultat de procédure
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks 'createItem' utilise la methode 'setItemsFields' pour initialiser les champs
+     */
+    public static function createItem($catalog, &$inst, $title, $desc, $category, $fields)
+    {
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        //identifiant de l'item
+        $catalog_entry_id = $catalog instanceof CatalogEntry ? $catalog->getId() : $catalog;
+
+        //
+        if(!$db->call($app->getCfgValue("database","schema"), "make_id", array('catalog_item','catalog_item_id'), $result))
+            return false;
+
+        $row = $result->fetchRow();
+
+        //return $result;
+        $result = new cResult($row["err_code"], $row["err_str"], stra_to_array($row["ext_fields"]));
+
+        $inst = new CatalogItem();
+        $inst->catalogItemId = intval($result->getAtt("ID"));
+        $inst->itemTitle = $title;
+        $inst->itemDesc  = $desc;
+        $inst->creationDate  = date(DATE_RFC822);
+
+        if(!CatalogItemMgr::insert($inst,array("catalog_entry_id"=>$catalog_entry_id)))
+            return false;
+        
+        //associe les categories
+        if(is_array($category)){
+            foreach($category as $key=>$type)
+            {
+                //obtient le nom des tables liées à l'item
+                if(!$db->execute("INSERT INTO CATALOG_ASSOCIER VALUES($inst->catalogItemId, '$type')", $result))
+                    return false;
+            }
+        }
+        
+        //associe les données
+        if(is_array($fields)){
+          if(!CatalogModule::setItemFields($inst, $fields))
+            return false;
+        }
+        
+        return RESULT_OK();
+    }
+    
+    /**
+     * @brief Initialise les champs d'un item
+     * @param $item Instance ou identifiant de l'item à modifier
+     * @param $fields Tableau associatif des champs à initialiser
+     * @return Résultat de procédure
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks setItemFields initialise automatiquement les diverses tables associé à l'item. Si aucune entrée existe setItemFields réalise une opération INSERT sion une opération UPDATE est effectuée.
+     * @remarks Si une opération INSERT est nécessaire, veillez à renseigner tout les champs obligatoires. Dans le cas contraire la fonction échouera.
+     */
+    public static function setItemFields($item, $fields)
+    {
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        //identifiant de l'item
+        $item_id = $item instanceof CatalogItem ? $item->getId() : $item;
+
+        //obtient les tables associées à l'item
+        if(!CatalogModule::getItemsTypes($item_id, $list))
+            return false;
+        
+        //initialise les colonnes des tables associées
+        $query = "select table_name, column_name from INFORMATION_SCHEMA.COLUMNS where table_name IN('".strtolower(implode("','",$list))."');";
+        if(!$db->execute($query,$result))
+                return false;
+            echo("$query\n");
+        
+        // liste les colonnes qui serons affectées (par table)
+        $table_columns = array();
+        $cnt=0;
+        while($result->seek($cnt++,iDatabaseQuery::Origin))
+        {
+            $table_name = $result->fetchValue("table_name");
+            $column_name = $result->fetchValue("column_name");
+            echo("test $table_name:$column_name \n");
+            if(!isset($fields[$column_name]))
+                continue;
+            
+            if(!isset($table_columns[$table_name]))
+                $table_columns[$table_name] = array();
+            array_push($table_columns[$table_name],$column_name);
+        }
+        
+        //initialise les tables
+        foreach($table_columns as $table_name=>$columns)
+        {
+            //test si une entree existe
+            if(!$db->execute("SELECT true FROM $table_name WHERE ".$table_name."_id=".$db->parseValue($item_id),$test_result))
+                return false;
+            $query = "";
+            if($test_result->rowCount()){
+                //met a jour l'entree
+                $query = "UPDATE $table_name SET ";
+                foreach($columns as $key=>$column_name)
+                    $query.="$column_name=".$db->parseValue($fields[$column_name]).",";
+                $query = substr($query,0,-1);
+                $query .= " where ".$table_name."_id=".$db->parseValue($item_id);
+                echo("$query\n");
+            }
+            else{
+                //met a jour l'entree
+                $query = "INSERT INTO $table_name (".$table_name."_id, catalog_item_id, ".implode(',',$columns).") VALUES( ".$db->parseValue($item_id).",  ".$db->parseValue($item_id).", ";
+                foreach($columns as $key=>$column_name)
+                    $query .= $db->parseValue($fields[$column_name]).",";
+                $query = substr($query,0,-1);
+                $query .= ")";
+                echo("$query\n");
+            }
+            if(!$db->execute($query,$result))
+                return false;
+        }
+        
+        return RESULT_OK();
+    }
+    
+    /**
      * @brief Crée un catalogue au format XML
      * @param $items Tableaux des instances d'items (CatalogItem)
      * @return Document XML
@@ -272,6 +410,39 @@ class CatalogModule implements iModule
         $fields = $result->fetchRow();
  //     print_r($fields);
         return RESULT_OK();
+    }
+    
+    /**
+     * @brief Liste les tables associées à un item
+     * @param $item Instance ou identifiant de l'item (CatalogItem)
+     * @param $list Instances des catégories trouvées (string[])
+     * @return Résultat de procédures
+     */
+    public static function getItemsTypes($item,&$list)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+
+        //identifiant de l'item
+        $item_id = $item instanceof CatalogItem ? $item->getId() : $item;
+
+        //obtient le nom des tables liées à l'item
+        if($db->execute("select * from catalog_items_types($item_id) as item_type", $result))
+        {
+            // join les tables au resultat
+            $cnt=0;
+            while($result->seek($cnt,iDatabaseQuery::Origin)){
+                $type = $result->fetchValue("item_type");
+                array_push($list,$type);
+                $cnt++;
+            }
+        }
+        
+        return $list;
     }
     
     /**
