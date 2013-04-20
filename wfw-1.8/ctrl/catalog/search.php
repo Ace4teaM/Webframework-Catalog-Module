@@ -68,7 +68,8 @@ class Ctrl extends cApplicationCtrl{
                 $select->load("view/catalog/pages/catalog.html");
 
                 //ajoute le fichier de configuration
-                $template->load_xml_file('default.xml', $app->getRootPath());
+                if($app->getDefaultFile($default))
+                    $template->push_xml_file('default.xml',$default);
 
                 $template->push_xml_file('catalog.php', $doc);
                 //initialise la classe template 
