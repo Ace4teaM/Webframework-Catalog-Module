@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-    <title>Mailling</title>
-    <name>mail_module</name>
+    <title>Catalog</title>
+    <name>catalog_module</name>
     <base>webframework</base>
-    <description>Gestionnaire de courrier électronique</description>
+    <description>Gestionnaire de catalogue</description>
     
     <index>
         <page id="index" name="Accueil">index.php</page>
@@ -21,60 +21,11 @@
     </tree>
     
     <results lang="fr">
-        <codes>
-            <ERR_OK>Succès</ERR_OK>
-            <ERR_FAILED>Echec</ERR_FAILED>
-            <ERR_SYSTEM>Erreur système</ERR_SYSTEM>
-        </codes>
+        <codes></codes>
 
-        <errors>
-            <!-- **************************************************************
-                   Webframework
-            ************************************************************** -->
-            <!-- WFW (ERR_OK) -->
-            <INFORMATION>Information</INFORMATION>
-            <!-- WFW (ERR_FAILED) -->
-            <NO_INPUT_FIELD>Aucun champ reçu</NO_INPUT_FIELD>
-            <MISSING_FIELD>Champ manquant</MISSING_FIELD>
-            <EMPTY_TEXT>Champ vide</EMPTY_TEXT>
-            <INVALID_CHAR>Champ contenant des caractères interdits</INVALID_CHAR>
-            <INVALID_FORMAT>Champ mal formé</INVALID_FORMAT>
-            <INVALID_RANGE>Rang de valeur invalide</INVALID_RANGE>
-            <OVERSIZED>Trop de caractères</OVERSIZED>
-            <UNDERSIZED>Pas assez de caractères</UNDERSIZED>
-            <DB_CONNECTION>Connexion au serveur de base de données a échouée</DB_CONNECTION>
-            <DB_SQL_QUERY>Requête SQL mal formée</DB_SQL_QUERY>
-            <SOCK_OPEN_URL>La connexion au serveur a échouée</SOCK_OPEN_URL>
-            <APP_UNKNOWN_HOSTNAME>Nom de l'hôte inconnu</APP_UNKNOWN_HOSTNAME>
-            <APP_NO_DATABASE_CONFIGURED>Aucune base de donées n'est présente dans la configuration</APP_NO_DATABASE_CONFIGURED>
-            <APP_UNKNOWN_FORM_TEMPLATE_FILE>Le template de formulaire est indéfinit</APP_UNKNOWN_FORM_TEMPLATE_FILE>
-            <APP_UNKNOWN_FIELD>Paramètre d'entrée inconnu</APP_UNKNOWN_FIELD>
-            <APP_UNKNOWN_FIELD_FORMAT>Format de paramètre d'entrée inconnu</APP_UNKNOWN_FIELD_FORMAT>
-            <!-- WFW (ERR_SYSTEM) -->
-            <SYS_TASK_CREATE>La tâche ne peut pas être créée</SYS_TASK_CREATE>
-            <SYS_TASK_UPDATE>La tâche ne peut pas être mise à jour</SYS_TASK_UPDATE>
-            
-        </errors>
+        <errors></errors>
         
-        <messages>
-            <!-- **************************************************************
-                   Webframework
-            ************************************************************** -->
-            <MISSING_FIELD>
-                Merci de renseigner le champ: $TXT_FIELD_NAME ($FIELD_NAME).
-            </MISSING_FIELD>
-            <SOCK_SERVER_CONNECTION>
-                Cause retourné par le socket #$ERRNO : $ERRSTR
-            </SOCK_SERVER_CONNECTION>
-            <WFW_MSG_POPULATE_FORM>
-                Merci de compléter le formulaire
-            </WFW_MSG_POPULATE_FORM>
-            <APP_UNKNOWN_FIELD>L'Application doit définir le champs '$FIELD_NAME'</APP_UNKNOWN_FIELD>
-            <APP_UNKNOWN_FIELD_FORMAT>L'Application doit définir le format du champs '$FIELD_NAME'. Ajoutez ce format à la configuration (section [fields_formats]).</APP_UNKNOWN_FIELD_FORMAT>
-            <APP_UNKNOWN_FIELD_CLASS>L'Application doit définir la classe du champs '$CLASS_NAME'.</APP_UNKNOWN_FIELD_CLASS>
-            
-            
-        </messages>
+        <messages></messages>
         
         <fields>
             <!-- Catalog -->
