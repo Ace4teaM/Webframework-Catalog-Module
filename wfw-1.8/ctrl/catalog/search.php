@@ -69,7 +69,7 @@ class Ctrl extends cApplicationCtrl{
 
                 //ajoute le fichier de configuration
                 if($app->getDefaultFile($default))
-                    $template->push_xml_file('default.xml',$default);
+                    $template->push_xml_file('default.xml',$default->doc);
 
                 $template->push_xml_file('catalog.php', $doc);
                 //initialise la classe template 
