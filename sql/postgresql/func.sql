@@ -8,6 +8,11 @@
 
 /*
   Recherche des items
+  @param p_text         Optionel, Texte à rechercher
+  @param p_catalog      Identifiant du catalogue
+  @param p_category     Optionel, Catégorie de l'item
+  @param p_type         Optionel, Type d'item
+  @param p_sort         Optionel, Nom de la colonne de tri (order by)
 */
 create or replace function catalog_search_items( 
 	p_text varchar,
