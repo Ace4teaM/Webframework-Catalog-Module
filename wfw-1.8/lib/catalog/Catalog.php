@@ -412,7 +412,7 @@ class CatalogModule implements iModule
     /**
      * @brief Liste les tables associées à un item
      * @param $item Instance ou identifiant de l'item (CatalogItem)
-     * @param $list Instances des catégories trouvées (string[])
+     * @param $list Identifiants des catégories trouvées (string[])
      * @return Résultat de procédures
      */
     public static function getItemsTypes($item,&$list)
@@ -496,7 +496,11 @@ class CatalogModule implements iModule
             return false;
 
         //prepare la requete
-        $query = "select distinct * from catalog_category where item_type = '$type';";
+        $query = "select distinct * from catalog_category where ";
+        if(is_array($type))
+            $query .= "item_type in('".implode("','", $type)."');";
+        else
+            $query .= "item_type = '$type';";
 
         //obtient le nom des tables liées à l'item
         if(!$db->execute($query, $result))
