@@ -16,10 +16,10 @@ if(!preg_match('/(?:^|[\n\r\s]+)@const\s+wfw_path\s*=\s*\"([^\"]*)/', $ini_file_
 $wfw_path = trim($matches[1]);
 
 //ajoute le chemin d'accès à WFW
-set_include_path(get_include_path() . PATH_SEPARATOR . $wfw_path);
+set_include_path(get_include_path() . PATH_SEPARATOR . $wfw_path."/php");
 
 //fonction de parsing (fichier ini)
-include('php/ini_parse.php');
+include('ini_parse.php');
 
 //charge la configuration
 $config = parse_ini_string_ex($ini_file_content);
