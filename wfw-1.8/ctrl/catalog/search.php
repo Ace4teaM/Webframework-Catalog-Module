@@ -26,7 +26,7 @@
  * UC   : catalog_search_items
  */
 
-class Ctrl extends cApplicationCtrl{
+class catalog_module_search_ctrl extends cApplicationCtrl{
     public $fields    = array( 'search_string' );
     public $op_fields = array( 'catalog_category_id', 'item_type', 'sort' );
 
