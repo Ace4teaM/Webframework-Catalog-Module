@@ -48,6 +48,6 @@ $p = array();
 if(!cInputFields::checkArray($fields,$op_fields,$_REQUEST,$p))
     $app->processLastError();
 
-$app->execCtrl($p->ctrl,$p->app);
+$app->execCtrl($p->ctrl,$p->app,$app->getRole());
 
 ?>
