@@ -28,12 +28,24 @@
         <messages></messages>
         
         <fields>
-            <!-- Catalog -->
-            <catalog_entry_id>Catalogue</catalog_entry_id>
-            <catalog_item_id>Item</catalog_item_id>
-            <catalog_category_id>Catégorie</catalog_category_id>
-            <item_type>Type d'item</item_type>
+            <!-- globals -->
             <search_string>Texte à rechercher</search_string>
+            <sort>Tri</sort>
+
+            <!--  Catalog->Entry -->
+            <catalog_entry_id>Catalogue</catalog_entry_id>
+            <catalog_type>Type de catalogue</catalog_type>
+
+            <!--  Catalog->Item -->
+            <catalog_item_id>Item</catalog_item_id>
+            <item_title>Titre de l'item</item_title>
+            <item_desc>Description de l'item</item_desc>
+            <creation_date>Date de création</creation_date>
+
+            <!--  Catalog->Category -->
+            <catalog_category_id>Catégorie</catalog_category_id>
+            <category_desc>Description de la catégorie</category_desc>
+            <item_type>Type d'item</item_type>
         </fields>
         
     </results>
