@@ -29,50 +29,50 @@ declare
     cond varchar default '';
     find_text varchar;
 begin
-	-- Requete
-	query := 'select distinct i.* from catalog_item i' ||
-		 ' inner join catalog_category c on c.catalog_category_id in (select a.catalog_category_id from catalog_associer a where a.catalog_item_id = i.catalog_item_id)';
+    -- Requete
+    query := 'select distinct i.* from catalog_item i' ||
+             ' inner join catalog_category c on c.catalog_category_id in (select a.catalog_category_id from catalog_associer a where a.catalog_item_id = i.catalog_item_id)';
 
-	-- Catalogue
-	if p_catalog is not null then 
-		cond := cond || ' and ( catalog_entry_id = ' || p_catalog || ')';
-	end if;
-	
-	-- Text
-	if p_text is not null then 
-		find_text := quote_literal('%'||lower(escape_accents(p_text))||'%');
-		cond := cond || ' and (lower(escape_accents(i.item_title)) like ' || find_text || ' or lower(escape_accents(i.item_desc)) like ' || find_text || ')';
-	end if;
-	
-	-- Categorie
-	if p_category is not null then 
-		find_text := quote_literal(lower(p_category));
-		cond := cond || ' and (lower(c.catalog_category_id) = ' || find_text || ')';
-	end if;
-	
-	-- Type
-	if p_type is not null then 
-		find_text := quote_literal(lower(p_type));
-		cond := cond || ' and (lower(c.item_type) = ' || find_text || ')';
-	end if;
-	
-	-- Ajoute la condition
-	query := query || ' where 1=1' || cond;
+    -- Catalogue
+    if p_catalog is not null then 
+            cond := cond || ' and ( catalog_entry_id = ' || p_catalog || ')';
+    end if;
 
-	-- Type
-	if p_sort is not null then 
-		query := query || ' order by ' || p_sort;
-	end if;
-	
-	RAISE NOTICE '%',query;
+    -- Text
+    if p_text is not null then 
+            find_text := quote_literal('%'||lower(escape_accents(p_text))||'%');
+            cond := cond || ' and (lower(escape_accents(i.item_title)) like ' || find_text || ' or lower(escape_accents(i.item_desc)) like ' || find_text || ')';
+    end if;
 
-	--execute la requete (ajoute les entrees au resultat)
-	for ret in execute query
-	loop
-		return next ret;
-	end loop;
+    -- Categorie
+    if p_category is not null then 
+            find_text := quote_literal(lower(p_category));
+            cond := cond || ' and (lower(c.catalog_category_id) = ' || find_text || ')';
+    end if;
 
-	return;
+    -- Type
+    if p_type is not null then 
+            find_text := quote_literal(lower(p_type));
+            cond := cond || ' and (lower(c.item_type) = ' || find_text || ')';
+    end if;
+
+    -- Ajoute la condition
+    query := query || ' where 1=1' || cond;
+
+    -- Type
+    if p_sort is not null then 
+            query := query || ' order by ' || p_sort;
+    end if;
+
+    RAISE NOTICE '%',query;
+
+    --execute la requete (ajoute les entrees au resultat)
+    for ret in execute query
+    loop
+            return next ret;
+    end loop;
+
+    return;
 end;
 $$
 LANGUAGE plpgsql;
