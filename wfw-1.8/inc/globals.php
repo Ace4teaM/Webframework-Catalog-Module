@@ -8,7 +8,7 @@ define("ROOT_PATH", realpath(THIS_PATH."/../")); //racine du site
 
 //recupere la constante du chemin d'accès vers wfw
 //indispensable pour parser la configuration puis initialiser l'application
-$ini_file_content = file_get_contents(ROOT_PATH."/cfg/config.ini");
+$ini_file_content = file_get_contents(ROOT_PATH."/config.ini");
 if(!preg_match('/(?:^|[\n\r\s]+)@const\s+wfw_path\s*=\s*\"([^\"]*)/', $ini_file_content, $matches)){
     echo("Can't find Webframework Path constant in configuration file");
     exit(-1);
