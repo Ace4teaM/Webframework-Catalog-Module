@@ -1,0 +1,9 @@
+# merged default.xml files
+Redirect /Webframework-Catalog-Module/wfw-1.8/default.xml /Webframework-Catalog-Module/wfw-1.8/defaults.php
+
+# protege les fichiers de configurations (sauf connexion locale)
+<Files *.ini>
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+</Files>
