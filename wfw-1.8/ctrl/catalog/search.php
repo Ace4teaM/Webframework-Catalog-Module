@@ -54,7 +54,7 @@ class catalog_module_search_ctrl extends cApplicationCtrl{
             case "html":
                 if(empty($items)){
                     //affiche le formulaire
-                    echo $app->makeFormView($att,$arg,$opt_arg,$_REQUEST);
+                    echo $app->makeFormView($att,$this->fields,$this->op_fields,$p);
                     exit;
                 }
 
