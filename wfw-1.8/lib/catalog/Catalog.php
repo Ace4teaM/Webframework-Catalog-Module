@@ -517,6 +517,96 @@ class CatalogModule implements iModule
 
         return RESULT_OK();
     }
+    
+    
+    /**
+     * @brief Retourne tous les champs d'un catalogue
+     * @param $entry Instance ou identifiant du catalogue
+     * @param $fields Tableau associatif recevant les champs
+     * @return Résultat de procédure
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks getCatalogFields retourne tous les champs d'un catalogue y compris les champs étendus
+     */
+    public static function getCatalogFields($entry, &$fields)
+    {
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        //identifiant du catalogue
+        $catalog_entry_id = $entry instanceof CatalogEntry ? $entry->getId() : $entry;
+
+        //prepare la requete
+        $query = "select * from catalog_entry i ";
+        
+        //obtient le nom de la table étendue
+        if($db->execute("select catalog_type from catalog_entry where catalog_entry_id='$catalog_entry_id'", $result))
+        {
+            // join la table au resultat
+            $table_name = $result->fetchValue("catalog_type");
+            if($table_name !== false){
+                $query .= " inner join $table_name e on e.catalog_entry_id = i.catalog_entry_id";
+            }
+        }
+        else
+            return false;
+        
+        //termine la requete
+        $query .= " where i.catalog_entry_id = $catalog_entry_id;";
+
+        //execute la requete
+        if(!$db->execute($query, $result))
+            return false;
+        
+        $fields = $result->fetchRow();
+ //     print_r($fields);
+        return RESULT_OK();
+    }
+    
+    /**
+     * @brief Recherche des catalogues
+     * @param $list Tableau des instances trouvés (CatalogEntry)
+     * @param $type Type de catalogue admis. Si NULL, tous les types
+     * @param $sort Colonne à trier. Si NULL, aucun tri
+     * @param $offset Offset de départ
+     * @param $limit Limite de recherche. Si -1, aucune
+     * @return Résultat de procédure
+     * @retval true La recherche à réussi, l'argument $list est initialisé
+     * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
+     * @remarks Les accents ne sont pas prit en compte dans la recherche.
+     */
+    public static function searchCatalogs(&$list, $type=NULL, $sort=NULL, $offset=0, $limit=-1, &$count=NULL)
+    {
+        $list = array();
+        $db = null;
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+        
+        if(!$db->call($app->getCfgValue("database","schema"), "catalog_search_entry", array($type,$sort), $result))
+            return false;
+
+        if($count !== NULL)
+            $count = $result->rowCount();
+        
+        //offset
+        if($offset && !$result->seek($offset,iDatabaseQuery::Origin))
+            return false;
+
+        //extrait les données
+        while(is_array($row = $result->fetchRow()) && ($limit==-1 || $limit-- > 0)){
+            $item = null;
+            if(CatalogEntryMgr::getById($item,$row["catalog_entry_id"]))
+                array_push($list, $item);
+        }
+
+        return RESULT_OK();
+    }
+    
 }
 
 ?>

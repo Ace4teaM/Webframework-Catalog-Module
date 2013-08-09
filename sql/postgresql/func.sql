@@ -111,3 +111,51 @@ begin
 end;
 $$
 LANGUAGE plpgsql;
+
+
+/*
+  Recherche des catalogues
+  @param p_type         Optionel, Type de catalogue
+  @param p_sort         Optionel, Nom de la colonne de tri (order by)
+*/
+create or replace function catalog_search_entry( 
+	p_type catalog_entry.catalog_type%type,
+	p_sort varchar
+)
+returns SETOF catalog_entry
+as $$
+declare
+    ret catalog_entry%rowtype;
+    query varchar;
+    find_text varchar;
+    cond varchar default '';
+begin
+    -- Requete
+    query := 'select distinct i.* from catalog_entry i';
+
+    -- Type
+    if p_type is not null then 
+        find_text := quote_literal(lower(p_type));
+        cond := cond || ' and (lower(i.catalog_type) = ' || find_text || ')';
+    end if;
+
+    -- Ajoute la condition
+    query := query || ' where 1=1' || cond;
+
+    -- Type
+    if p_sort is not null then 
+        query := query || ' order by ' || p_sort;
+    end if;
+
+    RAISE NOTICE '%',query;
+
+    --execute la requete (ajoute les entrees au resultat)
+    for ret in execute query
+    loop
+            return next ret;
+    end loop;
+
+    return;
+end;
+$$
+LANGUAGE plpgsql;
