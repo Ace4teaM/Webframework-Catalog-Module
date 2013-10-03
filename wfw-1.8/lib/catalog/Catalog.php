@@ -160,8 +160,8 @@ class CatalogModule implements iModule
      * @return Résultat de procédure
      * @retval true La recherche à réussi, l'argument $list est initialisé
      * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
-     * @remarks setItemFields initialise automatiquement les diverses tables associé à l'item. Si aucune entrée existe setItemFields réalise une opération INSERT sion une opération UPDATE est effectuée.
-     * @remarks Si une opération INSERT est nécessaire, veillez à renseigner tout les champs obligatoires. Dans le cas contraire la fonction échouera.
+     * @remarks setItemFields initialise automatiquement les diverses tables associé à l'item. Si aucune entrée existe setItemFields réalise une opération INSERT sinon une opération UPDATE.
+     * @remarks Si une opération INSERT est nécessaire, veillez à renseigner tous les champs obligatoires. Dans le cas contraire la fonction échouera.
      */
     public static function setItemFields($item, $fields)
     {
@@ -174,9 +174,10 @@ class CatalogModule implements iModule
         $item_id = $item instanceof CatalogItem ? $item->getId() : $item;
 
         //obtient les tables associées à l'item
+        //seul les types existants serons affectés
         if(!CatalogModule::getItemsTypes($item_id, $list))
             return false;
-        
+
         //initialise les colonnes des tables associées
         $query = "select table_name, column_name from INFORMATION_SCHEMA.COLUMNS where table_name IN('".strtolower(implode("','",$list))."');";
         if(!$db->execute($query,$result))
@@ -472,6 +473,46 @@ class CatalogModule implements iModule
             if($result->fetchValue("count") == "1")
                 return true;
             return false;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * @brief Associe un item à une catégorie
+     * @param $item Instance ou identifiant de l'item (CatalogItem)
+     * @param $category Instance ou identifiant Catègorie (CatalogCategory)
+     * @return Résultat de la procédure
+     */
+    public static function setItemCategory($item,$category)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+
+        //identifiant de l'item
+        $item_id = $item instanceof CatalogItem ? $item->getId() : $item;
+        $category_id = $item instanceof CatalogCategoy ? $category->getId() : $category;
+        
+        //vérifie si la catégorie existe déjà
+        /*if($db->execute("select count(*) from catalog_associer where catalog_item_id=$item_id and catalog_category_id='$category'", $result))
+        {
+            if($result->fetchValue("count") == "1")
+                return RESULT(cResult::Ok,"CATAEGORY_ALREADY_SET");
+        }
+        else
+            return false;*/
+        
+        //obtient le nom des tables liées à l'item
+        if($db->execute("insert into catalog_associer (catalog_item_id,catalog_category_id)
+                            values($item_id,'$category');
+                            ", $result))
+        {
+            RESULT_OK();
+            return true;
         }
         
         return false;
