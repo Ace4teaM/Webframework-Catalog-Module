@@ -31,6 +31,13 @@
 */
 class CatalogEntry
 {
+   public function getId(){
+      return $this->catalogEntryId;
+  }
+   public function setId($id){
+      return $this->catalogEntryId = $id;
+  }
+
     
     /**
     * @var      int
@@ -58,7 +65,7 @@ class CatalogEntryMgr
      * @return New element node
      */
     public static function toXML(&$inst,$doc) {
-        $node = $doc->createElement("CatalogEntry");
+        $node = $doc->createElement(strtolower("CatalogEntry"));
         
         $node->appendChild($doc->createTextElement("catalog_entry_id",$inst->catalogEntryId));
         $node->appendChild($doc->createTextElement("catalog_type",$inst->catalogType));       
@@ -89,14 +96,14 @@ class CatalogEntryMgr
        
       //extrait les instances
        $i=0;
-       while($result->seek($i)){
+       while( $result->seek($i,iDatabaseQuery::Origin) ){
         $inst = new CatalogEntry();
         CatalogEntryMgr::bindResult($inst,$result);
         array_push($list,$inst);
         $i++;
        }
        
-       return true;
+       return RESULT_OK();
     }
     
     /*
@@ -128,6 +135,8 @@ class CatalogEntryMgr
        $query = "SELECT * from catalog_entry where $cond";
        if($db->execute($query,$result)){
             $inst = new CatalogEntry();
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
           return CatalogEntryMgr::bindResult($inst,$result);
        }
        return false;
@@ -145,21 +154,89 @@ class CatalogEntryMgr
        if(!$db && !$app->getDB($db))
          return false;
       
-       if(is_string($id))
-           $id = "'$id'";
-           
       //execute la requete
-       $query = "SELECT * from catalog_entry where catalog_entry_id=$id";
+       $query = "SELECT * from catalog_entry where catalog_entry_id=".$db->parseValue($id);
        if($db->execute($query,$result)){
             $inst = new CatalogEntry();
-          $inst->catalogEntryId = $result->fetchValue("catalog_entry_id");
-          $inst->catalogType = $result->fetchValue("catalog_type");          
-
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+             self::bindResult($inst,$result);
           return true;
        }
        return false;
     }
+    
+   /*
+      @brief Insert single entry with generated id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $add_fields Array of columns names/columns values of additional fields
+      @param $db iDataBase derived instance
+    */
+    public static function insert(&$inst,$add_fields=null,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->catalogEntryId)){
+            $table_name = 'catalog_entry';
+            $table_id_name = $table_name.'_id';
+           if(!$db->execute("select * from new_id('$table_name','$table_id_name');",$result))
+              return RESULT(cResult::Failed, cApplication::EntityMissingId);
+           $inst->catalogEntryId = intval($result->fetchValue("new_id"));
+       }
+       
+      //execute la requete
+       $query = "INSERT INTO catalog_entry (";
+       $query .= " catalog entry id,";
+       $query .= " catalog type,";
+       if(is_array($add_fields))
+           $query .= implode(',',array_keys($add_fields)).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       $query .= " VALUES(";
+       $query .= $db->parseValue($inst->catalogEntryId).",";
+       $query .= $db->parseValue($inst->catalogType).",";
+       if(is_array($add_fields))
+           $query .= implode(',',$add_fields).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       if($db->execute($query,$result))
+          return true;
 
+       return false;
+    }
+    
+   /*
+      @brief Update single entry by id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $db iDataBase derived instance
+    */
+    public static function update(&$inst,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->catalogEntryId))
+           return RESULT(cResult::Failed, cApplication::EntityMissingId);
+      
+      //execute la requete
+       $query = "UPDATE catalog_entry SET";
+       $query .= " catalog entry id =".$db->parseValue($inst->catalogEntryId).",";
+       $query .= " catalog type =".$db->parseValue($inst->catalogType).",";
+       $query = substr($query,0,-1);//remove last ','
+       $query .= " where catalog_entry_id=".$db->parseValue($inst->catalogEntryId);
+       if($db->execute($query,$result))
+          return true;
+
+       return false;
+    }
+    
    /** @brief Convert name to code */
     public static function nameToCode($name){
         for($i=strlen($name)-1;$i>=0;$i--){

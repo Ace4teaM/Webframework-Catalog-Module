@@ -31,6 +31,13 @@
 */
 class CatalogCategory
 {
+   public function getId(){
+      return $this->catalogCategoryId;
+  }
+   public function setId($id){
+      return $this->catalogCategoryId = $id;
+  }
+
     
     /**
     * @var      String
@@ -63,7 +70,7 @@ class CatalogCategoryMgr
      * @return New element node
      */
     public static function toXML(&$inst,$doc) {
-        $node = $doc->createElement("CatalogCategory");
+        $node = $doc->createElement(strtolower("CatalogCategory"));
         
         $node->appendChild($doc->createTextElement("catalog_category_id",$inst->catalogCategoryId));
         $node->appendChild($doc->createTextElement("category_desc",$inst->categoryDesc));
@@ -95,14 +102,14 @@ class CatalogCategoryMgr
        
       //extrait les instances
        $i=0;
-       while($result->seek($i)){
+       while( $result->seek($i,iDatabaseQuery::Origin) ){
         $inst = new CatalogCategory();
         CatalogCategoryMgr::bindResult($inst,$result);
         array_push($list,$inst);
         $i++;
        }
        
-       return true;
+       return RESULT_OK();
     }
     
     /*
@@ -135,6 +142,8 @@ class CatalogCategoryMgr
        $query = "SELECT * from catalog_category where $cond";
        if($db->execute($query,$result)){
             $inst = new CatalogCategory();
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
           return CatalogCategoryMgr::bindResult($inst,$result);
        }
        return false;
@@ -152,22 +161,92 @@ class CatalogCategoryMgr
        if(!$db && !$app->getDB($db))
          return false;
       
-       if(is_string($id))
-           $id = "'$id'";
-           
       //execute la requete
-       $query = "SELECT * from catalog_category where catalog_category_id=$id";
+       $query = "SELECT * from catalog_category where catalog_category_id=".$db->parseValue($id);
        if($db->execute($query,$result)){
             $inst = new CatalogCategory();
-          $inst->catalogCategoryId = $result->fetchValue("catalog_category_id");
-          $inst->categoryDesc = $result->fetchValue("category_desc");
-          $inst->itemType = $result->fetchValue("item_type");          
-
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+             self::bindResult($inst,$result);
           return true;
        }
        return false;
     }
+    
+   /*
+      @brief Insert single entry with generated id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $add_fields Array of columns names/columns values of additional fields
+      @param $db iDataBase derived instance
+    */
+    public static function insert(&$inst,$add_fields=null,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->catalogCategoryId)){
+            $table_name = 'catalog_category';
+            $table_id_name = $table_name.'_id';
+           if(!$db->execute("select * from new_id('$table_name','$table_id_name');",$result))
+              return RESULT(cResult::Failed, cApplication::EntityMissingId);
+           $inst->catalogCategoryId = intval($result->fetchValue("new_id"));
+       }
+       
+      //execute la requete
+       $query = "INSERT INTO catalog_category (";
+       $query .= " catalog category id,";
+       $query .= " category desc,";
+       $query .= " item type,";
+       if(is_array($add_fields))
+           $query .= implode(',',array_keys($add_fields)).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       $query .= " VALUES(";
+       $query .= $db->parseValue($inst->catalogCategoryId).",";
+       $query .= $db->parseValue($inst->categoryDesc).",";
+       $query .= $db->parseValue($inst->itemType).",";
+       if(is_array($add_fields))
+           $query .= implode(',',$add_fields).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       if($db->execute($query,$result))
+          return true;
 
+       return false;
+    }
+    
+   /*
+      @brief Update single entry by id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $db iDataBase derived instance
+    */
+    public static function update(&$inst,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->catalogCategoryId))
+           return RESULT(cResult::Failed, cApplication::EntityMissingId);
+      
+      //execute la requete
+       $query = "UPDATE catalog_category SET";
+       $query .= " catalog category id =".$db->parseValue($inst->catalogCategoryId).",";
+       $query .= " category desc =".$db->parseValue($inst->categoryDesc).",";
+       $query .= " item type =".$db->parseValue($inst->itemType).",";
+       $query = substr($query,0,-1);//remove last ','
+       $query .= " where catalog_category_id=".$db->parseValue($inst->catalogCategoryId);
+       if($db->execute($query,$result))
+          return true;
+
+       return false;
+    }
+    
    /** @brief Convert name to code */
     public static function nameToCode($name){
         for($i=strlen($name)-1;$i>=0;$i--){

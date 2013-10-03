@@ -31,6 +31,13 @@
 */
 class Product
 {
+   public function getId(){
+      return $this->productId;
+  }
+   public function setId($id){
+      return $this->productId = $id;
+  }
+
     
     /**
     * @var      int
@@ -73,7 +80,7 @@ class ProductMgr
      * @return New element node
      */
     public static function toXML(&$inst,$doc) {
-        $node = $doc->createElement("Product");
+        $node = $doc->createElement(strtolower("Product"));
         
         $node->appendChild($doc->createTextElement("product_id",$inst->productId));
         $node->appendChild($doc->createTextElement("price",$inst->price));
@@ -107,14 +114,14 @@ class ProductMgr
        
       //extrait les instances
        $i=0;
-       while($result->seek($i)){
+       while( $result->seek($i,iDatabaseQuery::Origin) ){
         $inst = new Product();
         ProductMgr::bindResult($inst,$result);
         array_push($list,$inst);
         $i++;
        }
        
-       return true;
+       return RESULT_OK();
     }
     
     /*
@@ -149,6 +156,8 @@ class ProductMgr
        $query = "SELECT * from product where $cond";
        if($db->execute($query,$result)){
             $inst = new Product();
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
           return ProductMgr::bindResult($inst,$result);
        }
        return false;
@@ -166,24 +175,98 @@ class ProductMgr
        if(!$db && !$app->getDB($db))
          return false;
       
-       if(is_string($id))
-           $id = "'$id'";
-           
       //execute la requete
-       $query = "SELECT * from product where product_id=$id";
+       $query = "SELECT * from product where product_id=".$db->parseValue($id);
        if($db->execute($query,$result)){
             $inst = new Product();
-          $inst->productId = $result->fetchValue("product_id");
-          $inst->price = $result->fetchValue("price");
-          $inst->money = $result->fetchValue("money");
-          $inst->unit = $result->fetchValue("unit");
-          $inst->quantity = $result->fetchValue("quantity");          
-
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+             self::bindResult($inst,$result);
           return true;
        }
        return false;
     }
+    
+   /*
+      @brief Insert single entry with generated id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $add_fields Array of columns names/columns values of additional fields
+      @param $db iDataBase derived instance
+    */
+    public static function insert(&$inst,$add_fields=null,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->productId)){
+            $table_name = 'product';
+            $table_id_name = $table_name.'_id';
+           if(!$db->execute("select * from new_id('$table_name','$table_id_name');",$result))
+              return RESULT(cResult::Failed, cApplication::EntityMissingId);
+           $inst->productId = intval($result->fetchValue("new_id"));
+       }
+       
+      //execute la requete
+       $query = "INSERT INTO product (";
+       $query .= " product id,";
+       $query .= " price,";
+       $query .= " money,";
+       $query .= " unit,";
+       $query .= " quantity,";
+       if(is_array($add_fields))
+           $query .= implode(',',array_keys($add_fields)).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       $query .= " VALUES(";
+       $query .= $db->parseValue($inst->productId).",";
+       $query .= $db->parseValue($inst->price).",";
+       $query .= $db->parseValue($inst->money).",";
+       $query .= $db->parseValue($inst->unit).",";
+       $query .= $db->parseValue($inst->quantity).",";
+       if(is_array($add_fields))
+           $query .= implode(',',$add_fields).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       if($db->execute($query,$result))
+          return true;
 
+       return false;
+    }
+    
+   /*
+      @brief Update single entry by id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $db iDataBase derived instance
+    */
+    public static function update(&$inst,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->productId))
+           return RESULT(cResult::Failed, cApplication::EntityMissingId);
+      
+      //execute la requete
+       $query = "UPDATE product SET";
+       $query .= " product id =".$db->parseValue($inst->productId).",";
+       $query .= " price =".$db->parseValue($inst->price).",";
+       $query .= " money =".$db->parseValue($inst->money).",";
+       $query .= " unit =".$db->parseValue($inst->unit).",";
+       $query .= " quantity =".$db->parseValue($inst->quantity).",";
+       $query = substr($query,0,-1);//remove last ','
+       $query .= " where product_id=".$db->parseValue($inst->productId);
+       if($db->execute($query,$result))
+          return true;
+
+       return false;
+    }
+    
    /** @brief Convert name to code */
     public static function nameToCode($name){
         for($i=strlen($name)-1;$i>=0;$i--){

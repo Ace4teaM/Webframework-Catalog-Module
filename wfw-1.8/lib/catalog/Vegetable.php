@@ -31,6 +31,13 @@
 */
 class Vegetable
 {
+   public function getId(){
+      return $this->vegetableId;
+  }
+   public function setId($id){
+      return $this->vegetableId = $id;
+  }
+
     
     /**
     * @var      int
@@ -58,7 +65,7 @@ class VegetableMgr
      * @return New element node
      */
     public static function toXML(&$inst,$doc) {
-        $node = $doc->createElement("Vegetable");
+        $node = $doc->createElement(strtolower("Vegetable"));
         
         $node->appendChild($doc->createTextElement("vegetable_id",$inst->vegetableId));
         $node->appendChild($doc->createTextElement("famille",$inst->famille));       
@@ -89,14 +96,14 @@ class VegetableMgr
        
       //extrait les instances
        $i=0;
-       while($result->seek($i)){
+       while( $result->seek($i,iDatabaseQuery::Origin) ){
         $inst = new Vegetable();
         VegetableMgr::bindResult($inst,$result);
         array_push($list,$inst);
         $i++;
        }
        
-       return true;
+       return RESULT_OK();
     }
     
     /*
@@ -128,6 +135,8 @@ class VegetableMgr
        $query = "SELECT * from vegetable where $cond";
        if($db->execute($query,$result)){
             $inst = new Vegetable();
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
           return VegetableMgr::bindResult($inst,$result);
        }
        return false;
@@ -145,21 +154,89 @@ class VegetableMgr
        if(!$db && !$app->getDB($db))
          return false;
       
-       if(is_string($id))
-           $id = "'$id'";
-           
       //execute la requete
-       $query = "SELECT * from vegetable where vegetable_id=$id";
+       $query = "SELECT * from vegetable where vegetable_id=".$db->parseValue($id);
        if($db->execute($query,$result)){
             $inst = new Vegetable();
-          $inst->vegetableId = $result->fetchValue("vegetable_id");
-          $inst->famille = $result->fetchValue("famille");          
-
+             if(!$result->rowCount())
+                 return RESULT(cResult::Failed,iDatabaseQuery::EmptyResult);
+             self::bindResult($inst,$result);
           return true;
        }
        return false;
     }
+    
+   /*
+      @brief Insert single entry with generated id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $add_fields Array of columns names/columns values of additional fields
+      @param $db iDataBase derived instance
+    */
+    public static function insert(&$inst,$add_fields=null,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->vegetableId)){
+            $table_name = 'vegetable';
+            $table_id_name = $table_name.'_id';
+           if(!$db->execute("select * from new_id('$table_name','$table_id_name');",$result))
+              return RESULT(cResult::Failed, cApplication::EntityMissingId);
+           $inst->vegetableId = intval($result->fetchValue("new_id"));
+       }
+       
+      //execute la requete
+       $query = "INSERT INTO vegetable (";
+       $query .= " vegetable id,";
+       $query .= " famille,";
+       if(is_array($add_fields))
+           $query .= implode(',',array_keys($add_fields)).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       $query .= " VALUES(";
+       $query .= $db->parseValue($inst->vegetableId).",";
+       $query .= $db->parseValue($inst->famille).",";
+       if(is_array($add_fields))
+           $query .= implode(',',$add_fields).',';
+       $query = substr($query,0,-1);//remove last ','
+       $query .= ")";
+       
+       if($db->execute($query,$result))
+          return true;
 
+       return false;
+    }
+    
+   /*
+      @brief Update single entry by id
+      @param $inst WriterDocument instance pointer to initialize
+      @param $db iDataBase derived instance
+    */
+    public static function update(&$inst,$db=null){
+       //obtient la base de donnees courrante
+       global $app;
+       if(!$db && !$app->getDB($db))
+         return false;
+      
+       //id initialise ?
+       if(!isset($inst->vegetableId))
+           return RESULT(cResult::Failed, cApplication::EntityMissingId);
+      
+      //execute la requete
+       $query = "UPDATE vegetable SET";
+       $query .= " vegetable id =".$db->parseValue($inst->vegetableId).",";
+       $query .= " famille =".$db->parseValue($inst->famille).",";
+       $query = substr($query,0,-1);//remove last ','
+       $query .= " where vegetable_id=".$db->parseValue($inst->vegetableId);
+       if($db->execute($query,$result))
+          return true;
+
+       return false;
+    }
+    
    /** @brief Convert name to code */
     public static function nameToCode($name){
         for($i=strlen($name)-1;$i>=0;$i--){
