@@ -443,6 +443,41 @@ class CatalogModule implements iModule
     }
     
     /**
+     * @brief Vérifie si un item appartient à un type donné
+     * @param $item Instance ou identifiant de l'item (CatalogItem)
+     * @param $type Type d'item
+     * @return Résultat de procédures ou test
+     * @retval false L'item n'est pas associé à ce type
+     * @retval true L'item est associé à ce type
+     */
+    public static function hasItemType($item,$type)
+    {
+        $list = array();
+        
+        //obtient la bdd
+        global $app;
+        if(!$app->getDB($db))
+            return false;
+
+        //identifiant de l'item
+        $item_id = $item instanceof CatalogItem ? $item->getId() : $item;
+
+        //obtient le nom des tables liées à l'item
+        if($db->execute("select count(*) as count from catalog_associer a
+                            inner join catalog_category c on c.catalog_category_id = a.catalog_category_id and c.item_type = '$type'
+                            where a.catalog_item_id = $item_id;
+                            ", $result))
+        {
+            RESULT_OK();
+            if($result->fetchValue("count") == "1")
+                return true;
+            return false;
+        }
+        
+        return false;
+    }
+    
+    /**
      * @brief Liste les catégories associées à un item
      * @param $item Instance ou identifiant de l'item (CatalogItem)
      * @param $list Instances des catégories trouvées (CatalogCategory[])
