@@ -498,13 +498,13 @@ class CatalogModule implements iModule
         $category_id = $item instanceof CatalogCategoy ? $category->getId() : $category;
         
         //vérifie si la catégorie existe déjà
-        /*if($db->execute("select count(*) from catalog_associer where catalog_item_id=$item_id and catalog_category_id='$category'", $result))
+        if($db->execute("select count(*) from catalog_associer where catalog_item_id=$item_id and catalog_category_id='$category'", $result))
         {
             if($result->fetchValue("count") == "1")
                 return RESULT(cResult::Ok,"CATAEGORY_ALREADY_SET");
         }
         else
-            return false;*/
+            return false;
         
         //obtient le nom des tables liées à l'item
         if($db->execute("insert into catalog_associer (catalog_item_id,catalog_category_id)
