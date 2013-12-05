@@ -170,6 +170,10 @@ class CatalogModule implements iModule
         if(!$app->getDB($db))
             return false;
         
+        //vérifie le type fields
+        if(!is_array($fields))
+            return RESULT(cResult::System,cApplication::InvalidArgumentType,array("FUNCTION"=>"setItemFields","EXPECTED"=>"array","PASSED"=>gettype($fields)));
+        
         //identifiant de l'item
         $item_id = $item instanceof CatalogItem ? $item->getId() : $item;
 
@@ -647,7 +651,7 @@ class CatalogModule implements iModule
      * @param $type Type de catalogue admis. Si NULL, tous les types
      * @param $sort Colonne à trier. Si NULL, aucun tri
      * @param $offset Offset de départ
-     * @param $limit Limite de recherche. Si -1, aucune
+     * @param $limit Limite en nombre de résultats. Si NULL ou -1, aucune limite
      * @return Résultat de procédure
      * @retval true La recherche à réussi, l'argument $list est initialisé
      * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
@@ -672,6 +676,10 @@ class CatalogModule implements iModule
         //offset
         if($offset && !$result->seek($offset,iDatabaseQuery::Origin))
             return false;
+        
+        //pas de limite ?
+        if($limit === NULL)
+            $limit = -1;
 
         //extrait les données
         while(is_array($row = $result->fetchRow()) && ($limit==-1 || $limit-- > 0)){

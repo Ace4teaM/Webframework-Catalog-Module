@@ -10,6 +10,7 @@
         <!-- admin -->
         <page id="catalog_create" role="administrator" name="Créer un catalogue">ctrl.php?app=catalog_module&amp;ctrl=create</page>
         <!-- visiteur -->
+        <page id="catalog_list" role="visitor" name="Liste les catalogue">ctrl.php?app=catalog_module&amp;ctrl=catalogs</page>
         <page id="catalog_search" role="visitor" name="Rechercher des items">ctrl.php?app=catalog_module&amp;ctrl=search</page>
         <!-- utilisateur -->
     </index>

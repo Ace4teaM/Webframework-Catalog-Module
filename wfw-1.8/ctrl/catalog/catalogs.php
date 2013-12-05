@@ -52,7 +52,7 @@ class catalog_module_catalogs_ctrl extends cApplicationCtrl {
         //recherche les catalogues
         if(!CatalogModule::searchCatalogs($list,$p->catalog_type,NULL,$p->row_offset,$p->row_count))
             return false;
-        
+
         foreach ($list as $i=>$item){
             //ajoute les champs étendus ?
             $fields = array();
