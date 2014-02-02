@@ -31,6 +31,9 @@ require_once("xml_default.php");
 
 class CatalogModule implements iModule
 {
+    //Errors
+    const ItemNotExists          = "CATALOG_ITEM_NOT_EXISTS";
+    
     /**
      * @brief Initialise le module
      * @param $local_path Chemin d'accès local vers ce dossier
