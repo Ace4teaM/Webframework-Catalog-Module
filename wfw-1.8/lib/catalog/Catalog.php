@@ -378,7 +378,7 @@ class CatalogModule implements iModule
      * @retval false Impossible d'obtenir la liste, voir cResult::getLast pour plus d'informations
      * @remarks getItemsFields retourne tous les champs d'un item y compris les champs des tables étendus
      */
-    public static function getItemsFields($item, &$fields)
+    public static function getItemFields($item, &$fields)
     {
         $list = array();
         
@@ -416,6 +416,11 @@ class CatalogModule implements iModule
  //     print_r($fields);
         return RESULT_OK();
     }
+    /** @deprecated Utiliser getItemFields */
+    public static function getItemsFields($item, &$fields)
+    {
+        return self::getItemFields($item,$fields);
+    }
     
     /**
      * @brief Liste les tables associées à un item
@@ -423,7 +428,7 @@ class CatalogModule implements iModule
      * @param $list Identifiants des catégories trouvées (string[])
      * @return Résultat de procédures
      */
-    public static function getItemsTypes($item,&$list)
+    public static function getItemTypes($item,&$list)
     {
         $list = array();
         
@@ -448,6 +453,11 @@ class CatalogModule implements iModule
         }
         
         return $list;
+    }
+    /** @deprecated Utiliser getItemTypes */
+    public static function getItemsTypes($item, &$fields)
+    {
+        return self::getItemTypes($item,$fields);
     }
     
     /**
@@ -531,7 +541,7 @@ class CatalogModule implements iModule
      * @param $list Instances des catégories trouvées (CatalogCategory[])
      * @return Résultat de procédures
      */
-    public static function getItemsCategory($item,&$list)
+    public static function getItemCategory($item,&$list)
     {
         $list = array();
         
@@ -561,6 +571,11 @@ class CatalogModule implements iModule
         }
 
         return RESULT_OK();
+    }
+    /** @deprecated Utiliser getItemCategory */
+    public static function getItemsCategory($item, &$fields)
+    {
+        return self::getItemCategory($item,$fields);
     }
     
     /**
