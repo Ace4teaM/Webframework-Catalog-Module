@@ -9,6 +9,6 @@
 /*
     Sequences
     Liste des sequences d'auto incrementation pour les identifiants 
-*/
+
 DROP SEQUENCE IF EXISTS catalog_item_seq;
-CREATE SEQUENCE catalog_item_seq START 1;
+CREATE SEQUENCE catalog_item_seq START 10000;*/
