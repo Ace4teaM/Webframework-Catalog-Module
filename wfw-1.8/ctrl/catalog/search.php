@@ -21,11 +21,20 @@
 */
 
 /*
- * Recherche des items
- * Rôle : Visiteur
- * UC   : catalog_search_items
+  Recherche des items
+  
+  Role   : Tous
+  UC     : Catalogs
+  Module : catalog
+ 
+  Champs:
+    search_string : Texte de la recherche
+    
+  Champs complémentaires:
+    catalog_category_id : Identifiant du catalogue
+    item_type           : Type d'item à rechercher 
+    sort                : Nom du champ utilisé pour le tri
  */
-
 class catalog_module_search_ctrl extends cApplicationCtrl{
     public $fields    = array( 'search_string' );
     public $op_fields = array( 'catalog_category_id', 'item_type', 'sort' );

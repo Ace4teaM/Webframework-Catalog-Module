@@ -6,13 +6,15 @@
   PostgreSQL v8.3 (version minimum requise)
 */
 
-/*
+/**
   Recherche des items
-  @param p_text         Optionel, Texte à rechercher
-  @param p_catalog      Identifiant du catalogue
-  @param p_category     Optionel, Catégorie de l'item
-  @param p_type         Optionel, Type d'item
-  @param p_sort         Optionel, Nom de la colonne de tri (order by)
+
+  Paramètres:
+   p_text         : Optionel, Texte à rechercher
+   p_catalog      : Identifiant du catalogue
+   p_category     : Optionel, Catégorie de l'item
+   p_type         : Optionel, Type d'item
+   p_sort         : Optionel, Nom de la colonne de tri (order by)
 */
 create or replace function catalog_search_items( 
 	p_text varchar,
@@ -79,8 +81,11 @@ LANGUAGE plpgsql;
 
 
 
-/*
+/**
   Recherche les types associés à un item
+  
+  Paramètres:
+     p_item_id : Identifiant de l'item
 */
 create or replace function catalog_items_types( 
 	p_item_id catalog_item.catalog_item_id%type
@@ -113,10 +118,12 @@ $$
 LANGUAGE plpgsql;
 
 
-/*
+/**
   Recherche des catalogues
-  @param p_type         Optionel, Type de catalogue
-  @param p_sort         Optionel, Nom de la colonne de tri (order by)
+
+  Paramètres:
+     p_type      :   Optionel, Type de catalogue
+     p_sort      :   Optionel, Nom de la colonne de tri (order by)
 */
 create or replace function catalog_search_entry( 
 	p_type catalog_entry.catalog_type%type,

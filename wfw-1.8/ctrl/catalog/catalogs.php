@@ -22,11 +22,17 @@
  */
 
 /*
- * Liste les catalogues
- * Rôle : Visiteur
- * UC   : items
+  Liste les catalogues
+  
+  Role   : Tous
+  UC     : Catalogs
+  Module : catalog
+ 
+  Champs complémentaires:
+    catalog_type : Type de catalogue
+    row_offset   : Offset du premier résultat 
+    row_count    : Nombre de résultats retournés
  */
-
 class catalog_module_catalogs_ctrl extends cApplicationCtrl {
 
     public $fields = null;
